@@ -1,0 +1,68 @@
+#include <mSocket.h>
+#include <mInetAddress.h>
+
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <sys/socket.h>
+#include <string.h>
+
+
+
+Socket::Socket(int sockfd) : m_socketFd(sockfd) {
+}
+
+Socket::~Socket() {
+
+}
+
+
+void Socket::bindAddress(const InetAddress& localaddr) {
+    struct sockaddr_in addr = localaddr.getSockAddr();
+    int ret = bind(m_socketFd, (sockaddr*)&addr, sizeof(addr));
+    if (ret < 0) {
+        perror("bind");
+    }
+}
+
+void Socket::startListen(int num = 10) {
+    int ret = listen(m_socketFd, num); // 默认是10
+    if (ret < 0) {
+        perror("listen");
+    }
+}
+
+/*
+    @brief 输入一个地址类, 通过服务器socket, 返回这个地址信息给你, 并且返回一个客户端fd
+*/
+int Socket::accept(InetAddress* peeraddr) {
+
+    struct sockaddr_in addr;
+    memset(&addr, 0, sizeof(addr));
+    socklen_t len = sizeof(addr);
+    int connfd = accept4(m_socketFd, (sockaddr*)&addr, &len, SOCK_NONBLOCK | SOCK_CLOEXEC); // accept普通的accept多一个flag符号, 这里默认连接是非阻塞的, 这表明到时候根据这个fd读数据的时候, 不会阻塞.
+
+    if (connfd < 0) {
+        perror("accept");
+    }
+    peeraddr->setSockAddr(addr);  // 保存地址
+    return connfd;
+}
+
+
+void Socket::setReuseAddr(bool on) {
+    int optval = on ? 1 : 0;
+    setsockopt(m_socketFd, SOL_SOCKET, SO_REUSEADDR, &optval, static_cast<socklen_t>(sizeof(optval)));
+}
+
+// 设置reuseport, 这东西有可能不支持.
+void Socket::setReusePort(bool on) {
+    int optval = on ? 1 : 0;
+    setsockopt(m_socketFd, SOL_SOCKET, SO_REUSEPORT, &optval, static_cast<socklen_t>(sizeof(optval)));
+}
+
+// 设置keepalive, 它的作用是如果在idle时间内没有数据交互, 就发送一个keepalive probes
+void Socket::setKeepAlive(bool on) {
+    int optval = on ? 1 : 0;
+    setsockopt(m_socketFd, SOL_SOCKET, SO_KEEPALIVE, &optval, static_cast<socklen_t>(sizeof(optval)));
+}
+

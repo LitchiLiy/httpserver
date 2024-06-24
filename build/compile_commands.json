@@ -1,0 +1,56 @@
+[
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test5_runAfter.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test5_runAfter.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test5_runAfter.cpp",
+  "output": "CMakeFiles/Main.dir/test5_runAfter.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\channel.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\channel.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/channel.cpp",
+  "output": "CMakeFiles/Main.dir/inc/channel.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\epoller.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\epoller.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/epoller.cpp",
+  "output": "CMakeFiles/Main.dir/inc/epoller.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoop.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoop.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoop.cpp",
+  "output": "CMakeFiles/Main.dir/inc/eventLoop.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoopThread.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoopThread.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoopThread.cpp",
+  "output": "CMakeFiles/Main.dir/inc/eventLoopThread.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\thread.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\thread.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/thread.cpp",
+  "output": "CMakeFiles/Main.dir/inc/thread.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\timer.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\timer.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/timer.cpp",
+  "output": "CMakeFiles/Main.dir/inc/timer.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\timerQueue.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\timerQueue.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/timerQueue.cpp",
+  "output": "CMakeFiles/Main.dir/inc/timerQueue.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\timestamp.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\timestamp.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/timestamp.cpp",
+  "output": "CMakeFiles/Main.dir/inc/timestamp.cpp.obj"
+}
+]
