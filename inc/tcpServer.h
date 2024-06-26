@@ -15,6 +15,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <eventLoopThreadPool.h>
 
 
 // 
@@ -26,7 +27,7 @@ class Acceptor;
 class TcpConnection;
 class Buffer;
 class Timestamp;
-
+class EventLoopThreadPool;
 
 using namespace std;
 
@@ -70,7 +71,7 @@ private:
     std::string m_ipPort;
     std::string m_name;
     std::shared_ptr<Acceptor> m_acceptor;
-    // std::shared_ptr<EventLoopThreadPool> m_threadPool;
+    std::shared_ptr<EventLoopThreadPool> m_threadPool;
 
     ConnectionCallback m_connectionCallback;
     MessageCallback m_messageCallback;

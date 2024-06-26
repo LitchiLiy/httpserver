@@ -102,6 +102,7 @@ Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
     int actNum = 0;
     actNum = epoll_wait(m_Epollfd, &*m_reventVec.begin(), m_reventVec.size(), timeoutMs);
     int saveErrno = errno; // epollwait之后
+
     Timestamp now = Timestamp::now();
     if (actNum > 0) {
         fillActChannel(actNum, actchannels);
@@ -114,6 +115,7 @@ Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
         cout << "epoll_wait timeout, nothing happen" << endl;
     }
     else {
+        cout << "errno = " << saveErrno << endl; // errno = 4就是收到了中断信号EINTR
         if (saveErrno != EINTR)
         {
             errno = saveErrno;

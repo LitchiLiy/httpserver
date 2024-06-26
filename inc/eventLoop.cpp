@@ -44,7 +44,7 @@ bool EventLoop::isInLoopThread() {
 
 void EventLoop::aboutNotInLoopThread() {
     // 如果执行loop的函数不在执行EventLoop的线程当中
-    std::cout << "Not in the Thread" << std::endl;
+    std::cout << "Not in the EL's Thread" << "Now Thread's Tid is: " << pthread_self() << " Pid is : " << getpid() << "But EL's Tid is: " << threadId_ << endl;
 }
 
 void EventLoop::assertInLoopThread() {
@@ -101,12 +101,8 @@ void EventLoop::runInLoop(callBack_f cb) {
 void EventLoop::queueInLoop(callBack_f cb) {
     {
         std::lock_guard<std::mutex> lock(m_mutex);
-
         v_pendingFunctors.push_back(std::move(cb));
-
-
     }
-
     if (!isInLoopThread() || m_callingPendingFunctors) {
         wakeup(); // 如果不是当前线程, 则唤醒. 因为有可能他阻塞在epoll中, actchannel不为空都不知道. 如果现在正在执行Pendingfunction的任务, 也唤醒, 这样在执行结束之后就可以再次执行了. 这两个都保证了cb能被及时调用.
     }

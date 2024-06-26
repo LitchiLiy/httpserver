@@ -28,7 +28,7 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const strin
     // m_ipPort(listenAddr.ptonIpPort()), 这个很复杂, 先放着
     m_name(nameArg),
     m_acceptor(new Acceptor(loop, listenAddr)),
-    // m_threadPool(new EventLoopThreadPool(loop, nameArg)),
+    m_threadPool(new EventLoopThreadPool(loop, nameArg)),
     m_connectionCallback(defaultConnectionCallback),
     m_messageCallback(defaultMessageCallback),
     nextConnId(1)
@@ -48,19 +48,19 @@ TcpServer::~TcpServer() {
 
 void TcpServer::setThreadNum(int numThreads) {
     assert(0 <= numThreads);
-    // m_threadPool->setThreadNum(numThreads);
+    m_threadPool->setThreadNum(numThreads);
 }
 
 void TcpServer::start() {
     // 如果原子操作的值是0
-    if (m_started.incrementAndGet() == 0) {
+    if (m_started.incrementAndGet() == 1) { // 初始化为0, 将这个值加1之后返回加完之后的值.
         // 初始化线程池
-        // m_threadPool->start(threadInitCallback);
+        m_threadPool->startPool(m_threadInitCallback);  // 这里才开始构建ELT实例, 这个初始化函数在, 就执行, 不在, 就不执行在Thread中有这个逻辑
         assert(!m_acceptor->islistening());
         m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
     }
-    // 如果你还没有搞好线程池, 就先暂时用这个, 搞好了再把这个注释掉
-    m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
+    // // 如果你还没有搞好线程池, 就先暂时用这个, 搞好了再把这个注释掉
+    // m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
 }
 
 sockaddr_in TcpServer::getSockAddr(int sockfd) {
@@ -77,7 +77,7 @@ sockaddr_in TcpServer::getSockAddr(int sockfd) {
 
 void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     m_loop->assertInLoopThread();
-    // EventLoop* threadLoop = m_threadPool->getNextLoop(); // tcpserver只有一个acceptor, 然后调用线程池中的一个线程来对接这个客户端
+    EventLoop* threadLoop = m_threadPool->getNextLoop(); // tcpserver只有一个acceptor, 然后调用线程池中的一个线程来对接这个客户端
     string connName = to_string(nextConnId);
     ++nextConnId;
 
@@ -85,7 +85,7 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     InetAddress localAddr(TcpServer::getSockAddr(sockfd)); // 服务器可能不止用一个fd来开放listen, 可能有多个本地listenfd, 这里获取客户端连接的那个
     // 创建一个connection, 这里其实传入的是线程池的loop, 但是为了测试我们这里放我们自己的
     // 实际测试: local和peer两个是不一样的
-    TcpConnectionPtr conn(new TcpConnection(m_loop,
+    TcpConnectionPtr conn(new TcpConnection(threadLoop,
         connName,
         sockfd,
         localAddr,
@@ -98,8 +98,8 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     conn->setWriteCompleteCallback(m_writeCompleteCallback);
     conn->setCloseCallback(std::bind(&TcpServer::removeConnection, this, std::placeholders::_1));
 
-    // 线程池调用connnectEstabilsehd
-    m_loop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn.get())); // 暂时用tcpServer的loop代替
+    // 在主线程里调用其他线程的EL的runInLoop
+    threadLoop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn.get())); // 暂时用tcpServer的loop代替
 }
 
 
@@ -111,10 +111,10 @@ void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn) {
     m_loop->assertInLoopThread();
     size_t n = m_connMap.erase(conn->name());
     // 线程池操作
-    // EventLoop* ioLoop = conn->getLoop();
-    // ioLoop->queueInLoop(
-    //     std::bind(&TcpConnection::connectDestroyed, conn));
-    m_loop->queueInLoop(std::bind(&TcpConnection::connectDestroyed, conn));
+    EventLoop* ioLoop = conn->getLoop();
+    ioLoop->queueInLoop(
+        std::bind(&TcpConnection::connectDestroyed, conn));
+    // m_loop->queueInLoop(std::bind(&TcpConnection::connectDestroyed, conn));
 }
 
 void defaultMessageCallback(const TcpConnectionPtr& conn,
