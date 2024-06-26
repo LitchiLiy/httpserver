@@ -128,6 +128,30 @@ Main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
 
+inc/buffer.obj: inc/buffer.cpp.obj
+.PHONY : inc/buffer.obj
+
+# target to build an object file
+inc/buffer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/buffer.cpp.obj
+.PHONY : inc/buffer.cpp.obj
+
+inc/buffer.i: inc/buffer.cpp.i
+.PHONY : inc/buffer.i
+
+# target to preprocess a source file
+inc/buffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/buffer.cpp.i
+.PHONY : inc/buffer.cpp.i
+
+inc/buffer.s: inc/buffer.cpp.s
+.PHONY : inc/buffer.s
+
+# target to generate assembly for a file
+inc/buffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/buffer.cpp.s
+.PHONY : inc/buffer.cpp.s
+
 inc/channel.obj: inc/channel.cpp.obj
 .PHONY : inc/channel.obj
 
@@ -296,6 +320,54 @@ inc/mSocket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mSocket.cpp.s
 .PHONY : inc/mSocket.cpp.s
 
+inc/tcpConnection.obj: inc/tcpConnection.cpp.obj
+.PHONY : inc/tcpConnection.obj
+
+# target to build an object file
+inc/tcpConnection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpConnection.cpp.obj
+.PHONY : inc/tcpConnection.cpp.obj
+
+inc/tcpConnection.i: inc/tcpConnection.cpp.i
+.PHONY : inc/tcpConnection.i
+
+# target to preprocess a source file
+inc/tcpConnection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpConnection.cpp.i
+.PHONY : inc/tcpConnection.cpp.i
+
+inc/tcpConnection.s: inc/tcpConnection.cpp.s
+.PHONY : inc/tcpConnection.s
+
+# target to generate assembly for a file
+inc/tcpConnection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpConnection.cpp.s
+.PHONY : inc/tcpConnection.cpp.s
+
+inc/tcpServer.obj: inc/tcpServer.cpp.obj
+.PHONY : inc/tcpServer.obj
+
+# target to build an object file
+inc/tcpServer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpServer.cpp.obj
+.PHONY : inc/tcpServer.cpp.obj
+
+inc/tcpServer.i: inc/tcpServer.cpp.i
+.PHONY : inc/tcpServer.i
+
+# target to preprocess a source file
+inc/tcpServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpServer.cpp.i
+.PHONY : inc/tcpServer.cpp.i
+
+inc/tcpServer.s: inc/tcpServer.cpp.s
+.PHONY : inc/tcpServer.s
+
+# target to generate assembly for a file
+inc/tcpServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpServer.cpp.s
+.PHONY : inc/tcpServer.cpp.s
+
 inc/thread.obj: inc/thread.cpp.obj
 .PHONY : inc/thread.obj
 
@@ -392,29 +464,29 @@ inc/timestamp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/timestamp.cpp.s
 .PHONY : inc/timestamp.cpp.s
 
-test7_2.obj: test7_2.cpp.obj
-.PHONY : test7_2.obj
+test9.obj: test9.cpp.obj
+.PHONY : test9.obj
 
 # target to build an object file
-test7_2.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test7_2.cpp.obj
-.PHONY : test7_2.cpp.obj
+test9.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test9.cpp.obj
+.PHONY : test9.cpp.obj
 
-test7_2.i: test7_2.cpp.i
-.PHONY : test7_2.i
+test9.i: test9.cpp.i
+.PHONY : test9.i
 
 # target to preprocess a source file
-test7_2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test7_2.cpp.i
-.PHONY : test7_2.cpp.i
+test9.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test9.cpp.i
+.PHONY : test9.cpp.i
 
-test7_2.s: test7_2.cpp.s
-.PHONY : test7_2.s
+test9.s: test9.cpp.s
+.PHONY : test9.s
 
 # target to generate assembly for a file
-test7_2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test7_2.cpp.s
-.PHONY : test7_2.cpp.s
+test9.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test9.cpp.s
+.PHONY : test9.cpp.s
 
 # Help Target
 help:
@@ -425,6 +497,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Main
+	@echo ... inc/buffer.obj
+	@echo ... inc/buffer.i
+	@echo ... inc/buffer.s
 	@echo ... inc/channel.obj
 	@echo ... inc/channel.i
 	@echo ... inc/channel.s
@@ -446,6 +521,12 @@ help:
 	@echo ... inc/mSocket.obj
 	@echo ... inc/mSocket.i
 	@echo ... inc/mSocket.s
+	@echo ... inc/tcpConnection.obj
+	@echo ... inc/tcpConnection.i
+	@echo ... inc/tcpConnection.s
+	@echo ... inc/tcpServer.obj
+	@echo ... inc/tcpServer.i
+	@echo ... inc/tcpServer.s
 	@echo ... inc/thread.obj
 	@echo ... inc/thread.i
 	@echo ... inc/thread.s
@@ -458,9 +539,9 @@ help:
 	@echo ... inc/timestamp.obj
 	@echo ... inc/timestamp.i
 	@echo ... inc/timestamp.s
-	@echo ... test7_2.obj
-	@echo ... test7_2.i
-	@echo ... test7_2.s
+	@echo ... test9.obj
+	@echo ... test9.i
+	@echo ... test9.s
 .PHONY : help
 
 
