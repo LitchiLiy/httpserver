@@ -21,6 +21,7 @@ class Acceptor {
     typedef std::function<void(int, const InetAddress&)> newConnectionCallback_f;
 public:
     Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reuseport);
+    Acceptor(EventLoop* loop, const InetAddress& listenAddr);
     ~Acceptor();
 
 

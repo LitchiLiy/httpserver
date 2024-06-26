@@ -5,6 +5,7 @@
 #include <netinet/tcp.h>
 #include <sys/socket.h>
 #include <string.h>
+#include <unistd.h>
 
 
 
@@ -66,3 +67,13 @@ void Socket::setKeepAlive(bool on) {
     setsockopt(m_socketFd, SOL_SOCKET, SO_KEEPALIVE, &optval, static_cast<socklen_t>(sizeof(optval)));
 }
 
+
+void Socket::shutdownSockfd() {
+    shutdown(m_socketFd, SHUT_WR);
+}
+
+// 改变 TCP 协议的 Nagle 算法 的行为。Nagle 算法是一种用于改善网络通信效率的算法，由 John Nagle 提出。其核心思想是将小的分组合并为一个较大的分组，减少网络中分组的数量，从而降低因大量小分组而产生的网络拥塞。
+void Socket::setTcpNoDelay(bool on) {
+    int optval = on ? 1 : 0;
+    setsockopt(m_socketFd, IPPROTO_TCP, TCP_NODELAY, &optval, static_cast<socklen_t>(sizeof(optval)));
+}

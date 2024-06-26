@@ -4,6 +4,8 @@
 
 
 #include <functional>
+#include <callBacks.h>
+
 
 
 class EventLoop;  // 只是作为指针
@@ -17,20 +19,31 @@ public:
     ~Channel();
 
     // 设置回调
-    void setReadCallBack(callBack_f cb);
+    void setReadCallBack(ReadEventcb_f cb);
     void setWriteCallBack(callBack_f cb);
     void setErroCallBack(callBack_f cb);
+    void setCloseCallBakc(callBack_f cb) {
+        m_CloseCb = std::move(cb);
+    }
 
     // 使能
     void setReadEnable();
     void setWriteEnable();
 
+    // 关闭使能
+    void setReadDisable();
+    void setWriteDisable();
 
+    // 判断是否使能
+    bool isWriting() const { return m_event & kWriteEvent; };
+    bool isReading() const { return m_event & kReadEvent; };
+
+    // 这三个表明的是该channel对什么感兴趣.
     static const int kNoneEvent;
     static const int kReadEvent;
     static const int kWriteEvent;
 
-    void handleEvent();
+    void handleEvent(Timestamp receiveTime);
 
     void set_index(int idx) { m_idx = idx; };
     int showidx() { return m_idx; };
@@ -45,6 +58,8 @@ public:
 
 
 
+
+
 private:
     void updateChannel();
 
@@ -53,9 +68,10 @@ private:
     EventLoop* m_El;
     int m_fd;
 
-    callBack_f m_ReadCb;
-    callBack_f m_WriteCb;
-    callBack_f m_ErroCb;
+    ReadEventcb_f m_ReadCb;
+    EventCb_f m_WriteCb;
+    EventCb_f m_ErroCb;
+    EventCb_f m_CloseCb;
 
     int m_event; // 用户想要感兴趣的情况
     int m_revent;
@@ -63,6 +79,9 @@ private:
     // poller专用
     int m_idx = -1;
     bool isaddedToLoop = false;
+
+    // tcpconnection
+    bool iseventHandling = false;
 
 };
 

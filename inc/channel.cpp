@@ -1,6 +1,8 @@
 #include <channel.h>
 #include <sys/epoll.h>
 #include <eventLoop.h>
+#include <iostream>
+#include <assert.h>
 
 
 const int Channel::kNoneEvent = 0;
@@ -13,10 +15,10 @@ Channel::Channel(EventLoop* el_, int fd_) :m_El(el_), m_fd(fd_), m_event(0), m_i
 }
 
 Channel::~Channel() {
-
+    assert(!iseventHandling);
 };
 
-void Channel::setReadCallBack(callBack_f cb) {
+void Channel::setReadCallBack(ReadEventcb_f cb) {
     m_ReadCb = cb;
 }
 void Channel::setWriteCallBack(callBack_f cb) {
@@ -41,7 +43,15 @@ void Channel::updateChannel() {
     m_El->updateChannel(this);
 }
 
-void Channel::handleEvent() {
+void Channel::handleEvent(Timestamp receiveTime) {
+    iseventHandling = true;
+    // 关于关闭Channel的情况
+    if ((m_revent & EPOLLHUP) && !(m_revent & EPOLLIN)) {  // 对端关闭连接EPOLLHUP.
+        std::cout << "Channel::handle_event() POLLHUP" << std::endl;
+        if (m_CloseCb) {
+            m_CloseCb();
+        }
+    }
     // 判断revent是什么类型执行什么回调函数.
     if (m_revent & (EPOLLERR)) {
         if (m_ErroCb) {
@@ -51,7 +61,7 @@ void Channel::handleEvent() {
 
     if (m_revent & (EPOLLIN | EPOLLPRI | EPOLLHUP)) {
         if (m_ReadCb) {
-            m_ReadCb();
+            m_ReadCb(receiveTime);
         }
     }
 
@@ -60,6 +70,7 @@ void Channel::handleEvent() {
             m_WriteCb();
         }
     }
+    iseventHandling = false;
 }
 
 void Channel::remove() {
@@ -68,6 +79,11 @@ void Channel::remove() {
     m_El->remove(this);
 }
 
-
-
-
+void Channel::setReadDisable() {
+    m_event &= ~kReadEvent;
+    updateChannel();
+}
+void Channel::setWriteDisable() {
+    m_event &= ~kWriteEvent;
+    updateChannel();
+}

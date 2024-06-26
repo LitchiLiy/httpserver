@@ -98,11 +98,11 @@ void Epoller::fillActChannel(int actNum, vector<Channel*>* actchannels) {
 }
 
 Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
-    Timestamp now = Timestamp::now();
 
     int actNum = 0;
     actNum = epoll_wait(m_Epollfd, &*m_reventVec.begin(), m_reventVec.size(), timeoutMs);
     int saveErrno = errno; // epollwait之后
+    Timestamp now = Timestamp::now();
     if (actNum > 0) {
         fillActChannel(actNum, actchannels);
         if (static_cast<size_t>(actNum) == m_reventVec.size()) // 数组不够大再扩容

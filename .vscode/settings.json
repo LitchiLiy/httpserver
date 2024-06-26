@@ -70,6 +70,9 @@
         "span": "cpp",
         "cinttypes": "cpp",
         "variant": "cpp",
-        "socket": "cpp"
+        "socket": "cpp",
+        "cstring": "cpp",
+        "map": "cpp",
+        "buffer": "cpp"
     }
 }

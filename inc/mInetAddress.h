@@ -1,3 +1,6 @@
+#if !defined(INETADDRESS_H)
+#define INETADDRESS_H
+
 /*
 功能
 1. 记录两个地址, 一个是ipv4一个是ipv6
@@ -17,6 +20,12 @@ class InetAddress {
 public:
     InetAddress(const std::string ip, uint16_t port, bool ipv6 = false);
     InetAddress() = default;
+    explicit InetAddress(const struct sockaddr_in& addr)
+        : m_addr(addr)
+    { }
+    explicit InetAddress(const struct sockaddr_in6& addr)
+        : m_addr6(addr)
+    { }
     ~InetAddress();
 
     void setSockAddr(const struct sockaddr_in& addr) { m_addr = addr; }
@@ -36,3 +45,5 @@ private:
     struct sockaddr_in m_addr;
     struct sockaddr_in6 m_addr6;
 };
+
+#endif // INETADDRESS_H

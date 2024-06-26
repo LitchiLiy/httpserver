@@ -1,9 +1,9 @@
 [
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test5_runAfter.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test5_runAfter.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test5_runAfter.cpp",
-  "output": "CMakeFiles/Main.dir/test5_runAfter.cpp.obj"
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test7_2.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test7_2.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test7_2.cpp",
+  "output": "CMakeFiles/Main.dir/test7_2.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
@@ -28,6 +28,24 @@
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoopThread.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoopThread.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoopThread.cpp",
   "output": "CMakeFiles/Main.dir/inc/eventLoopThread.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mAcceptor.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mAcceptor.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mAcceptor.cpp",
+  "output": "CMakeFiles/Main.dir/inc/mAcceptor.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mInetAddress.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mInetAddress.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mInetAddress.cpp",
+  "output": "CMakeFiles/Main.dir/inc/mInetAddress.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mSocket.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mSocket.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mSocket.cpp",
+  "output": "CMakeFiles/Main.dir/inc/mSocket.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",

@@ -10,7 +10,7 @@
 
 
 
-Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reuseport) {
+Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr) {
     // 首先创建一个socket, 设置为非阻塞
     m_acceptFd = socket(listenAddr.getSockAddr().sin_family, SOCK_STREAM, 0);
     int opt = 1;
@@ -28,7 +28,6 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reusepor
     m_channel = Channel(loop, m_acceptFd);
     m_channel.setReadCallBack(std::bind(&Acceptor::handleRead, this));
     // 并不使能读. 等开始listen的时候才使能.
-
 }
 
 Acceptor::~Acceptor()

@@ -224,6 +224,78 @@ inc/eventLoopThread.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThread.cpp.s
 .PHONY : inc/eventLoopThread.cpp.s
 
+inc/mAcceptor.obj: inc/mAcceptor.cpp.obj
+.PHONY : inc/mAcceptor.obj
+
+# target to build an object file
+inc/mAcceptor.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mAcceptor.cpp.obj
+.PHONY : inc/mAcceptor.cpp.obj
+
+inc/mAcceptor.i: inc/mAcceptor.cpp.i
+.PHONY : inc/mAcceptor.i
+
+# target to preprocess a source file
+inc/mAcceptor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mAcceptor.cpp.i
+.PHONY : inc/mAcceptor.cpp.i
+
+inc/mAcceptor.s: inc/mAcceptor.cpp.s
+.PHONY : inc/mAcceptor.s
+
+# target to generate assembly for a file
+inc/mAcceptor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mAcceptor.cpp.s
+.PHONY : inc/mAcceptor.cpp.s
+
+inc/mInetAddress.obj: inc/mInetAddress.cpp.obj
+.PHONY : inc/mInetAddress.obj
+
+# target to build an object file
+inc/mInetAddress.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mInetAddress.cpp.obj
+.PHONY : inc/mInetAddress.cpp.obj
+
+inc/mInetAddress.i: inc/mInetAddress.cpp.i
+.PHONY : inc/mInetAddress.i
+
+# target to preprocess a source file
+inc/mInetAddress.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mInetAddress.cpp.i
+.PHONY : inc/mInetAddress.cpp.i
+
+inc/mInetAddress.s: inc/mInetAddress.cpp.s
+.PHONY : inc/mInetAddress.s
+
+# target to generate assembly for a file
+inc/mInetAddress.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mInetAddress.cpp.s
+.PHONY : inc/mInetAddress.cpp.s
+
+inc/mSocket.obj: inc/mSocket.cpp.obj
+.PHONY : inc/mSocket.obj
+
+# target to build an object file
+inc/mSocket.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mSocket.cpp.obj
+.PHONY : inc/mSocket.cpp.obj
+
+inc/mSocket.i: inc/mSocket.cpp.i
+.PHONY : inc/mSocket.i
+
+# target to preprocess a source file
+inc/mSocket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mSocket.cpp.i
+.PHONY : inc/mSocket.cpp.i
+
+inc/mSocket.s: inc/mSocket.cpp.s
+.PHONY : inc/mSocket.s
+
+# target to generate assembly for a file
+inc/mSocket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mSocket.cpp.s
+.PHONY : inc/mSocket.cpp.s
+
 inc/thread.obj: inc/thread.cpp.obj
 .PHONY : inc/thread.obj
 
@@ -320,29 +392,29 @@ inc/timestamp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/timestamp.cpp.s
 .PHONY : inc/timestamp.cpp.s
 
-test5_runAfter.obj: test5_runAfter.cpp.obj
-.PHONY : test5_runAfter.obj
+test7_2.obj: test7_2.cpp.obj
+.PHONY : test7_2.obj
 
 # target to build an object file
-test5_runAfter.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test5_runAfter.cpp.obj
-.PHONY : test5_runAfter.cpp.obj
+test7_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test7_2.cpp.obj
+.PHONY : test7_2.cpp.obj
 
-test5_runAfter.i: test5_runAfter.cpp.i
-.PHONY : test5_runAfter.i
+test7_2.i: test7_2.cpp.i
+.PHONY : test7_2.i
 
 # target to preprocess a source file
-test5_runAfter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test5_runAfter.cpp.i
-.PHONY : test5_runAfter.cpp.i
+test7_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test7_2.cpp.i
+.PHONY : test7_2.cpp.i
 
-test5_runAfter.s: test5_runAfter.cpp.s
-.PHONY : test5_runAfter.s
+test7_2.s: test7_2.cpp.s
+.PHONY : test7_2.s
 
 # target to generate assembly for a file
-test5_runAfter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test5_runAfter.cpp.s
-.PHONY : test5_runAfter.cpp.s
+test7_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test7_2.cpp.s
+.PHONY : test7_2.cpp.s
 
 # Help Target
 help:
@@ -365,6 +437,15 @@ help:
 	@echo ... inc/eventLoopThread.obj
 	@echo ... inc/eventLoopThread.i
 	@echo ... inc/eventLoopThread.s
+	@echo ... inc/mAcceptor.obj
+	@echo ... inc/mAcceptor.i
+	@echo ... inc/mAcceptor.s
+	@echo ... inc/mInetAddress.obj
+	@echo ... inc/mInetAddress.i
+	@echo ... inc/mInetAddress.s
+	@echo ... inc/mSocket.obj
+	@echo ... inc/mSocket.i
+	@echo ... inc/mSocket.s
 	@echo ... inc/thread.obj
 	@echo ... inc/thread.i
 	@echo ... inc/thread.s
@@ -377,9 +458,9 @@ help:
 	@echo ... inc/timestamp.obj
 	@echo ... inc/timestamp.i
 	@echo ... inc/timestamp.s
-	@echo ... test5_runAfter.obj
-	@echo ... test5_runAfter.i
-	@echo ... test5_runAfter.s
+	@echo ... test7_2.obj
+	@echo ... test7_2.i
+	@echo ... test7_2.s
 .PHONY : help
 
 

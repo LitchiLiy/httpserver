@@ -61,11 +61,11 @@ void EventLoop::loop() {
     isquit = false;
     while (!isquit) {
         v_actChannels.clear();
-        p_Epoller->epolling(-1, &v_actChannels);
+        Timestamp recTime = p_Epoller->epolling(-1, &v_actChannels);
         isEventHandling = true;
         for (Channel* ch : v_actChannels) {
             currentActiveChannel_ = ch;
-            ch->handleEvent();
+            ch->handleEvent(recTime);
         }
         currentActiveChannel_ = nullptr;
         isEventHandling = false;

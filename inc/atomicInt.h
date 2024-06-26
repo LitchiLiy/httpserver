@@ -10,6 +10,7 @@ typedef int64_t seq_t;
 
 
 
+
 template <typename T>
 class AtomicInt
 {
@@ -38,6 +39,8 @@ public:
 private:
     std::atomic<T> m_val; // T类型的原始值
 };
+
 typedef AtomicInt<int64_t> AtomicInt64;
+typedef AtomicInt<int32_t> AtomicInt32;
 
 #endif // AUTOMATICINT_H)   

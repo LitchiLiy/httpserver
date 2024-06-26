@@ -74,7 +74,7 @@ public:
     TimerId runEvery(double interval, const callBack_f& cb);
 
     void remove(Channel* ch);
-
+    void queueInLoop(callBack_f cb);
 
     vector<callBack_f> v_pendingFunctors{};
 
@@ -87,7 +87,7 @@ private:
     std::vector<Channel*> v_actChannels;
 
     // 新增runInLoop
-    void queueInLoop(callBack_f cb);
+
     void handleRead();
     void doPendingFunctors(); // 放在正在执行的任务之后, 在loop函数最后执行
     bool m_callingPendingFunctors;

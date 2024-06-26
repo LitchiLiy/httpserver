@@ -251,3 +251,23 @@ main函数中创建一个实例， 这个实例传入用来初始化线程的cb�
 开始之后， 调用类内Thread类的start函数。类内的Thread类使用create函数传入ELT的threadfunc函数用来执行。
 
 threadfunc函数， 他会在新线程内部创建EL实例， 这样实例就保存在thread内了， 然后将loop指针给到ELT的类内保存。当然还要调动ELT类内的初始化函数。 最后调用EL的loop函数。这里有一个点需要提起，线程使用的函数要用ELT类内的成员函数，因为要将线程内部调用的ET的指针传出来。
+
+
+
+TCPconnection类
+
+作用
+1. 一个TCP连接类掌管一个Tcp连接, 只能消除不能暂停.
+2. 构造函数: 保存着一个fd, 一个本地服务器Inet地址, 一个对方的Inet地址, 一个loop指针, 一个string名用来在map区分自己.
+
+私有成员: 
+1. fd是放到sock里去掌管的, 所以必须要有一个sock类. 没有fd.
+2. 两个地址私有Inet类.
+3. 5个callback函数, 分别对应: 连接请求做什么, 消息来了做什么, 准备好写了做什么, 高水位做什么, 收到关闭通知做什么
+4. 输入输出buffer两个
+5. context上下文
+
+
+
+TCPserver类
+

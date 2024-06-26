@@ -1,6 +1,10 @@
 #if !defined(MSOCKET_H)
 #define MSOCKET_H
 
+
+#include <sys/socket.h>
+
+
 /*
 SOCKET类的功能
 1. bind, listen, accept
@@ -29,6 +33,11 @@ public:
     void setReuseAddr(bool on);
     void setReusePort(bool on);
     void setKeepAlive(bool on);
+
+    void shutdownSockfd();
+    void setTcpNoDelay(bool on);
+
+    void shutdownWrite() { shutdown(m_socketFd, SHUT_WR); }; // 禁用该fd的发送操作.
 
 private:
     int m_socketFd;
