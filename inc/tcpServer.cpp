@@ -59,13 +59,15 @@ void TcpServer::start() {
         assert(!m_acceptor->islistening());
         m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
     }
+    // 如果你还没有搞好线程池, 就先暂时用这个, 搞好了再把这个注释掉
+    m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
 }
 
 sockaddr_in TcpServer::getSockAddr(int sockfd) {
     struct sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
     socklen_t addrlen = static_cast<socklen_t>(sizeof(addr));
-    if (getsockname(sockfd, (struct sockaddr*)&addr, &addrlen) < 0) { // getsockname获取sockfd的本地地址, 或者理解为获取套接字绑定的端口和地址
+    if (getsockname(sockfd, (struct sockaddr*)&addr, &addrlen) < 0) { // 获取客户端sockfd连接的那个服务器地址
         perror("getsockname");
     }
     return addr;
@@ -75,13 +77,14 @@ sockaddr_in TcpServer::getSockAddr(int sockfd) {
 
 void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     m_loop->assertInLoopThread();
-    // EventLoop* threadLoop = m_threadPool->getNextLoop();
+    // EventLoop* threadLoop = m_threadPool->getNextLoop(); // tcpserver只有一个acceptor, 然后调用线程池中的一个线程来对接这个客户端
     string connName = to_string(nextConnId);
     ++nextConnId;
 
     // 这里从外部的sockfd获取他的本地地址
-    InetAddress localAddr(TcpServer::getSockAddr(sockfd));
+    InetAddress localAddr(TcpServer::getSockAddr(sockfd)); // 服务器可能不止用一个fd来开放listen, 可能有多个本地listenfd, 这里获取客户端连接的那个
     // 创建一个connection, 这里其实传入的是线程池的loop, 但是为了测试我们这里放我们自己的
+    // 实际测试: local和peer两个是不一样的
     TcpConnectionPtr conn(new TcpConnection(m_loop,
         connName,
         sockfd,
@@ -90,13 +93,13 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
 
     m_connMap[conn->name()] = conn;
     // 这里设置回调函数
-    conn->setConnectionCallback(m_connectionCallback);
-    conn->setMessageCallback(m_messageCallback);
+    conn->setConnectionCallback(m_connectionCallback);   // 外部构建tcpserver是set的mconnectCb
+    conn->setMessageCallback(m_messageCallback);    // 外部构建的想让服务器怎么回应的cb
     conn->setWriteCompleteCallback(m_writeCompleteCallback);
     conn->setCloseCallback(std::bind(&TcpServer::removeConnection, this, std::placeholders::_1));
 
     // 线程池调用connnectEstabilsehd
-    // m_loop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn));
+    m_loop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn.get())); // 暂时用tcpServer的loop代替
 }
 
 

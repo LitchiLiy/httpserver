@@ -18,9 +18,9 @@ const char Buffer::kCRLF[] = "\r\n";
 
 
 Buffer::Buffer(size_t initialSize) : // 不能在实现的地方添加默认参数, 在声明的地方添加就可以
-    m_buffer(initialSize),
-    m_readerIndex(0),
-    m_writerIndex(0) {
+    m_buffer(kCheapPrepend + initialSize),
+    m_readerIndex(kCheapPrepend),
+    m_writerIndex(kCheapPrepend) {
     assert(readableBytesNum() == 0);
     assert(writableBytesNum() == initialSize);
     assert(prependableBytesNum() == kCheapPrepend);

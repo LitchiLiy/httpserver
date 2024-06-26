@@ -41,9 +41,10 @@ public:
 
 
     // 写相关
-    void send(const StringPiece& strMsg);
+    void send(const StringPiece& strMsg); // 这个函数就包含了只发string信息的情况
     void send(const std::string& message, size_t len); // 向客户端发送消息
     void send(Buffer* bufMsg);
+
 
     // 关闭
     void shutdown(); // 关闭连接

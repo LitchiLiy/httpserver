@@ -6,6 +6,8 @@
 #include <sys/socket.h>
 #include <string.h>
 #include <unistd.h>
+#include <iostream>
+#include <arpa/inet.h>
 
 
 
@@ -25,6 +27,7 @@ void Socket::bindAddress(const InetAddress& localaddr) {
     }
 }
 
+
 void Socket::startListen(int num = 10) {
     int ret = listen(m_socketFd, num); // 默认是10
     if (ret < 0) {
@@ -41,7 +44,12 @@ int Socket::accept(InetAddress* peeraddr) {
     memset(&addr, 0, sizeof(addr));
     socklen_t len = sizeof(addr);
     int connfd = accept4(m_socketFd, (sockaddr*)&addr, &len, SOCK_NONBLOCK | SOCK_CLOEXEC); // accept普通的accept多一个flag符号, 这里默认连接是非阻塞的, 这表明到时候根据这个fd读数据的时候, 不会阻塞.
-
+    // 输出收到的fd的任何信息
+    {
+        char ipstr[50];
+        inet_ntop(AF_INET, &(addr.sin_addr), ipstr, sizeof ipstr);
+        std::cout << "Accepted new connection of fd: " << connfd << " Client address: " << ipstr << ":" << ntohs(addr.sin_port) << std::endl;
+    }
     if (connfd < 0) {
         perror("accept");
     }

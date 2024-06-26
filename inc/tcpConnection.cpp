@@ -203,7 +203,7 @@ void TcpConnection::connectEstablished() {
     m_loop->assertInLoopThread();
     assert(m_state == kConnecting);
     setState(kConnected);
-    m_channel->setReadEnable();
+    m_channel->setReadEnable();  // tcpConnection专门用来对接客户端的channel.
 
     m_connectionCallback(std::make_shared<TcpConnection>(*this));
 }

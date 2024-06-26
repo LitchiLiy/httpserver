@@ -52,7 +52,7 @@ void Acceptor::handleRead() {
     int connfd = m_socket.accept(&peerAddr);
     if (connfd >= 0) {
         if (m_newConnectionCallback) {
-            m_newConnectionCallback(connfd, peerAddr);
+            m_newConnectionCallback(connfd, peerAddr); // 执行保存在Acceptor的新连接回调, 这个回调会执行TcpServer的新连接函数
         }
         else {
             close(connfd);
