@@ -9,6 +9,13 @@
 #include <callBacks.h>
 #include <memory>
 
+/*
+这里保存着一个定时器fd, 因此只需要在这里保存着定时器信息就可以了, 启动这个实例可以自动实现定时器周期与清楚.
+
+对于Timer信息, 我们保证其声明周期与actTimerset的声明周期是一致的就行.
+
+即使定时器信息里面的周期是true, 只要我不让他参与定时器, 他就不会自己参与周期, 即一旦被我踢出周期, 则永远不能自动回来.
+*/
 
 
 
@@ -29,6 +36,7 @@ public:
 
     TimerId addTimer(const callBack_f& cb, const Timestamp& when, double interval);
     void cancel(TimerId id);
+    void cancelInLoop(TimerId id);
 
 private:
 
@@ -60,9 +68,9 @@ private:
 
     TimerList timers_;  // 已排序的定时器列表, 按timestamp排
     ActiveTimerSet m_activeTimerSet;
+    ActiveTimerSet m_cancelingTimerSet;  // 放在内部的定时器不用特定去清除他, 在周期判断中如果能在这个set中发现, 则不让他参与周期就行.
 
     bool callingExpiredTimers_ = false; // 用在Handle中, 表示正在处理getExpir取出来的所有Entry的回调函数中
-
 };
 
 

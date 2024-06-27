@@ -15,7 +15,11 @@ Channel::Channel(EventLoop* el_, int fd_) :m_El(el_), m_fd(fd_), m_event(0), m_i
 }
 
 Channel::~Channel() {
-    assert(!iseventHandling);
+    assert(!iseventHandling); // 是否正在处理
+    assert(!isaddedToLoop); // 是否已经从任何Loop中移除
+    if (m_El->isInLoopThread()) {
+        assert(!m_El->hasChannel(this));  // 再次确认是否已经从该Loop中移除
+    }
 };
 
 void Channel::setReadCallBack(ReadEventcb_f cb) {

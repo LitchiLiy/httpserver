@@ -176,6 +176,30 @@ inc/channel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/channel.cpp.s
 .PHONY : inc/channel.cpp.s
 
+inc/connector.obj: inc/connector.cpp.obj
+.PHONY : inc/connector.obj
+
+# target to build an object file
+inc/connector.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/connector.cpp.obj
+.PHONY : inc/connector.cpp.obj
+
+inc/connector.i: inc/connector.cpp.i
+.PHONY : inc/connector.i
+
+# target to preprocess a source file
+inc/connector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/connector.cpp.i
+.PHONY : inc/connector.cpp.i
+
+inc/connector.s: inc/connector.cpp.s
+.PHONY : inc/connector.s
+
+# target to generate assembly for a file
+inc/connector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/connector.cpp.s
+.PHONY : inc/connector.cpp.s
+
 inc/epoller.obj: inc/epoller.cpp.obj
 .PHONY : inc/epoller.obj
 
@@ -247,6 +271,30 @@ inc/eventLoopThread.s: inc/eventLoopThread.cpp.s
 inc/eventLoopThread.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThread.cpp.s
 .PHONY : inc/eventLoopThread.cpp.s
+
+inc/eventLoopThreadPool.obj: inc/eventLoopThreadPool.cpp.obj
+.PHONY : inc/eventLoopThreadPool.obj
+
+# target to build an object file
+inc/eventLoopThreadPool.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.obj
+.PHONY : inc/eventLoopThreadPool.cpp.obj
+
+inc/eventLoopThreadPool.i: inc/eventLoopThreadPool.cpp.i
+.PHONY : inc/eventLoopThreadPool.i
+
+# target to preprocess a source file
+inc/eventLoopThreadPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.i
+.PHONY : inc/eventLoopThreadPool.cpp.i
+
+inc/eventLoopThreadPool.s: inc/eventLoopThreadPool.cpp.s
+.PHONY : inc/eventLoopThreadPool.s
+
+# target to generate assembly for a file
+inc/eventLoopThreadPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.s
+.PHONY : inc/eventLoopThreadPool.cpp.s
 
 inc/mAcceptor.obj: inc/mAcceptor.cpp.obj
 .PHONY : inc/mAcceptor.obj
@@ -503,6 +551,9 @@ help:
 	@echo ... inc/channel.obj
 	@echo ... inc/channel.i
 	@echo ... inc/channel.s
+	@echo ... inc/connector.obj
+	@echo ... inc/connector.i
+	@echo ... inc/connector.s
 	@echo ... inc/epoller.obj
 	@echo ... inc/epoller.i
 	@echo ... inc/epoller.s
@@ -512,6 +563,9 @@ help:
 	@echo ... inc/eventLoopThread.obj
 	@echo ... inc/eventLoopThread.i
 	@echo ... inc/eventLoopThread.s
+	@echo ... inc/eventLoopThreadPool.obj
+	@echo ... inc/eventLoopThreadPool.i
+	@echo ... inc/eventLoopThreadPool.s
 	@echo ... inc/mAcceptor.obj
 	@echo ... inc/mAcceptor.i
 	@echo ... inc/mAcceptor.s

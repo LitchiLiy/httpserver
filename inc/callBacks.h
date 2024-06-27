@@ -7,6 +7,8 @@
 class TcpConnection;
 class EventLoop;
 class Timestamp;
+class Connector;
+
 
 typedef std::function<void()> callBack_f;
 typedef std::function<void(EventLoop*)> threadInitCallBack;
@@ -24,6 +26,10 @@ typedef std::function<void(const TcpConnectionPtr&, size_t)> HighWaterMarkCallba
 class Timestamp;
 typedef std::function<void()> EventCb_f;
 typedef std::function<void(Timestamp)> ReadEventcb_f;
+
+// Connector
+typedef std::function<void(int sockfd)> NewConnectionCallback;
+typedef std::shared_ptr<Connector> ConnectorPtr;
 
 
 

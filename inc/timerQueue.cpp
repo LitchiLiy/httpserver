@@ -140,7 +140,7 @@ void TimerQueue::timerHandleRead() {
     auto expvec = getExpired(now);
 
     callingExpiredTimers_ = true;
-    // cancelingTimers_.clear();
+    m_cancelingTimerSet.clear();
 
     for (const Entry& it : expvec) {
         it.second->runTimerCallBack();
@@ -156,7 +156,7 @@ void TimerQueue::getExpAfterReset(vector<TimerQueue::Entry> expVec, Timestamp no
     // 检查是否周期的办法在timer类实例里面
     for (const Entry& it : expVec) {
         actTimer timer(it.second, it.second->showSeq());
-        if (it.second->isRepeat()) { // 是否周期
+        if (it.second->isRepeat() && m_cancelingTimerSet.find(timer) == m_cancelingTimerSet.end()) { // 是否周期
             it.second->restart(now);  // 更改该timer的下一次触发时间戳
             insertTimerSet(it.second); // 刚被getExpired取出来的又重新加回去
         }
@@ -175,4 +175,25 @@ void TimerQueue::getExpAfterReset(vector<TimerQueue::Entry> expVec, Timestamp no
     {
         resetTimerfd(m_queueTimerfd, timerfdNextSet); // 将这个时间timerfd_setting
     }
+}
+
+void TimerQueue::cancel(TimerId id) {
+    m_loop->runInLoop(std::bind(&TimerQueue::cancelInLoop, this, id));
+}
+
+void TimerQueue::cancelInLoop(TimerId id) {
+    m_loop->assertInLoopThread();
+    assert(timers_.size() == m_activeTimerSet.size());
+    actTimer timer(id.m_timer, id.m_seq);
+    auto it = m_activeTimerSet.find(timer);
+    if (it != m_activeTimerSet.end()) {
+        size_t n = timers_.erase(Entry(it->first->showExpired(), it->first));
+        assert(n == 1);
+        delete it->first;
+        m_activeTimerSet.erase(it);
+    }
+    else if (callingExpiredTimers_) { // 如果正在执行处理内部的定时器, 那就先存起来待会再取消
+        m_cancelingTimerSet.insert(timer);
+    }
+    assert(timers_.size() == m_activeTimerSet.size());
 }

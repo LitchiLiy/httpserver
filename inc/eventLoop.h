@@ -78,6 +78,9 @@ public:
 
     vector<callBack_f> v_pendingFunctors{};
 
+    // 确认channel移除
+    bool hasChannel(Channel* ch);
+
 private:
     void aboutNotInLoopThread();
     bool looping_;

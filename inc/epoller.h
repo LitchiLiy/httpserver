@@ -24,6 +24,10 @@ public:
     void fillActChannel(int actNum, vector<Channel*>* actchannels);
     void removeChannel(Channel* ch);
 
+    // 确认是否移除channel
+    bool hasChannel(Channel* ch);
+
+
 private:
     void epollupdate(int op, Channel* ch);
 

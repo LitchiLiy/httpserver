@@ -175,3 +175,9 @@ void EventLoop::remove(Channel* ch) {
     }
     p_Epoller->removeChannel(ch);
 }
+
+bool EventLoop::hasChannel(Channel* ch) {
+    assert(ch->ownerloop() == this);
+    assertInLoopThread();
+    return p_Epoller->hasChannel(ch);
+}

@@ -37,7 +37,8 @@ public:
     short ptonIp() const;
     in_addr_t ptonIpPort() const;
 
-    struct sockaddr getAddrFromPeer(int sockfd);
+    static sockaddr_in getLocalAddr(int sockfd);
+    static sockaddr_in getPeerAddr(int sockfd);
 
 
 

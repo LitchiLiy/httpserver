@@ -19,6 +19,12 @@
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\connector.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\connector.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/connector.cpp",
+  "output": "CMakeFiles/Main.dir/inc/connector.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\epoller.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\epoller.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/epoller.cpp",
   "output": "CMakeFiles/Main.dir/inc/epoller.cpp.obj"
@@ -34,6 +40,12 @@
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoopThread.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoopThread.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoopThread.cpp",
   "output": "CMakeFiles/Main.dir/inc/eventLoopThread.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoopThreadPool.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoopThreadPool.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoopThreadPool.cpp",
+  "output": "CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",

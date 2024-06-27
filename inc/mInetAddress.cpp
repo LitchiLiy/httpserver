@@ -32,15 +32,24 @@ in_addr_t InetAddress::ptonIpPort() const {
 }
 
 
-struct sockaddr InetAddress::getAddrFromPeer(int sockfd) {
-    struct sockaddr addr;
+struct sockaddr_in InetAddress::getLocalAddr(int sockfd) {
+    struct sockaddr_in addr;
     socklen_t len = sizeof(addr);
-    if (getpeername(sockfd, &addr, &len) < 0) {
+    if (getpeername(sockfd, (sockaddr*)&addr, &len) < 0) {
         perror("getpeername");
     }
     return addr;
 }
 
+
+struct sockaddr_in InetAddress::getPeerAddr(int sockfd) {
+    struct sockaddr_in addr;
+    socklen_t len = sizeof(addr);
+    if (getpeername(sockfd, (sockaddr*)&addr, &len) < 0) {
+        perror("getpeername");
+    }
+    return addr;
+}
 
 
 

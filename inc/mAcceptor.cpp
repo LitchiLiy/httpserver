@@ -14,7 +14,7 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr) {
     // 首先创建一个socket, 设置为非阻塞
     m_acceptFd = socket(listenAddr.getSockAddr().sin_family, SOCK_STREAM, 0);
     int opt = 1;
-    setsockopt(m_acceptFd, SOL_SOCKET, SOCK_NONBLOCK | SOCK_CLOEXEC, &opt, sizeof(opt));
+    setsockopt(m_acceptFd, SOL_SOCKET, SO_REUSEADDR | SOCK_NONBLOCK | SOCK_CLOEXEC, &opt, sizeof(opt));
     if (m_acceptFd < 0) {
         perror("socket");
     }

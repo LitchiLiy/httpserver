@@ -124,3 +124,9 @@ Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
     }
     return now;
 }
+
+bool Epoller::hasChannel(Channel* ch) {
+    m_El->assertInLoopThread();
+    auto it = m_channels.find(ch->showfd());
+    return it != m_channels.end() && it->second == ch;
+}
