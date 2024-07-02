@@ -73,6 +73,7 @@
         "socket": "cpp",
         "cstring": "cpp",
         "map": "cpp",
-        "buffer": "cpp"
+        "buffer": "cpp",
+        "climits": "cpp"
     }
 }

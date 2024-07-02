@@ -128,6 +128,30 @@ Main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/build
 .PHONY : Main/fast
 
+inc/asyncLogging.obj: inc/asyncLogging.cpp.obj
+.PHONY : inc/asyncLogging.obj
+
+# target to build an object file
+inc/asyncLogging.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/asyncLogging.cpp.obj
+.PHONY : inc/asyncLogging.cpp.obj
+
+inc/asyncLogging.i: inc/asyncLogging.cpp.i
+.PHONY : inc/asyncLogging.i
+
+# target to preprocess a source file
+inc/asyncLogging.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/asyncLogging.cpp.i
+.PHONY : inc/asyncLogging.cpp.i
+
+inc/asyncLogging.s: inc/asyncLogging.cpp.s
+.PHONY : inc/asyncLogging.s
+
+# target to generate assembly for a file
+inc/asyncLogging.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/asyncLogging.cpp.s
+.PHONY : inc/asyncLogging.cpp.s
+
 inc/buffer.obj: inc/buffer.cpp.obj
 .PHONY : inc/buffer.obj
 
@@ -296,6 +320,78 @@ inc/eventLoopThreadPool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.s
 .PHONY : inc/eventLoopThreadPool.cpp.s
 
+inc/logFile.obj: inc/logFile.cpp.obj
+.PHONY : inc/logFile.obj
+
+# target to build an object file
+inc/logFile.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logFile.cpp.obj
+.PHONY : inc/logFile.cpp.obj
+
+inc/logFile.i: inc/logFile.cpp.i
+.PHONY : inc/logFile.i
+
+# target to preprocess a source file
+inc/logFile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logFile.cpp.i
+.PHONY : inc/logFile.cpp.i
+
+inc/logFile.s: inc/logFile.cpp.s
+.PHONY : inc/logFile.s
+
+# target to generate assembly for a file
+inc/logFile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logFile.cpp.s
+.PHONY : inc/logFile.cpp.s
+
+inc/logStream.obj: inc/logStream.cpp.obj
+.PHONY : inc/logStream.obj
+
+# target to build an object file
+inc/logStream.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logStream.cpp.obj
+.PHONY : inc/logStream.cpp.obj
+
+inc/logStream.i: inc/logStream.cpp.i
+.PHONY : inc/logStream.i
+
+# target to preprocess a source file
+inc/logStream.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logStream.cpp.i
+.PHONY : inc/logStream.cpp.i
+
+inc/logStream.s: inc/logStream.cpp.s
+.PHONY : inc/logStream.s
+
+# target to generate assembly for a file
+inc/logStream.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logStream.cpp.s
+.PHONY : inc/logStream.cpp.s
+
+inc/logging.obj: inc/logging.cpp.obj
+.PHONY : inc/logging.obj
+
+# target to build an object file
+inc/logging.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logging.cpp.obj
+.PHONY : inc/logging.cpp.obj
+
+inc/logging.i: inc/logging.cpp.i
+.PHONY : inc/logging.i
+
+# target to preprocess a source file
+inc/logging.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logging.cpp.i
+.PHONY : inc/logging.cpp.i
+
+inc/logging.s: inc/logging.cpp.s
+.PHONY : inc/logging.s
+
+# target to generate assembly for a file
+inc/logging.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/logging.cpp.s
+.PHONY : inc/logging.cpp.s
+
 inc/mAcceptor.obj: inc/mAcceptor.cpp.obj
 .PHONY : inc/mAcceptor.obj
 
@@ -367,6 +463,30 @@ inc/mSocket.s: inc/mSocket.cpp.s
 inc/mSocket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mSocket.cpp.s
 .PHONY : inc/mSocket.cpp.s
+
+inc/memory_pool.obj: inc/memory_pool.cpp.obj
+.PHONY : inc/memory_pool.obj
+
+# target to build an object file
+inc/memory_pool.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memory_pool.cpp.obj
+.PHONY : inc/memory_pool.cpp.obj
+
+inc/memory_pool.i: inc/memory_pool.cpp.i
+.PHONY : inc/memory_pool.i
+
+# target to preprocess a source file
+inc/memory_pool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memory_pool.cpp.i
+.PHONY : inc/memory_pool.cpp.i
+
+inc/memory_pool.s: inc/memory_pool.cpp.s
+.PHONY : inc/memory_pool.s
+
+# target to generate assembly for a file
+inc/memory_pool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memory_pool.cpp.s
+.PHONY : inc/memory_pool.cpp.s
 
 inc/tcpClient.obj: inc/tcpClient.cpp.obj
 .PHONY : inc/tcpClient.obj
@@ -536,29 +656,29 @@ inc/timestamp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/timestamp.cpp.s
 .PHONY : inc/timestamp.cpp.s
 
-test10.obj: test10.cpp.obj
-.PHONY : test10.obj
+test13.obj: test13.cpp.obj
+.PHONY : test13.obj
 
 # target to build an object file
-test10.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test10.cpp.obj
-.PHONY : test10.cpp.obj
+test13.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test13.cpp.obj
+.PHONY : test13.cpp.obj
 
-test10.i: test10.cpp.i
-.PHONY : test10.i
+test13.i: test13.cpp.i
+.PHONY : test13.i
 
 # target to preprocess a source file
-test10.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test10.cpp.i
-.PHONY : test10.cpp.i
+test13.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test13.cpp.i
+.PHONY : test13.cpp.i
 
-test10.s: test10.cpp.s
-.PHONY : test10.s
+test13.s: test13.cpp.s
+.PHONY : test13.s
 
 # target to generate assembly for a file
-test10.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test10.cpp.s
-.PHONY : test10.cpp.s
+test13.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test13.cpp.s
+.PHONY : test13.cpp.s
 
 # Help Target
 help:
@@ -569,6 +689,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Main
+	@echo ... inc/asyncLogging.obj
+	@echo ... inc/asyncLogging.i
+	@echo ... inc/asyncLogging.s
 	@echo ... inc/buffer.obj
 	@echo ... inc/buffer.i
 	@echo ... inc/buffer.s
@@ -590,6 +713,15 @@ help:
 	@echo ... inc/eventLoopThreadPool.obj
 	@echo ... inc/eventLoopThreadPool.i
 	@echo ... inc/eventLoopThreadPool.s
+	@echo ... inc/logFile.obj
+	@echo ... inc/logFile.i
+	@echo ... inc/logFile.s
+	@echo ... inc/logStream.obj
+	@echo ... inc/logStream.i
+	@echo ... inc/logStream.s
+	@echo ... inc/logging.obj
+	@echo ... inc/logging.i
+	@echo ... inc/logging.s
 	@echo ... inc/mAcceptor.obj
 	@echo ... inc/mAcceptor.i
 	@echo ... inc/mAcceptor.s
@@ -599,6 +731,9 @@ help:
 	@echo ... inc/mSocket.obj
 	@echo ... inc/mSocket.i
 	@echo ... inc/mSocket.s
+	@echo ... inc/memory_pool.obj
+	@echo ... inc/memory_pool.i
+	@echo ... inc/memory_pool.s
 	@echo ... inc/tcpClient.obj
 	@echo ... inc/tcpClient.i
 	@echo ... inc/tcpClient.s
@@ -620,9 +755,9 @@ help:
 	@echo ... inc/timestamp.obj
 	@echo ... inc/timestamp.i
 	@echo ... inc/timestamp.s
-	@echo ... test10.obj
-	@echo ... test10.i
-	@echo ... test10.s
+	@echo ... test13.obj
+	@echo ... test13.i
+	@echo ... test13.s
 .PHONY : help
 
 

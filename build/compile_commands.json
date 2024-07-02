@@ -1,9 +1,15 @@
 [
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test10.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test10.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test10.cpp",
-  "output": "CMakeFiles/Main.dir/test10.cpp.obj"
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test13.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test13.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test13.cpp",
+  "output": "CMakeFiles/Main.dir/test13.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\asyncLogging.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\asyncLogging.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/asyncLogging.cpp",
+  "output": "CMakeFiles/Main.dir/inc/asyncLogging.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
@@ -49,6 +55,24 @@
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\logFile.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\logFile.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/logFile.cpp",
+  "output": "CMakeFiles/Main.dir/inc/logFile.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\logStream.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\logStream.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/logStream.cpp",
+  "output": "CMakeFiles/Main.dir/inc/logStream.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\logging.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\logging.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/logging.cpp",
+  "output": "CMakeFiles/Main.dir/inc/logging.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mAcceptor.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mAcceptor.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mAcceptor.cpp",
   "output": "CMakeFiles/Main.dir/inc/mAcceptor.cpp.obj"
@@ -64,6 +88,12 @@
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mSocket.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mSocket.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mSocket.cpp",
   "output": "CMakeFiles/Main.dir/inc/mSocket.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\memory_pool.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\memory_pool.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/memory_pool.cpp",
+  "output": "CMakeFiles/Main.dir/inc/memory_pool.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
