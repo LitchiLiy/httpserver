@@ -18,13 +18,14 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/mAcceptor.cpp" "CMakeFiles/Main.dir/inc/mAcceptor.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/mAcceptor.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/mInetAddress.cpp" "CMakeFiles/Main.dir/inc/mInetAddress.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/mInetAddress.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/mSocket.cpp" "CMakeFiles/Main.dir/inc/mSocket.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/mSocket.cpp.obj.d"
+  "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpClient.cpp" "CMakeFiles/Main.dir/inc/tcpClient.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/tcpClient.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpConnection.cpp" "CMakeFiles/Main.dir/inc/tcpConnection.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/tcpConnection.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpServer.cpp" "CMakeFiles/Main.dir/inc/tcpServer.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/tcpServer.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/thread.cpp" "CMakeFiles/Main.dir/inc/thread.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/thread.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/timer.cpp" "CMakeFiles/Main.dir/inc/timer.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/timer.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/timerQueue.cpp" "CMakeFiles/Main.dir/inc/timerQueue.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/timerQueue.cpp.obj.d"
   "D:/Learning_document/desktop1/Linux/lMuduo/inc/timestamp.cpp" "CMakeFiles/Main.dir/inc/timestamp.cpp.obj" "gcc" "CMakeFiles/Main.dir/inc/timestamp.cpp.obj.d"
-  "D:/Learning_document/desktop1/Linux/lMuduo/test9.cpp" "CMakeFiles/Main.dir/test9.cpp.obj" "gcc" "CMakeFiles/Main.dir/test9.cpp.obj.d"
+  "D:/Learning_document/desktop1/Linux/lMuduo/test10.cpp" "CMakeFiles/Main.dir/test10.cpp.obj" "gcc" "CMakeFiles/Main.dir/test10.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

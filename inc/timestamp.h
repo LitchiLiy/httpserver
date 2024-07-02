@@ -59,4 +59,12 @@ inline bool operator==(Timestamp lhs, Timestamp rhs)
     return lhs.showusec() == rhs.showusec();
 }
 
+// 计算秒的时间差
+inline double timeDifference(Timestamp high, Timestamp low)
+{
+    int64_t diff = high.showusec() - low.showusec();
+    return static_cast<double>(diff) / 1000000;
+}
+
+
 #endif // TIMERSTAMP_H

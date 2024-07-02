@@ -1,9 +1,9 @@
 [
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test9.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test9.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test9.cpp",
-  "output": "CMakeFiles/Main.dir/test9.cpp.obj"
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test10.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test10.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test10.cpp",
+  "output": "CMakeFiles/Main.dir/test10.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
@@ -64,6 +64,12 @@
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mSocket.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mSocket.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mSocket.cpp",
   "output": "CMakeFiles/Main.dir/inc/mSocket.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\tcpClient.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\tcpClient.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpClient.cpp",
+  "output": "CMakeFiles/Main.dir/inc/tcpClient.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",

@@ -368,6 +368,30 @@ inc/mSocket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/mSocket.cpp.s
 .PHONY : inc/mSocket.cpp.s
 
+inc/tcpClient.obj: inc/tcpClient.cpp.obj
+.PHONY : inc/tcpClient.obj
+
+# target to build an object file
+inc/tcpClient.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpClient.cpp.obj
+.PHONY : inc/tcpClient.cpp.obj
+
+inc/tcpClient.i: inc/tcpClient.cpp.i
+.PHONY : inc/tcpClient.i
+
+# target to preprocess a source file
+inc/tcpClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpClient.cpp.i
+.PHONY : inc/tcpClient.cpp.i
+
+inc/tcpClient.s: inc/tcpClient.cpp.s
+.PHONY : inc/tcpClient.s
+
+# target to generate assembly for a file
+inc/tcpClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/tcpClient.cpp.s
+.PHONY : inc/tcpClient.cpp.s
+
 inc/tcpConnection.obj: inc/tcpConnection.cpp.obj
 .PHONY : inc/tcpConnection.obj
 
@@ -512,29 +536,29 @@ inc/timestamp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/timestamp.cpp.s
 .PHONY : inc/timestamp.cpp.s
 
-test9.obj: test9.cpp.obj
-.PHONY : test9.obj
+test10.obj: test10.cpp.obj
+.PHONY : test10.obj
 
 # target to build an object file
-test9.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test9.cpp.obj
-.PHONY : test9.cpp.obj
+test10.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test10.cpp.obj
+.PHONY : test10.cpp.obj
 
-test9.i: test9.cpp.i
-.PHONY : test9.i
+test10.i: test10.cpp.i
+.PHONY : test10.i
 
 # target to preprocess a source file
-test9.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test9.cpp.i
-.PHONY : test9.cpp.i
+test10.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test10.cpp.i
+.PHONY : test10.cpp.i
 
-test9.s: test9.cpp.s
-.PHONY : test9.s
+test10.s: test10.cpp.s
+.PHONY : test10.s
 
 # target to generate assembly for a file
-test9.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test9.cpp.s
-.PHONY : test9.cpp.s
+test10.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test10.cpp.s
+.PHONY : test10.cpp.s
 
 # Help Target
 help:
@@ -575,6 +599,9 @@ help:
 	@echo ... inc/mSocket.obj
 	@echo ... inc/mSocket.i
 	@echo ... inc/mSocket.s
+	@echo ... inc/tcpClient.obj
+	@echo ... inc/tcpClient.i
+	@echo ... inc/tcpClient.s
 	@echo ... inc/tcpConnection.obj
 	@echo ... inc/tcpConnection.i
 	@echo ... inc/tcpConnection.s
@@ -593,9 +620,9 @@ help:
 	@echo ... inc/timestamp.obj
 	@echo ... inc/timestamp.i
 	@echo ... inc/timestamp.s
-	@echo ... test9.obj
-	@echo ... test9.i
-	@echo ... test9.s
+	@echo ... test10.obj
+	@echo ... test10.i
+	@echo ... test10.s
 .PHONY : help
 
 
