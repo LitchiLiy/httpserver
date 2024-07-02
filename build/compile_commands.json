@@ -1,9 +1,9 @@
 [
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test13.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test13.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test13.cpp",
-  "output": "CMakeFiles/Main.dir/test13.cpp.obj"
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test14.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test14.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test14.cpp",
+  "output": "CMakeFiles/Main.dir/test14.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
@@ -88,6 +88,12 @@
   "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mSocket.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mSocket.cpp",
   "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mSocket.cpp",
   "output": "CMakeFiles/Main.dir/inc/mSocket.cpp.obj"
+},
+{
+  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
+  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\memoryPool.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\memoryPool.cpp",
+  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/memoryPool.cpp",
+  "output": "CMakeFiles/Main.dir/inc/memoryPool.cpp.obj"
 },
 {
   "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
