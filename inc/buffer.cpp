@@ -8,6 +8,7 @@
 #include <endian.h>
 #include <sys/uio.h>
 #include <errno.h>
+#include <stringPiece.h>
 
 
 

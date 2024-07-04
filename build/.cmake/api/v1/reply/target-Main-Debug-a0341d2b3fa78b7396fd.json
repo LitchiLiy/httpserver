@@ -83,7 +83,15 @@
 				14,
 				15,
 				16,
-				17
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25
 			]
 		}
 	],
@@ -137,7 +145,15 @@
 				14,
 				15,
 				16,
-				17
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25
 			]
 		}
 	],
@@ -146,7 +162,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test10.cpp",
+			"path" : "test16.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/asyncLogging.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -194,6 +216,42 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+			"path" : "inc/httpContext.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/httpResponse.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/httpServer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/logFile.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/logStream.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/logging.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
 			"path" : "inc/mAcceptor.cpp",
 			"sourceGroupIndex" : 0
 		},
@@ -207,6 +265,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "inc/mSocket.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/memoryPool.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

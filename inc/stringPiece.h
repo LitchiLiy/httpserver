@@ -7,6 +7,7 @@
 
 // 不保存任何数据, 只是一个指针和长度的记录类
 using namespace std;
+/// @brief 这个类的作用就是将const char*, string, const void* 类型的字符串全部整合起来了. 到时候可以直接用这个当参数, const char*, string都可以传入.
 class StringPiece {
 public:
     StringPiece() : m_data(nullptr), m_len(0) {}

@@ -5,6 +5,7 @@
 #include <string.h>
 #include <string>
 #include <vector>
+#include <stringPiece.h>
 
 
 
@@ -23,6 +24,7 @@
 2. readint64, 直接读, 不用考虑任何事情
 
 */
+class StringPiece;
 
 
 
@@ -70,6 +72,14 @@ public:
     void unwrite(int len); // 将可写idx回退len
 
     void append(const char* data, size_t len); // 讲data的数据写入本vec中, 直接调用即可, 结果就是任何情况下都能将数据存入vec中.
+    void append(const StringPiece& str)
+    {
+        append(str.data(), str.length());
+    }
+    void append(const void* /*restrict*/ data, size_t len)
+    {
+        append(static_cast<const char*>(data), len);
+    }
     void appendInt64(int64_t x); // 都是要转换成网络字节序的
     void appendInt32(int32_t x);
     void appendInt16(int16_t x);

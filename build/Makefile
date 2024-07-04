@@ -320,6 +320,78 @@ inc/eventLoopThreadPool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.s
 .PHONY : inc/eventLoopThreadPool.cpp.s
 
+inc/httpContext.obj: inc/httpContext.cpp.obj
+.PHONY : inc/httpContext.obj
+
+# target to build an object file
+inc/httpContext.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpContext.cpp.obj
+.PHONY : inc/httpContext.cpp.obj
+
+inc/httpContext.i: inc/httpContext.cpp.i
+.PHONY : inc/httpContext.i
+
+# target to preprocess a source file
+inc/httpContext.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpContext.cpp.i
+.PHONY : inc/httpContext.cpp.i
+
+inc/httpContext.s: inc/httpContext.cpp.s
+.PHONY : inc/httpContext.s
+
+# target to generate assembly for a file
+inc/httpContext.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpContext.cpp.s
+.PHONY : inc/httpContext.cpp.s
+
+inc/httpResponse.obj: inc/httpResponse.cpp.obj
+.PHONY : inc/httpResponse.obj
+
+# target to build an object file
+inc/httpResponse.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpResponse.cpp.obj
+.PHONY : inc/httpResponse.cpp.obj
+
+inc/httpResponse.i: inc/httpResponse.cpp.i
+.PHONY : inc/httpResponse.i
+
+# target to preprocess a source file
+inc/httpResponse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpResponse.cpp.i
+.PHONY : inc/httpResponse.cpp.i
+
+inc/httpResponse.s: inc/httpResponse.cpp.s
+.PHONY : inc/httpResponse.s
+
+# target to generate assembly for a file
+inc/httpResponse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpResponse.cpp.s
+.PHONY : inc/httpResponse.cpp.s
+
+inc/httpServer.obj: inc/httpServer.cpp.obj
+.PHONY : inc/httpServer.obj
+
+# target to build an object file
+inc/httpServer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpServer.cpp.obj
+.PHONY : inc/httpServer.cpp.obj
+
+inc/httpServer.i: inc/httpServer.cpp.i
+.PHONY : inc/httpServer.i
+
+# target to preprocess a source file
+inc/httpServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpServer.cpp.i
+.PHONY : inc/httpServer.cpp.i
+
+inc/httpServer.s: inc/httpServer.cpp.s
+.PHONY : inc/httpServer.s
+
+# target to generate assembly for a file
+inc/httpServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/httpServer.cpp.s
+.PHONY : inc/httpServer.cpp.s
+
 inc/logFile.obj: inc/logFile.cpp.obj
 .PHONY : inc/logFile.obj
 
@@ -487,30 +559,6 @@ inc/memoryPool.s: inc/memoryPool.cpp.s
 inc/memoryPool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memoryPool.cpp.s
 .PHONY : inc/memoryPool.cpp.s
-
-inc/memory_pool.obj: inc/memory_pool.cpp.obj
-.PHONY : inc/memory_pool.obj
-
-# target to build an object file
-inc/memory_pool.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memory_pool.cpp.obj
-.PHONY : inc/memory_pool.cpp.obj
-
-inc/memory_pool.i: inc/memory_pool.cpp.i
-.PHONY : inc/memory_pool.i
-
-# target to preprocess a source file
-inc/memory_pool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memory_pool.cpp.i
-.PHONY : inc/memory_pool.cpp.i
-
-inc/memory_pool.s: inc/memory_pool.cpp.s
-.PHONY : inc/memory_pool.s
-
-# target to generate assembly for a file
-inc/memory_pool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/memory_pool.cpp.s
-.PHONY : inc/memory_pool.cpp.s
 
 inc/tcpClient.obj: inc/tcpClient.cpp.obj
 .PHONY : inc/tcpClient.obj
@@ -680,29 +728,29 @@ inc/timestamp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/inc/timestamp.cpp.s
 .PHONY : inc/timestamp.cpp.s
 
-test14.obj: test14.cpp.obj
-.PHONY : test14.obj
+test16.obj: test16.cpp.obj
+.PHONY : test16.obj
 
 # target to build an object file
-test14.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test14.cpp.obj
-.PHONY : test14.cpp.obj
+test16.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test16.cpp.obj
+.PHONY : test16.cpp.obj
 
-test14.i: test14.cpp.i
-.PHONY : test14.i
+test16.i: test16.cpp.i
+.PHONY : test16.i
 
 # target to preprocess a source file
-test14.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test14.cpp.i
-.PHONY : test14.cpp.i
+test16.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test16.cpp.i
+.PHONY : test16.cpp.i
 
-test14.s: test14.cpp.s
-.PHONY : test14.s
+test16.s: test16.cpp.s
+.PHONY : test16.s
 
 # target to generate assembly for a file
-test14.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test14.cpp.s
-.PHONY : test14.cpp.s
+test16.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Main.dir\build.make CMakeFiles/Main.dir/test16.cpp.s
+.PHONY : test16.cpp.s
 
 # Help Target
 help:
@@ -737,6 +785,15 @@ help:
 	@echo ... inc/eventLoopThreadPool.obj
 	@echo ... inc/eventLoopThreadPool.i
 	@echo ... inc/eventLoopThreadPool.s
+	@echo ... inc/httpContext.obj
+	@echo ... inc/httpContext.i
+	@echo ... inc/httpContext.s
+	@echo ... inc/httpResponse.obj
+	@echo ... inc/httpResponse.i
+	@echo ... inc/httpResponse.s
+	@echo ... inc/httpServer.obj
+	@echo ... inc/httpServer.i
+	@echo ... inc/httpServer.s
 	@echo ... inc/logFile.obj
 	@echo ... inc/logFile.i
 	@echo ... inc/logFile.s
@@ -758,9 +815,6 @@ help:
 	@echo ... inc/memoryPool.obj
 	@echo ... inc/memoryPool.i
 	@echo ... inc/memoryPool.s
-	@echo ... inc/memory_pool.obj
-	@echo ... inc/memory_pool.i
-	@echo ... inc/memory_pool.s
 	@echo ... inc/tcpClient.obj
 	@echo ... inc/tcpClient.i
 	@echo ... inc/tcpClient.s
@@ -782,9 +836,9 @@ help:
 	@echo ... inc/timestamp.obj
 	@echo ... inc/timestamp.i
 	@echo ... inc/timestamp.s
-	@echo ... test14.obj
-	@echo ... test14.i
-	@echo ... test14.s
+	@echo ... test16.obj
+	@echo ... test16.i
+	@echo ... test16.s
 .PHONY : help
 
 
