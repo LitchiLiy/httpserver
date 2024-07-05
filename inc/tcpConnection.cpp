@@ -203,12 +203,15 @@ void TcpConnection::connectEstablished() {
     m_loop->assertInLoopThread();
     assert(m_state == kConnecting);
     setState(kConnected);
+    // auto mm = std::make_shared<TcpConnection>(*this);
+    auto cc = shared_from_this();
+    m_channel->settie(cc);
     m_channel->setReadEnable();  // tcpConnection专门用来对接客户端的channel.
     // 这里channel要联系上这个实例， 所以这里导致出错，到时候改一下
-    auto mm = std::make_shared<TcpConnection>(*this);
-    auto aa = mm.use_count();
-    m_connectionCallback(mm);
-    int a = 1;
+    // auto mm = std::make_shared<TcpConnection>(*this);
+    // auto aa = mm.use_count();
+    m_connectionCallback(cc);
+    // int a = 1;
 }
 
 

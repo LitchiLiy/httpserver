@@ -8,6 +8,7 @@
 #include <mInetAddress.h>
 #include <callBacks.h>
 #include <buffer.h>
+#include <nocopyable.h>
 
 #include <httpContext.h>
 
@@ -26,7 +27,8 @@ class Channel;
 class stringPiece;
 
 
-class TcpConnection {
+class TcpConnection :
+    public std::enable_shared_from_this<TcpConnection> {
 public:
     typedef std::shared_ptr<TcpConnection> TcpConnectionPtr;
     TcpConnection(EventLoop* loop, const std::string& name, int sockfd, const InetAddress& localAddr, const InetAddress& peerAddr);

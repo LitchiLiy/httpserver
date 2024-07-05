@@ -25,7 +25,8 @@ HttpServer::HttpServer(EventLoop* Loop,
                        TcpServer::Option option) :
     server_(Loop, listenAddr, name, option),
     httpCallback_(defaultHttpCallback) {
-    server_.setConnectionCallback(std::bind(&HttpServer::onConnection, this, std::placeholders::_1));
+    server_.setConnectionCallback(std::bind(&HttpServer::onConnection, this, std::placeholders::_1));  // 这两部只是设置了应对之策而已
+
     server_.setMessageCallback(std::bind(&HttpServer::onMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 }
 

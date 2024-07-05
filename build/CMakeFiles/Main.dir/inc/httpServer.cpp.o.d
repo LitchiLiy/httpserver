@@ -210,4 +210,5 @@ CMakeFiles/Main.dir/inc/httpServer.cpp.o: \
  /home/litchily/litchily/Muduo/inc/httpResponse.h \
  /home/litchily/litchily/Muduo/inc/tcpConnection.h \
  /home/litchily/litchily/Muduo/inc/mInetAddress.h \
- /home/litchily/litchily/Muduo/inc/buffer.h
+ /home/litchily/litchily/Muduo/inc/buffer.h \
+ /home/litchily/litchily/Muduo/inc/nocopyable.h

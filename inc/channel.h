@@ -56,7 +56,7 @@ public:
     bool showisaddedToLoop() { return isaddedToLoop; };
     void remove(); // 让poller删除自己, 并对注册表进行修改, 还把map中的也删掉了, 也就是彻底删除, 
 
-    void tie(const std::shared_ptr<void>& p) {
+    void settie(const std::shared_ptr<void>& p) {
         tie_ = p;
         istie = true;
     }
