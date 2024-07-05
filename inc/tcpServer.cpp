@@ -8,32 +8,38 @@
 #include <sys/socket.h>
 #include <string.h>
 #include <callBacks.h>
+#include <logging.h>
+
 
 
 
 using namespace std;
 
-void defaultConnectionCallback(const TcpConnectionPtr& conn)
-{
-    std::cout << "new connection: " << std::endl;
+
+void defaultConnectionCallback(const TcpConnectionPtr& conn) {
+    // LOG_TRACE << conn->localAddress().toIpPort() << " -> "
+    //     << conn->peerAddress().toIpPort() << " is "
+    //     << (conn->connected() ? "UP" : "DOWN");
+    LOG_INFO << "TcpConnect is " << (conn->isConnected() ? "UP" : "DOWN");
+    // do not call conn->forceClose(), because some users want to register message callback only.
 }
 
 void defaultMessageCallback(const TcpConnectionPtr& conn,
-    Buffer* buf,
-    Timestamp);
+                            Buffer* buf,
+                            Timestamp);
 
 
-TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const string& nameArg) :
+TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const string& nameArg, TcpServer::Option option) :
     m_loop(loop),
     // m_ipPort(listenAddr.ptonIpPort()), 这个很复杂, 先放着
     m_name(nameArg),
-    m_acceptor(new Acceptor(loop, listenAddr)),
+    m_acceptor(new Acceptor(loop, listenAddr, option == kReusePort)),
     m_threadPool(new EventLoopThreadPool(loop, nameArg)),
-    m_connectionCallback(defaultConnectionCallback),
+    m_connectionCallback(defaultConnectionCallback), // 这里确实将默认函数放进去了，已经测试过了
     m_messageCallback(defaultMessageCallback),
-    nextConnId(1)
-{
+    nextConnId(1) {
     m_acceptor->setNewConnectionCallback(std::bind(&TcpServer::newConnection, this, std::placeholders::_1, std::placeholders::_2)); // 占位符, 表示调用时要传入两个参数
+
 }
 
 // 循环对我们保存的connectionMap进行destroy.
@@ -86,20 +92,26 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     // 创建一个connection, 这里其实传入的是线程池的loop, 但是为了测试我们这里放我们自己的
     // 实际测试: local和peer两个是不一样的
     TcpConnectionPtr conn(new TcpConnection(threadLoop,
-        connName,
-        sockfd,
-        localAddr,
-        peerAddr));
+                                            connName,
+                                            sockfd,
+                                            localAddr,
+                                            peerAddr));
+
+
+    // LOG_INFO << conn.use_count();
 
     m_connMap[conn->name()] = conn;
+    // LOG_INFO << conn.use_count();
     // 这里设置回调函数
+    // m_connectionCallback(conn);
     conn->setConnectionCallback(m_connectionCallback);   // 外部构建tcpserver是set的mconnectCb
+    // m_connectionCallback(conn);
     conn->setMessageCallback(m_messageCallback);    // 外部构建的想让服务器怎么回应的cb
     conn->setWriteCompleteCallback(m_writeCompleteCallback);
     conn->setCloseCallback(std::bind(&TcpServer::removeConnection, this, std::placeholders::_1));
 
     // 在主线程里调用其他线程的EL的runInLoop
-    threadLoop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn.get())); // 暂时用tcpServer的loop代替
+    threadLoop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn)); // 暂时用tcpServer的loop代替
 }
 
 
@@ -118,7 +130,7 @@ void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn) {
 }
 
 void defaultMessageCallback(const TcpConnectionPtr& conn,
-    Buffer* buf,
-    Timestamp) {
+                            Buffer* buf,
+                            Timestamp) {
     buf->retrieveAll();
 }

@@ -9,6 +9,8 @@
 #include <callBacks.h>
 #include <buffer.h>
 
+#include <httpContext.h>
+
 /*
 输入一个loop， 一个name， 一个fd, 一个localAddr, 一个peerAddr
 读数据， 写数据， 关闭连接， 有错误, 保存着对应行动的cb,
@@ -43,7 +45,7 @@ public:
     // 写相关
     void send(const StringPiece& strMsg); // 这个函数就包含了只发string信息的情况
     void send(const std::string& message, size_t len); // 向客户端发送消息
-    void send(Buffer* bufMsg);
+    void send(Buffer* buf);  // 直接向对应的fd发送数据, 这个为最终操作.
 
 
     // 关闭
@@ -74,6 +76,9 @@ public:
     // 设置相关
     void setTcpNoDelay(bool on);
 
+    void setContext(const HttpContext& ctx) { m_context = ctx; };
+    HttpContext* getContext() { return &m_context; };
+
 
 
 
@@ -97,7 +102,7 @@ private:
     void startReadInLoop();
     void stopReadInLoop();
 
-    // 
+
 
 
     EventLoop* m_loop;
@@ -121,6 +126,9 @@ private:
 
     Buffer m_inputBuffer;
     Buffer m_outputBuffer;
+
+    HttpContext m_context;
+
 
 };
 

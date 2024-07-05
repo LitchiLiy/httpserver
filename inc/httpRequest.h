@@ -32,7 +32,7 @@ public:
 
 
 public:
-    HttpRequest() = default;
+    // HttpRequest() = default;
     ~HttpRequest() = default;
     HttpRequest() :method_(kInvalid), version_(kUnknown) {}
 
@@ -43,7 +43,7 @@ public:
         都是左闭右开
     */
 
-    void setMethod(const char* begin, const char* end) {
+    bool setMethod(const char* begin, const char* end) {
         string str(begin, end);
         if (str == "GET") {
             method_ = kGet;
@@ -62,9 +62,12 @@ public:
         }
         else {
             method_ = kInvalid;
+            return false;
         }
+        return true;
     }
-    Method Method() const { return method_; }
+
+    Method showMethod() const { return method_; }
     const char* methodString() const {
         const char* ret = "UNKNOWN";
         switch (method_) {
@@ -87,6 +90,14 @@ public:
             break;
         }
         return ret;
+    }
+
+    void setVersion(Version v) {
+        version_ = v;
+    }
+
+    Version showVersion()  const {
+        return version_;
     }
 
     void setPath(const char* begin, const char* end) {
@@ -116,7 +127,7 @@ public:
         headers_[field] = value;
     }
     // 输入一个头部, 从map中找出对应的输出
-    string getHeader(cosnt string& field) const {
+    string getHeader(const string& field) const {
         string ret;
         auto it = headers_.find(field);
         if (it != headers_.end()) {

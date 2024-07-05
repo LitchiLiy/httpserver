@@ -34,8 +34,17 @@ using namespace std;
 class TcpServer {
     typedef std::map<string, TcpConnectionPtr> ConnectionMap;
 public:
-    TcpServer(EventLoop* el, const InetAddress& listenAddr, const std::string& name);
+    enum Option
+    {
+        kNoReusePort,
+        kReusePort,
+    };
+    TcpServer(EventLoop* el,
+        const InetAddress& listenAddr,
+        const std::string& name,
+        Option option = kNoReusePort);
     ~TcpServer();
+
 
 
     // 展示自己

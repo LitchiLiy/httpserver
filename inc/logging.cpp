@@ -21,8 +21,7 @@ const char* strerror_tl(int savedErrno) {
 }
 
 // 获取环境变量的值, 然后将其转换为LogLevel输出出去.
-Logger::LogLevel initLogLevel()
-{
+Logger::LogLevel initLogLevel() {
     if (::getenv("MUDUO_LOG_TRACE"))
         return Logger::TRACE;
     else if (::getenv("MUDUO_LOG_DEBUG"))
@@ -72,8 +71,7 @@ class T
 public:
     T(const char* str, unsigned len)
         :str_(str),
-        len_(len)
-    {
+        len_(len) {
         assert(strlen(str) == len_);
     }
 
@@ -81,8 +79,7 @@ public:
     const unsigned len_;
 };
 // 一般再类内LogStream的位置有一个this, 但是此时在类外, 所以我们要指定 << 的左边是谁.
-inline LogStream& operator<<(LogStream& s, T v)
-{
+inline LogStream& operator<<(LogStream& s, T v) {
     s.append(v.str_, v.len_);
     return s;
 }
@@ -131,8 +128,8 @@ void Logger::Impl::formatTime() {
         std::tm localtime;
         localtime_r(&now, &localtime);   // 获取东八区的时间
         int len = snprintf(t_time, sizeof(t_time), "%4d%02d%02d %02d:%02d:%02d",
-            localtime.tm_year + 1900, localtime.tm_mon + 1, localtime.tm_mday,
-            localtime.tm_hour, localtime.tm_min, localtime.tm_sec);
+                           localtime.tm_year + 1900, localtime.tm_mon + 1, localtime.tm_mday,
+                           localtime.tm_hour, localtime.tm_min, localtime.tm_sec);
         assert(len == 17);
 
     }
@@ -154,47 +151,37 @@ Logger::Logger(SourceFile file, int line) :
 }
 
 Logger::Logger(SourceFile file, int line, LogLevel level, const char* func)
-    : m_impl(level, 0, file, line)
-{
+    : m_impl(level, 0, file, line) {
     m_impl.m_stream << func << ' ';
 }
 
 Logger::Logger(SourceFile file, int line, LogLevel level)
-    : m_impl(level, 0, file, line)
-{
-}
+    : m_impl(level, 0, file, line) {}
 
 Logger::Logger(SourceFile file, int line, bool toAbort)
-    : m_impl(toAbort ? FATAL : ERROR, errno, file, line)
-{
-}
+    : m_impl(toAbort ? FATAL : ERROR, errno, file, line) {}
 
 
-Logger::~Logger()
-{
+Logger::~Logger() {
     m_impl.finish();
     const LogStream::Buffer& buf(stream().buffer());
-    g_output(buf.data(), buf.length());
-    if (m_impl.m_level == FATAL)
-    {
+    g_output(buf.data(), buf.length());  // 如果不特地设置， gout地方就是stdout
+    if (m_impl.m_level == FATAL) {
         g_flush();
         // abort();
     }
 }
 
 
-void Logger::setLogLevel(Logger::LogLevel level)
-{
+void Logger::setLogLevel(Logger::LogLevel level) {
     g_logLevel = level;
 }
 
-void Logger::setOutput(OutputFunc out)
-{
+void Logger::setOutput(OutputFunc out) {
     g_output = out;
 }
 
-void Logger::setFlush(FlushFunc flush)
-{
+void Logger::setFlush(FlushFunc flush) {
     g_flush = flush;
 }
 

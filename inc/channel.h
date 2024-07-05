@@ -56,13 +56,12 @@ public:
     bool showisaddedToLoop() { return isaddedToLoop; };
     void remove(); // 让poller删除自己, 并对注册表进行修改, 还把map中的也删掉了, 也就是彻底删除, 
 
-
-
-
-
+    void tie(const std::shared_ptr<void>& p) {
+        tie_ = p;
+        istie = true;
+    }
 private:
     void updateChannel();
-
 
 private:
     EventLoop* m_El;
@@ -82,6 +81,11 @@ private:
 
     // tcpconnection
     bool iseventHandling = false;
+
+    // 构建联系， 某个实例与Channel有关，这里将存放他的指针， 但是channel不会增加他的引用(用在handleEvent中)
+    std::weak_ptr<void> tie_;
+    bool istie; // 标记是否是tie的
+
 
 };
 

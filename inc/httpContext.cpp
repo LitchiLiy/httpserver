@@ -36,10 +36,10 @@ bool HttpContext::processRequestLine(const char* begin, const char* end) {
                 {
                     request_.setVersion(HttpRequest::kHttp10);
                 }
+            }
             else
             {
                 succeed = false;
-            }
             }
         }
     }
@@ -102,3 +102,4 @@ bool HttpContext::parseRequest(Buffer* buf, Timestamp receiveTime) {
     }
     return ok;
 }
+

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <memory>
 #include <unistd.h>
+#include <logging.h>
 
 
 
@@ -21,8 +22,7 @@ TcpConnection::TcpConnection(EventLoop* loop, const string& name, int sockfd, co
     m_peerAddr(peerAddr),
     m_state(kConnecting), // 这表明构建这个实例的时候是正在连接的时候
     isreading(true),
-    m_highWaterMark(64 * 1024 * 1024)
-{
+    m_highWaterMark(64 * 1024 * 1024) {
     m_channel->setReadCallBack(
         std::bind(&TcpConnection::handleRead, this, std::placeholders::_1)); // functional里面的东西
 
@@ -204,8 +204,11 @@ void TcpConnection::connectEstablished() {
     assert(m_state == kConnecting);
     setState(kConnected);
     m_channel->setReadEnable();  // tcpConnection专门用来对接客户端的channel.
-
-    m_connectionCallback(std::make_shared<TcpConnection>(*this));
+    // 这里channel要联系上这个实例， 所以这里导致出错，到时候改一下
+    auto mm = std::make_shared<TcpConnection>(*this);
+    auto aa = mm.use_count();
+    m_connectionCallback(mm);
+    int a = 1;
 }
 
 
@@ -271,3 +274,4 @@ void TcpConnection::handleError() {
     m_loop->assertInLoopThread();
     std::cout << "TcpConnection::handleError() " << std::endl;
 }
+

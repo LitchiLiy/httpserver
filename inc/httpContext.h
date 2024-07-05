@@ -22,7 +22,7 @@ public:
         kExpectRequestLine, kExpectHeaders, kExpectBody, kGotAll
     };
 
-    HttpContext() = default;
+    // HttpContext() = default;
     ~HttpContext() = default;
     HttpContext() : state_(kExpectRequestLine) {}
 
@@ -44,7 +44,7 @@ private:
     bool processRequestLine(const char* begin, const char* end);
     HttpRequestParseState state_;
     HttpRequest request_;
-}
+};
 
 
 

@@ -10,7 +10,7 @@
 
 
 
-Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr) {
+Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reuseport) {
     // 首先创建一个socket, 设置为非阻塞
     m_acceptFd = socket(listenAddr.getSockAddr().sin_family, SOCK_STREAM, 0);
     int opt = 1;
@@ -21,7 +21,7 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr) {
     // 设置m_socket
     m_socket.setFd(m_acceptFd);
     m_socket.setReuseAddr(true);
-    m_socket.setReusePort(true);
+    m_socket.setReusePort(reuseport);
     m_socket.bindAddress(listenAddr); // 初始化只做到绑定就行了
     m_loop = loop;
     // 初始化channel

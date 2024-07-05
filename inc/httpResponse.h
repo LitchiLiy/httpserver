@@ -28,7 +28,6 @@ private:
     bool closeConnection_; // 是否短链接
     std::map<string, string> headers_;
     string statusMessage_;
-    bool closeConnection_;
     string body_;
 
 public:
@@ -45,6 +44,7 @@ public:
     /// @param key 
     /// @param value 
     void addHeader(const string& key, const string& value) { headers_[key] = value; }
+
     void setbody(const string& body) { body_ = body; }
 
     void appendToBuffer(Buffer* buf) const;

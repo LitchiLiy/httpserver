@@ -1,158 +1,132 @@
 [
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\test16.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\test16.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/test16.cpp",
-  "output": "CMakeFiles/Main.dir/test16.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/test17.cpp.o -c /home/litchily/litchily/Muduo/test17.cpp",
+  "file": "/home/litchily/litchily/Muduo/test17.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\asyncLogging.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\asyncLogging.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/asyncLogging.cpp",
-  "output": "CMakeFiles/Main.dir/inc/asyncLogging.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/asyncLogging.cpp.o -c /home/litchily/litchily/Muduo/inc/asyncLogging.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/asyncLogging.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\buffer.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\buffer.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/buffer.cpp",
-  "output": "CMakeFiles/Main.dir/inc/buffer.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/buffer.cpp.o -c /home/litchily/litchily/Muduo/inc/buffer.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/buffer.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\channel.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\channel.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/channel.cpp",
-  "output": "CMakeFiles/Main.dir/inc/channel.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/channel.cpp.o -c /home/litchily/litchily/Muduo/inc/channel.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/channel.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\connector.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\connector.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/connector.cpp",
-  "output": "CMakeFiles/Main.dir/inc/connector.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/connector.cpp.o -c /home/litchily/litchily/Muduo/inc/connector.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/connector.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\epoller.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\epoller.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/epoller.cpp",
-  "output": "CMakeFiles/Main.dir/inc/epoller.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/epoller.cpp.o -c /home/litchily/litchily/Muduo/inc/epoller.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/epoller.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoop.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoop.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoop.cpp",
-  "output": "CMakeFiles/Main.dir/inc/eventLoop.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/eventLoop.cpp.o -c /home/litchily/litchily/Muduo/inc/eventLoop.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/eventLoop.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoopThread.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoopThread.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoopThread.cpp",
-  "output": "CMakeFiles/Main.dir/inc/eventLoopThread.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/eventLoopThread.cpp.o -c /home/litchily/litchily/Muduo/inc/eventLoopThread.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/eventLoopThread.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\eventLoopThreadPool.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\eventLoopThreadPool.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/eventLoopThreadPool.cpp",
-  "output": "CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/eventLoopThreadPool.cpp.o -c /home/litchily/litchily/Muduo/inc/eventLoopThreadPool.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/eventLoopThreadPool.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\httpContext.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\httpContext.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/httpContext.cpp",
-  "output": "CMakeFiles/Main.dir/inc/httpContext.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/httpContext.cpp.o -c /home/litchily/litchily/Muduo/inc/httpContext.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/httpContext.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\httpResponse.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\httpResponse.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/httpResponse.cpp",
-  "output": "CMakeFiles/Main.dir/inc/httpResponse.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/httpResponse.cpp.o -c /home/litchily/litchily/Muduo/inc/httpResponse.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/httpResponse.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\httpServer.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\httpServer.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/httpServer.cpp",
-  "output": "CMakeFiles/Main.dir/inc/httpServer.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/httpServer.cpp.o -c /home/litchily/litchily/Muduo/inc/httpServer.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/httpServer.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\logFile.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\logFile.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/logFile.cpp",
-  "output": "CMakeFiles/Main.dir/inc/logFile.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/logFile.cpp.o -c /home/litchily/litchily/Muduo/inc/logFile.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/logFile.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\logStream.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\logStream.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/logStream.cpp",
-  "output": "CMakeFiles/Main.dir/inc/logStream.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/logStream.cpp.o -c /home/litchily/litchily/Muduo/inc/logStream.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/logStream.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\logging.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\logging.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/logging.cpp",
-  "output": "CMakeFiles/Main.dir/inc/logging.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/logging.cpp.o -c /home/litchily/litchily/Muduo/inc/logging.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/logging.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mAcceptor.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mAcceptor.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mAcceptor.cpp",
-  "output": "CMakeFiles/Main.dir/inc/mAcceptor.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/mAcceptor.cpp.o -c /home/litchily/litchily/Muduo/inc/mAcceptor.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/mAcceptor.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mInetAddress.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mInetAddress.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mInetAddress.cpp",
-  "output": "CMakeFiles/Main.dir/inc/mInetAddress.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/mInetAddress.cpp.o -c /home/litchily/litchily/Muduo/inc/mInetAddress.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/mInetAddress.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\mSocket.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\mSocket.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/mSocket.cpp",
-  "output": "CMakeFiles/Main.dir/inc/mSocket.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/mSocket.cpp.o -c /home/litchily/litchily/Muduo/inc/mSocket.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/mSocket.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\memoryPool.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\memoryPool.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/memoryPool.cpp",
-  "output": "CMakeFiles/Main.dir/inc/memoryPool.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/memoryPool.cpp.o -c /home/litchily/litchily/Muduo/inc/memoryPool.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/memoryPool.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\tcpClient.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\tcpClient.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpClient.cpp",
-  "output": "CMakeFiles/Main.dir/inc/tcpClient.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/tcpClient.cpp.o -c /home/litchily/litchily/Muduo/inc/tcpClient.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/tcpClient.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\tcpConnection.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\tcpConnection.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpConnection.cpp",
-  "output": "CMakeFiles/Main.dir/inc/tcpConnection.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/tcpConnection.cpp.o -c /home/litchily/litchily/Muduo/inc/tcpConnection.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/tcpConnection.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\tcpServer.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\tcpServer.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/tcpServer.cpp",
-  "output": "CMakeFiles/Main.dir/inc/tcpServer.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/tcpServer.cpp.o -c /home/litchily/litchily/Muduo/inc/tcpServer.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/tcpServer.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\thread.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\thread.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/thread.cpp",
-  "output": "CMakeFiles/Main.dir/inc/thread.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/thread.cpp.o -c /home/litchily/litchily/Muduo/inc/thread.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/thread.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\timer.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\timer.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/timer.cpp",
-  "output": "CMakeFiles/Main.dir/inc/timer.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/timer.cpp.o -c /home/litchily/litchily/Muduo/inc/timer.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/timer.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\timerQueue.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\timerQueue.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/timerQueue.cpp",
-  "output": "CMakeFiles/Main.dir/inc/timerQueue.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/timerQueue.cpp.o -c /home/litchily/litchily/Muduo/inc/timerQueue.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/timerQueue.cpp"
 },
 {
-  "directory": "D:/Learning_document/desktop1/Linux/lMuduo/build",
-  "command": "D:\\msys2\\mingw64\\bin\\g++.exe  @CMakeFiles/Main.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\Main.dir\\inc\\timestamp.cpp.obj -c D:\\Learning_document\\desktop1\\Linux\\lMuduo\\inc\\timestamp.cpp",
-  "file": "D:/Learning_document/desktop1/Linux/lMuduo/inc/timestamp.cpp",
-  "output": "CMakeFiles/Main.dir/inc/timestamp.cpp.obj"
+  "directory": "/home/litchily/litchily/Muduo/build",
+  "command": "/usr/bin/c++  -I/home/litchily/litchily/Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/inc/timestamp.cpp.o -c /home/litchily/litchily/Muduo/inc/timestamp.cpp",
+  "file": "/home/litchily/litchily/Muduo/inc/timestamp.cpp"
 }
 ]
