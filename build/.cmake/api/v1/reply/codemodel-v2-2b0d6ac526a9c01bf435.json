@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Main-Debug-59d49cfa546460872ac0.json",
+					"jsonFile" : "target-Main-Debug-10503ab0bc477c16d257.json",
 					"name" : "Main",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/litchily/litchily/Muduo/build",
-		"source" : "/home/litchily/litchily/Muduo"
+		"build" : "/home/litchily/litchily/-Muduo/build",
+		"source" : "/home/litchily/litchily/-Muduo"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 6
 	}
 }

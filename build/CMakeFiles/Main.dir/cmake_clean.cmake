@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../bin/Main"
-  "../pdb/Main.pdb"
+  "/home/litchily/litchily/-Muduo/bin/Main"
+  "/home/litchily/litchily/-Muduo/pdb/Main.pdb"
   "CMakeFiles/Main.dir/inc/asyncLogging.cpp.o"
   "CMakeFiles/Main.dir/inc/asyncLogging.cpp.o.d"
   "CMakeFiles/Main.dir/inc/buffer.cpp.o"
@@ -51,8 +51,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Main.dir/inc/timerQueue.cpp.o.d"
   "CMakeFiles/Main.dir/inc/timestamp.cpp.o"
   "CMakeFiles/Main.dir/inc/timestamp.cpp.o.d"
-  "CMakeFiles/Main.dir/test17.cpp.o"
-  "CMakeFiles/Main.dir/test17.cpp.o.d"
+  "CMakeFiles/Main.dir/test7_2.cpp.o"
+  "CMakeFiles/Main.dir/test7_2.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -12,7 +12,7 @@
 #include <string>
 
 
-
+using namespace std;
 
 
 
@@ -21,11 +21,9 @@ public:
     InetAddress(const std::string ip, uint16_t port, bool ipv6 = false);
     InetAddress() = default;
     explicit InetAddress(const struct sockaddr_in& addr)
-        : m_addr(addr)
-    { }
+        : m_addr(addr) {}
     explicit InetAddress(const struct sockaddr_in6& addr)
-        : m_addr6(addr)
-    { }
+        : m_addr6(addr) {}
     ~InetAddress();
 
     void setSockAddr(const struct sockaddr_in& addr) { m_addr = addr; }
@@ -36,6 +34,8 @@ public:
 
     short ptonIp() const;
     in_addr_t ptonIpPort() const;
+
+    string ipToString() const;
 
     static sockaddr_in getLocalAddr(int sockfd);
     static sockaddr_in getPeerAddr(int sockfd);

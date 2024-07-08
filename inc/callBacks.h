@@ -31,6 +31,10 @@ typedef std::function<void(Timestamp)> ReadEventcb_f;
 typedef std::function<void(int sockfd)> NewConnectionCallback;
 typedef std::shared_ptr<Connector> ConnectorPtr;
 
+void defaultConnectionCallback(const TcpConnectionPtr& conn);
+void defaultMessageCallback(const TcpConnectionPtr& conn,
+                            Buffer* buffer,
+                            Timestamp receiveTime);
 
 
 #endif // CALLBACKS_H

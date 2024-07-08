@@ -232,7 +232,7 @@ void TcpConnection::handleRead(Timestamp receiveTime) {
     int savedErrno = 0;
     ssize_t n = m_inputBuffer.readFd(m_socket->fd(), &savedErrno);
     if (n > 0) {
-        m_messageCallback(std::make_shared<TcpConnection>(*this), &m_inputBuffer, receiveTime);
+        m_messageCallback(shared_from_this(), &m_inputBuffer, receiveTime);
     }
     else if (n == 0) { // 对端关闭了
         handleClose();

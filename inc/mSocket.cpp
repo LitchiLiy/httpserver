@@ -11,8 +11,7 @@
 
 
 
-Socket::Socket(int sockfd) : m_socketFd(sockfd) {
-}
+Socket::Socket(int sockfd) : m_socketFd(sockfd) {}
 
 Socket::~Socket() {
 
@@ -48,7 +47,7 @@ int Socket::accept(InetAddress* peeraddr) {
     {
         char ipstr[50];
         inet_ntop(AF_INET, &(addr.sin_addr), ipstr, sizeof ipstr);
-        std::cout << "Accepted new connection of fd: " << connfd << " Client address: " << ipstr << ":" << ntohs(addr.sin_port) << std::endl;
+        // std::cout << "Accepted new connection of fd: " << connfd << " Client address: " << ipstr << ":" << ntohs(addr.sin_port) << std::endl;
     }
     if (connfd < 0) {
         perror("accept");

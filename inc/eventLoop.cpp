@@ -6,6 +6,7 @@
 #include <channel.h>
 #include <timerQueue.h>
 #include <callBacks.h>
+#include <logging.h>
 
 
 // // 一个静态指针, 用来指向运行当前函数的线程, 没啥用
@@ -15,22 +16,21 @@ EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector
 
     looping_ = false;
     isquit = false;
-    std::cout << "EventLoop created"
-        << this
-        << " in thread "
-        << threadId_
-        << std::endl;
-
+    // std::cout << "EventLoop created"
+    //     << this
+    //     << " in thread "
+    //     << threadId_
+    //     << std::endl;
     // t_loopInThisThread = this;
     p_Epoller = std::make_shared<Epoller>(this);
-
     m_wakeupFd = createEventfd();
     sp_wakeupChannel = std::make_shared<Channel>(this, m_wakeupFd);
     sp_wakeupChannel->setReadCallBack(std::bind(&EventLoop::handleRead, this));
     sp_wakeupChannel->setReadEnable();
     m_timerQueue = std::make_shared<TimerQueue>(this); // 定时器一个channel, wakeup一个channel
 
-
+    LOG_INFO << "EventLoop created and address= " << this << ", tid= " << pthread_self() << ", pid= " << getpid();
+    LOG_INFO << "epollfd= " << p_Epoller->getEpollfd() << ", wakeupfd= " << m_wakeupFd;
 }
 
 EventLoop::~EventLoop() {
@@ -168,10 +168,9 @@ TimerId EventLoop::runEvery(double interval, const callBack_f& cb) {
 void EventLoop::remove(Channel* ch) {
     assert(ch->ownerloop() == this);
     assertInLoopThread();
-    if (isEventHandling)
-    {
+    if (isEventHandling) {
         assert(currentActiveChannel_ == ch ||
-            std::find(v_actChannels.begin(), v_actChannels.end(), ch) == v_actChannels.end());
+               std::find(v_actChannels.begin(), v_actChannels.end(), ch) == v_actChannels.end());
     }
     p_Epoller->removeChannel(ch);
 }

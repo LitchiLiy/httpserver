@@ -31,7 +31,7 @@ void defaultMessageCallback(const TcpConnectionPtr& conn,
 
 TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const string& nameArg, TcpServer::Option option) :
     m_loop(loop),
-    // m_ipPort(listenAddr.ptonIpPort()), 这个很复杂, 先放着
+    m_ipPort(listenAddr.ipToString()),
     m_name(nameArg),
     m_acceptor(new Acceptor(loop, listenAddr, option == kReusePort)),
     m_threadPool(new EventLoopThreadPool(loop, nameArg)),
@@ -84,7 +84,12 @@ sockaddr_in TcpServer::getSockAddr(int sockfd) {
 void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     m_loop->assertInLoopThread();
     EventLoop* threadLoop = m_threadPool->getNextLoop(); // tcpserver只有一个acceptor, 然后调用线程池中的一个线程来对接这个客户端
-    string connName = to_string(nextConnId);
+    char buf[64];
+    snprintf(buf, sizeof buf, "-%s#%d", m_ipPort.c_str(), nextConnId);
+
+
+
+    string connName = m_name + buf; // 客户端的名字由： 服务器名字 + 服务器的ip + 客户端在服务器内部的编号组成
     ++nextConnId;
 
     // 这里从外部的sockfd获取他的本地地址
@@ -96,6 +101,8 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
                                             sockfd,
                                             localAddr,
                                             peerAddr));
+
+    LOG_INFO << "TcpServer::newConnection [" << this->name() << "] - new connection [" << conn->name() << "] from " << peerAddr.ipToString();
 
 
     // LOG_INFO << conn.use_count();

@@ -26,6 +26,7 @@ public:
 
     // 确认是否移除channel
     bool hasChannel(Channel* ch);
+    int getEpollfd() { return m_Epollfd; }
 
 
 private:

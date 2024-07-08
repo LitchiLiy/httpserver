@@ -14,7 +14,7 @@ const int kDeleted = 2;
 Epoller::Epoller(EventLoop* el) : m_El(el) {
     // epoll初始化
     m_Epollfd = epoll_create1(EPOLL_CLOEXEC);
-    cout << "mEpollfd: " << m_Epollfd << endl;
+    // cout << "mEpollfd: " << m_Epollfd << endl;
     m_reventVec = vector<struct epoll_event>(16);
 }
 
@@ -116,8 +116,7 @@ Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
     }
     else {
         cout << "errno = " << saveErrno << endl; // errno = 4就是收到了中断信号EINTR
-        if (saveErrno != EINTR)
-        {
+        if (saveErrno != EINTR) {
             errno = saveErrno;
             cout << "EPollPoller::poll()" << endl;
         }

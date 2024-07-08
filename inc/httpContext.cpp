@@ -11,7 +11,7 @@ bool HttpContext::processRequestLine(const char* begin, const char* end) {
     bool succeed = false;
     const char* start = begin;
     const char* space = std::find(start, end, ' ');
-    if (space != end && request_.setMethod(start, end)) {
+    if (space != end && request_.setMethod(start, space)) {
         start = space + 1;
         space = std::find(start, end, ' ');
         if (space != end) {
@@ -32,13 +32,11 @@ bool HttpContext::processRequestLine(const char* begin, const char* end) {
                 if (*(end - 1) == '1') {
                     request_.setVersion(HttpRequest::kHttp11);
                 }
-                else
-                {
+                else {
                     request_.setVersion(HttpRequest::kHttp10);
                 }
             }
-            else
-            {
+            else {
                 succeed = false;
             }
         }

@@ -19,8 +19,7 @@ InetAddress::InetAddress(const std::string ip, uint16_t port, bool ipv6) {
 }
 
 
-InetAddress::~InetAddress() {
-}
+InetAddress::~InetAddress() {}
 
 short InetAddress::ptonIp() const {
     return ntohs(m_addr.sin_port);
@@ -52,5 +51,10 @@ struct sockaddr_in InetAddress::getPeerAddr(int sockfd) {
 }
 
 
-
-
+string InetAddress::ipToString() const {
+    char buf[INET6_ADDRSTRLEN] = { 0 };
+    if (m_addr.sin_family == AF_INET) {
+        inet_ntop(AF_INET, &m_addr.sin_addr, buf, INET_ADDRSTRLEN);
+    }
+    return string(buf) + ":" + to_string(ntohs(m_addr.sin_port));
+}

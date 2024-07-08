@@ -4,6 +4,7 @@
 #include <string>
 #include <stdio.h>
 #include <limits>
+#include <cstdint>
 
 
 
@@ -17,35 +18,31 @@ const char* zero = digits + 9;
 
 
 // 确保kMax对double这些类型的最大有效数字位还要大.
-void LogStream::staticCheck()
-{
+void LogStream::staticCheck() {
     static_assert(kMaxNumericSize - 10 > std::numeric_limits<double>::digits10,
-        "kMaxNumericSize is large enough");
+                  "kMaxNumericSize is large enough");
     static_assert(kMaxNumericSize - 10 > std::numeric_limits<long double>::digits10,
-        "kMaxNumericSize is large enough");
+                  "kMaxNumericSize is large enough");
     static_assert(kMaxNumericSize - 10 > std::numeric_limits<long>::digits10,
-        "kMaxNumericSize is large enough");
+                  "kMaxNumericSize is large enough");
     static_assert(kMaxNumericSize - 10 > std::numeric_limits<long long>::digits10,
-        "kMaxNumericSize is large enough");
+                  "kMaxNumericSize is large enough");
 }
 
 
 // 将数字形式转换成字符串添加到buffer中.
 template<typename T>
-size_t convert(char buf[], T value)
-{
+size_t convert(char buf[], T value) {
     T i = value;
     char* p = buf;
 
-    do
-    {
+    do {
         int lsd = static_cast<int>(i % 10);
         i /= 10;
         *p++ = zero[lsd];
     } while (i != 0);
 
-    if (value < 0)
-    {
+    if (value < 0) {
         *p++ = '-';
     }
     *p = '\0';
