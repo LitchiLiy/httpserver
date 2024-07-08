@@ -7,6 +7,10 @@
 #include <timerQueue.h>
 #include <callBacks.h>
 #include <logging.h>
+#include <sys/socket.h>
+#include <string.h>
+
+
 
 
 // // 一个静态指针, 用来指向运行当前函数的线程, 没啥用
@@ -31,11 +35,28 @@ EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector
 
     LOG_INFO << "EventLoop created and address= " << this << ", tid= " << pthread_self() << ", pid= " << getpid();
     LOG_INFO << "epollfd= " << p_Epoller->getEpollfd() << ", wakeupfd= " << m_wakeupFd;
+
+
+    // 一个退出机制. 识别终端的输入
+    sp_quitChannel = std::make_shared<Channel>(this, STDIN_FILENO);
+    sp_quitChannel->setReadCallBack(std::bind(&EventLoop::handleQuit, this, std::placeholders::_1));
+    sp_quitChannel->setReadEnable();
+
 }
 
 EventLoop::~EventLoop() {
     assert(!looping_);
     // t_loopInThisThread = nullptr;
+    LOG_INFO << "EventLoop= " << this << ", tid= " << pthread_self() << ", pid= " << getpid() << " destroyed";
+    sp_wakeupChannel->disableAll();
+    sp_wakeupChannel->remove();
+    close(m_wakeupFd);
+
+    sp_quitChannel->disableAll();
+    sp_quitChannel->remove();
+
+
+
 }
 
 bool EventLoop::isInLoopThread() {
@@ -71,9 +92,8 @@ void EventLoop::loop() {
         isEventHandling = false;
         doPendingFunctors(); // doPend执行的是另个一channel的vec, 所以上面的clear影响不到我们.
     }
-    std::cout << "EventLoop" << this << " stoped Looping" << std::endl;
+    LOG_INFO << "EventLoop= " << this << " loop exit";
     looping_ = false;
-
 }
 
 void EventLoop::quit() {
@@ -179,4 +199,17 @@ bool EventLoop::hasChannel(Channel* ch) {
     assert(ch->ownerloop() == this);
     assertInLoopThread();
     return p_Epoller->hasChannel(ch);
+}
+
+
+void EventLoop::handleQuit(Timestamp now) {
+    char buf[1024];
+    ssize_t n = read(0, buf, sizeof(buf));
+    if (n > 0) {
+        if (strncmp(buf, "quit\n", 5) == 0) {
+            // std::cout << "EventLoop is quiting!" << std::endl;
+            runInLoop(std::bind(&EventLoop::quit, this));
+        }
+    }
+
 }

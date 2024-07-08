@@ -29,6 +29,7 @@ void Socket::bindAddress(const InetAddress& localaddr) {
 
 void Socket::startListen(int num = 10) {
     int ret = listen(m_socketFd, num); // 默认是10
+    // 开始listen
     if (ret < 0) {
         perror("listen");
     }
@@ -43,6 +44,8 @@ int Socket::accept(InetAddress* peeraddr) {
     memset(&addr, 0, sizeof(addr));
     socklen_t len = sizeof(addr);
     int connfd = accept4(m_socketFd, (sockaddr*)&addr, &len, SOCK_NONBLOCK | SOCK_CLOEXEC); // accept普通的accept多一个flag符号, 这里默认连接是非阻塞的, 这表明到时候根据这个fd读数据的时候, 不会阻塞.
+    int on = 1;
+    setsockopt(connfd, SOL_SOCKET, TCP_NODELAY, &on, sizeof on);
     // 输出收到的fd的任何信息
     {
         char ipstr[50];

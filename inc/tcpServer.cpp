@@ -39,6 +39,7 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const strin
     m_messageCallback(defaultMessageCallback),
     nextConnId(1) {
     m_acceptor->setNewConnectionCallback(std::bind(&TcpServer::newConnection, this, std::placeholders::_1, std::placeholders::_2)); // 占位符, 表示调用时要传入两个参数
+    LOG_INFO << "TcpServer listen on " << listenAddr.ipToString();
 
 }
 

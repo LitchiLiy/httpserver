@@ -21,7 +21,14 @@ TimerQueue::TimerQueue(EventLoop* lp) : m_loop(lp), m_queueTimerfd(TimerQueue::c
 
 
 
-TimerQueue::~TimerQueue() {}
+TimerQueue::~TimerQueue() {
+    m_timerfdChannel.disableAll();
+    m_timerfdChannel.remove();
+    close(m_queueTimerfd);
+    for (TimerList::iterator it = timers_.begin(); it != timers_.end(); ++it) {
+        delete it->second;
+    }
+}
 
 vector<TimerQueue::Entry> TimerQueue::getExpired(Timestamp now) {
     assert(timers_.size() == m_activeTimerSet.size());
@@ -36,8 +43,7 @@ vector<TimerQueue::Entry> TimerQueue::getExpired(Timestamp now) {
     }
 
     timers_.erase(timers_.begin(), end); // 将所有到期的定时器除掉
-    for (const TimerQueue::Entry& it : expired)
-    {
+    for (const TimerQueue::Entry& it : expired) {
         actTimer timer(it.second, it.second->showSeq());
         size_t n = m_activeTimerSet.erase(timer);
         assert(n == 1); (void)n;
@@ -58,7 +64,14 @@ int TimerQueue::createTimerfd() {
     return timerfd;
 }
 
-
+/**
+ * @brief new一个定时器, 并且添加timerQueue的队列中set
+ *
+ * @param cb
+ * @param when
+ * @param interval
+ * @return TimerId 这个ID里面保存着一个new timer的指针, 这个指针十分不安全, 因为类的析构函数会delete掉它, 从而不可用
+ */
 TimerId TimerQueue::addTimer(const callBack_f& cb, const Timestamp& when, double interval) {
     Timer* timer = new Timer(cb, when, interval);
     m_loop->runInLoop(std::bind(&TimerQueue::addTimerInLoop, this, timer)); // 让线程去调用这个定时器操作函数
@@ -86,6 +99,7 @@ bool TimerQueue::insertTimerSet(Timer* timer) {
         earliestChanged = true;
     }
 
+    // 最终, new 的timer指针被插入到这里
     timers_.insert(TimerQueue::Entry(tmp, timer));
     m_activeTimerSet.insert(TimerQueue::actTimer(timer, timer->showSeq()));
 

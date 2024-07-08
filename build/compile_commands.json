@@ -1,9 +1,9 @@
 [
 {
   "directory": "/home/litchily/litchily/-Muduo/build",
-  "command": "/usr/bin/g++  -I/home/litchily/litchily/-Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/test7_2.cpp.o -c /home/litchily/litchily/-Muduo/test7_2.cpp",
-  "file": "/home/litchily/litchily/-Muduo/test7_2.cpp",
-  "output": "CMakeFiles/Main.dir/test7_2.cpp.o"
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/-Muduo/inc -g -std=gnu++11 -o CMakeFiles/Main.dir/test17.cpp.o -c /home/litchily/litchily/-Muduo/test17.cpp",
+  "file": "/home/litchily/litchily/-Muduo/test17.cpp",
+  "output": "CMakeFiles/Main.dir/test17.cpp.o"
 },
 {
   "directory": "/home/litchily/litchily/-Muduo/build",

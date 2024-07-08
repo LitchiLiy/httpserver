@@ -13,6 +13,15 @@
 
 using namespace std;
 
+/**
+ * @brief Tcp的构造函数
+ *
+ * @param loop
+ * @param name
+ * @param sockfd 可以看到sockfd其实是TcpConnection外部创建的, 我们这里只是用来保存socket的信息而已, 而且方便做其他的事情
+ * @param localAddr
+ * @param peerAddr
+ */
 TcpConnection::TcpConnection(EventLoop* loop, const string& name, int sockfd, const InetAddress& localAddr, const InetAddress& peerAddr) :
     m_loop(loop),
     m_name(name),
@@ -178,9 +187,16 @@ void TcpConnection::setTcpNoDelay(bool on) {
 void TcpConnection::startRead() { // 开始读的意思其实就是将channel设置为读感兴趣.
     m_loop->runInLoop(std::bind(&TcpConnection::startReadInLoop, this));
 }
+
+
+/**
+ * @brief 在tcpConnection中设置ET模式.
+ *
+ */
 void TcpConnection::startReadInLoop() {
     m_loop->assertInLoopThread();
     if (!isreading || !m_channel->isReading()) {
+        m_channel->setET();
         m_channel->setReadEnable();
         isreading = true;
     }
@@ -226,7 +242,7 @@ void TcpConnection::connectDestroyed() {
     m_channel->remove();
 }
 
-// 读句柄, 当需要读的时候调用这个, 会读数据到本buffer中
+// 读句柄, 当需要读的时候调用这个, 会读数据到本buffer中, 当触发可读时, 会调用这个句柄.
 void TcpConnection::handleRead(Timestamp receiveTime) {
     m_loop->assertInLoopThread();
     int savedErrno = 0;
@@ -243,31 +259,66 @@ void TcpConnection::handleRead(Timestamp receiveTime) {
     }
 }
 
-// 写句柄, 调用这个句柄将缓冲区的写出去, 当然前提是channel使能写了.
+// 写句柄, 调用这个句柄将缓冲区的写出去, 当然前提是channel使能写了.  ET模式写入
 void TcpConnection::handleWrite() {
     m_loop->assertInLoopThread();
     if (m_channel->isWriting()) {
-        ssize_t n = write(m_channel->showfd(), m_outputBuffer.peek(), m_outputBuffer.readableBytesNum());
-        if (n > 0) {
-            m_outputBuffer.retrieve(n);
-            if (m_outputBuffer.readableBytesNum() == 0) {
-                m_channel->setWriteDisable();
-                if (m_writeCompleteCallback) {
-                    m_loop->queueInLoop(std::bind(m_writeCompleteCallback, std::make_shared<TcpConnection>(*this)));
+        while (1) {
+            ssize_t n = write(m_channel->showfd(), m_outputBuffer.peek(), m_outputBuffer.readableBytesNum());
+            if (n > 0) {
+                m_outputBuffer.retrieve(n);
+            }
+            else if (n == 0) {
+                // 输出写外了, 
+                if (m_outputBuffer.readableBytesNum() == 0) {
+                    m_channel->setWriteDisable();
+                    if (m_writeCompleteCallback) {
+                        m_loop->queueInLoop(std::bind(m_writeCompleteCallback, std::make_shared<TcpConnection>(*this)));
+                    }
+                    if (m_state == kDisconnecting) {
+                        shutdownInLoop();
+                    }
                 }
-                if (m_state == kDisconnecting) {
-                    shutdownInLoop();
+            }
+            else {
+                if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                    // 输出缓冲区满了, 暂时不处理, 等下次写, 返回epoll处, 等到输出缓冲区为空的时候(ET模式), 会再次触发写事件
+                    break;
+                }
+                else {
+                    LOG_ERROR << "TcpConnection::handleWrite() error";
                 }
             }
         }
-        else {
-            std::cout << "TcpConnection::handleWrite() no write any" << std::endl;
-        }
     }
     else {
-        std::cout << "TcpConnection::handleWrite() error" << std::endl;
+        LOG_ERROR << "TcpConnection::handleWrite() error";
     }
 }
+// void TcpConnection::handleWrite() {
+//     m_loop->assertInLoopThread();
+//     if (m_channel->isWriting()) {
+//         ssize_t n = write(m_channel->showfd(), m_outputBuffer.peek(), m_outputBuffer.readableBytesNum());
+//         if (n > 0) {
+//             m_outputBuffer.retrieve(n);
+//             if (m_outputBuffer.readableBytesNum() == 0) {
+//                 m_channel->setWriteDisable();
+//                 if (m_writeCompleteCallback) {
+//                     m_loop->queueInLoop(std::bind(m_writeCompleteCallback, std::make_shared<TcpConnection>(*this)));
+//                 }
+//                 if (m_state == kDisconnecting) {
+//                     shutdownInLoop();
+//                 }
+//             }
+//         }
+//         else {
+//             std::cout << "TcpConnection::handleWrite() no write any" << std::endl;
+//         }
+//     }
+//     else {
+//         std::cout << "TcpConnection::handleWrite() error" << std::endl;
+//     }
+// }
 
 
 

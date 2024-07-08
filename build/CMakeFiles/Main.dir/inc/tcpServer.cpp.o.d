@@ -214,6 +214,8 @@ CMakeFiles/Main.dir/inc/tcpServer.cpp.o: \
  /home/litchily/litchily/-Muduo/inc/mAcceptor.h \
  /home/litchily/litchily/-Muduo/inc/mSocket.h \
  /home/litchily/litchily/-Muduo/inc/channel.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h \
  /home/litchily/litchily/-Muduo/inc/buffer.h /usr/include/string.h \
  /usr/include/strings.h /home/litchily/litchily/-Muduo/inc/stringPiece.h \
  /home/litchily/litchily/-Muduo/inc/tcpConnection.h \

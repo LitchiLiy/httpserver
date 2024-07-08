@@ -9,6 +9,8 @@
 #include <sys/uio.h>
 #include <errno.h>
 #include <stringPiece.h>
+#include <sys/socket.h>
+
 
 
 
@@ -129,6 +131,12 @@ void Buffer::unwrite(int len) {
     m_writerIndex -= len;
 }
 
+/**
+ * @brief buffer供外部调用的最终api, 实现数据向buffer中写入, 并且保证会自动调整内部容量以保证所有数据都被存入.
+ *
+ * @param data
+ * @param len
+ */
 void Buffer::append(const char* data, size_t len) {
     ensureWritableBytes(len);
     std::copy(data, data + len, beginwrite());
@@ -218,28 +226,73 @@ void Buffer::prependInt64(int64_t x) {
     prepend(&x, sizeof(x));
 }
 
-
+/**
+ * @brief ET模式的读取, 直到所有数据读完, 测试成功可行
+ *
+ * @param fd
+ * @param savedErrno
+ * @return ssize_t
+ */
 ssize_t Buffer::readFd(int fd, int* savedErrno) {
-    char buf[65536];
-    struct iovec vec[2]; // 内部为buff指针和buff大小两个结构
-    const size_t writeable = writableBytesNum();
-    vec[0].iov_base = begin() + m_writerIndex;
-    vec[0].iov_len = writeable;
-    vec[1].iov_base = buf;
-    vec[1].iov_len = sizeof(buf);
-    ssize_t n = readv(fd, vec, 2); // 123分别为fd, iovec指针, iovec大小, 意思就是从iovec第0个开始, 读取数据从0开始填满, 直到3为止, 填不足就不填了, 在库函数uio.h中.
-    if (n < 0) {
-        *savedErrno = errno;
-    }
-    else if (static_cast<size_t>(n) <= writeable) {
-        m_writerIndex += n;
-    }
-    else {
-        m_writerIndex = m_buffer.size();
-        append(buf, n - writeable);
+    ssize_t n = 0;
+    int flag = 1;
+    char buf[10];
+    memset(buf, 0, sizeof(buf));
+    int ret = 0;
+    while (flag) {
+        ret = 0;
+        ret = recv(fd, buf, sizeof(buf), 0); // 0为默认模式, fd是非阻塞的在Acceptor里面可以看到, 故这里也是非阻塞的
+        if (ret > 0) {
+            // 收到数据了
+            if (ret != sizeof(buf)) {
+                // 收到数据了, 但是不够
+                buf[ret] = '\0';
+            }
+            n += ret;
+            append(buf, ret);
+            memset(buf, 0, sizeof(buf));
+        }
+        else if (ret == 0) {
+            // 对方关闭了
+            flag = 0;
+            *savedErrno = errno;
+        }
+        else if (ret == -1) {
+            if (errno == EAGAIN || errno == EWOULDBLOCK) {
+                // 对方没有数据了,跳出
+                flag = 0;
+                *savedErrno = errno;
+            }
+            else {
+                // 错误了, 跳出
+                flag = 0;
+                *savedErrno = errno;
+            }
+        }
     }
     return n;
 }
+// ssize_t Buffer::readFd(int fd, int* savedErrno) {
+//     char buf[65536];
+//     struct iovec vec[2]; // 内部为buff指针和buff大小两个结构
+//     const size_t writeable = writableBytesNum();
+//     vec[0].iov_base = begin() + m_writerIndex;
+//     vec[0].iov_len = writeable;
+//     vec[1].iov_base = buf;
+//     vec[1].iov_len = sizeof(buf);
+//     ssize_t n = readv(fd, vec, 2); // 123分别为fd, iovec指针, iovec大小, 意思就是从iovec第0个开始, 读取数据从0开始填满, 直到3为止, 填不足就不填了, 在库函数uio.h中.
+//     if (n < 0) {
+//         *savedErrno = errno;
+//     }
+//     else if (static_cast<size_t>(n) <= writeable) {
+//         m_writerIndex += n;
+//     }
+//     else {
+//         m_writerIndex = m_buffer.size();
+//         append(buf, n - writeable);
+//     }
+//     return n;
+// }
 
 void Buffer::makeSpace(size_t len) {
     if (writableBytesNum() + prependableBytesNum() < len + kCheapPrepend)  // 不能把预留的前置算进去

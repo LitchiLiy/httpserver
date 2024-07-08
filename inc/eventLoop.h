@@ -93,6 +93,11 @@ private:
 
     void handleRead();
     void doPendingFunctors(); // 放在正在执行的任务之后, 在loop函数最后执行
+
+    // 退出机制
+    void handleQuit(Timestamp now);
+    // 添加timer
+
     bool m_callingPendingFunctors;
     int m_wakeupFd;
     std::shared_ptr<Channel> sp_wakeupChannel; // 只能自己使用
@@ -109,6 +114,9 @@ private:
     // 编写accept
     bool isEventHandling;
     Channel* currentActiveChannel_;
+
+    // 终端输入退出机制
+    std::shared_ptr<Channel> sp_quitChannel;
 
 };
 

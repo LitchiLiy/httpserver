@@ -211,7 +211,9 @@ CMakeFiles/Main.dir/inc/tcpConnection.cpp.o: \
  /usr/include/c++/13/bits/unique_lock.h \
  /home/litchily/litchily/-Muduo/inc/timerId.h \
  /home/litchily/litchily/-Muduo/inc/mSocket.h \
- /home/litchily/litchily/-Muduo/inc/channel.h /usr/include/unistd.h \
+ /home/litchily/litchily/-Muduo/inc/channel.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \

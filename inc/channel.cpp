@@ -34,6 +34,7 @@ void Channel::setErroCallBack(callBack_f cb) {
 
 
 void Channel::setReadEnable() {
+
     m_event |= kReadEvent;
     updateChannel();
 }

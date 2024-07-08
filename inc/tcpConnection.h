@@ -62,6 +62,7 @@ public:
 
     // 设置回调函数
     void setConnectionCallback(const ConnectionCallback& cb) { m_connectionCallback = cb; }
+    // 最终会被设置为httpserver的onMessage函数.
     void setMessageCallback(const MessageCallback& cb) { m_messageCallback = cb; }
     void setWriteCompleteCallback(const WriteCompleteCallback& cb) { m_writeCompleteCallback = cb; }
     void setHighWaterMarkCallback(const HighWaterMarkCallback& cb, size_t highWaterMark) { m_highWaterMarkCallback = cb; m_highWaterMark = highWaterMark; }

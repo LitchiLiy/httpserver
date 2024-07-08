@@ -46,7 +46,7 @@ void HttpServer::onConnection(const TcpConnectionPtr& conn) {
 }
 
 /**
- * @brief 这是一个HttpServer的收到信息后的应对函数, 收到的请求放在buf中, 然后调用这个函数就可以实现: 1. 调用tcpconnection的ctx来解析请求, 然后将信息存入req中. 2. 如果全部解析完成了, 就调用onRequest, 并重置tcpConnectiion的ctx
+ * @brief 这是一个HttpServer的收到信息后的应对函数, 收到的请求放在buf中, 然后调用这个函数就可以实现: 1. 调用tcpconnection的ctx来解析请求, 然后将信息存入req中. 2. 如果全部解析完成了, 就调用onRequest, 并重置tcpConnectiion的ctx, 这个函数最终会被设置为TcpConnection的Mesg回调函数
  *
  *
  * @param conn tcpconnection指针

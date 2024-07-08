@@ -201,7 +201,9 @@ CMakeFiles/Main.dir/inc/connector.cpp.o: \
  /home/litchily/litchily/-Muduo/inc/timestamp.h \
  /usr/include/x86_64-linux-gnu/sys/timerfd.h \
  /usr/include/x86_64-linux-gnu/bits/timerfd.h \
- /home/litchily/litchily/-Muduo/inc/channel.h /usr/include/unistd.h \
+ /home/litchily/litchily/-Muduo/inc/channel.h \
+ /usr/include/x86_64-linux-gnu/sys/epoll.h \
+ /usr/include/x86_64-linux-gnu/bits/epoll.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \

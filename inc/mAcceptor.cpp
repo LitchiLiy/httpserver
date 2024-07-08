@@ -9,7 +9,13 @@
 #include <channel.h>
 
 
-
+/**
+ * @brief 构造函数过程就是一个bind过程, 但是还没有listen
+ *
+ * @param loop
+ * @param listenAddr IPV4地址
+ * @param reuseport 是否重用端口
+ */
 Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reuseport) {
     // 首先创建一个socket, 设置为非阻塞
     m_acceptFd = socket(listenAddr.getSockAddr().sin_family, SOCK_STREAM, 0);
@@ -30,8 +36,7 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reusepor
     // 并不使能读. 等开始listen的时候才使能.
 }
 
-Acceptor::~Acceptor()
-{
+Acceptor::~Acceptor() {
     m_channel.disableAll();
     m_channel.remove();
     close(m_acceptFd);
@@ -45,6 +50,11 @@ void Acceptor::listen() { // 简单listen, 然后使能channel, 当你要开始�
     isListening = true;
 }
 
+
+/**
+ * @brief Accpet的函数创建了客户端的fd
+ *
+ */
 void Acceptor::handleRead() {
     // 对方申请连接,  接收fd, 然后调用回调函数
     m_loop->isInLoopThread();

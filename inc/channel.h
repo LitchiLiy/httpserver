@@ -5,6 +5,7 @@
 
 #include <functional>
 #include <callBacks.h>
+#include <sys/epoll.h>
 
 
 
@@ -60,8 +61,12 @@ public:
         tie_ = p;
         istie = true;
     }
+
+    // ET模式
+    void setET() { m_event |= EPOLLET; };
 private:
     void updateChannel();
+
 
 private:
     EventLoop* m_El;

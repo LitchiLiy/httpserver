@@ -51,8 +51,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Main.dir/inc/timerQueue.cpp.o.d"
   "CMakeFiles/Main.dir/inc/timestamp.cpp.o"
   "CMakeFiles/Main.dir/inc/timestamp.cpp.o.d"
-  "CMakeFiles/Main.dir/test7_2.cpp.o"
-  "CMakeFiles/Main.dir/test7_2.cpp.o.d"
+  "CMakeFiles/Main.dir/test17.cpp.o"
+  "CMakeFiles/Main.dir/test17.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

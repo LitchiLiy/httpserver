@@ -74,6 +74,15 @@
         "cstring": "cpp",
         "map": "cpp",
         "buffer": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "internet": "cpp"
+    },
+    "baidu.comate.enableCodelens": {
+        "enableInlineUnitTest": false,
+        "enableInlineExplain": false,
+        "enableInlineDocstring": false,
+        "enableInlineSplit": false,
+        "enableInlineOptimize": false,
+        "enableInlineComment": false
     }
 }
