@@ -1,3 +1,11 @@
+## 使用方式
+
+1. 先把serverStart.cpp中的0.0.0.0改成你部署的为止的IP地址， 保存。
+2. 在终端中直接在项目根目录调用cmake .
+3. 再用make
+4. 最后cd bin去执行./httpServer就可以启动服务器了
+
+
 ## 结构图
 
 ```plaintext
