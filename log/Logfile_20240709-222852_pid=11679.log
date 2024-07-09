@@ -1,0 +1,115 @@
+20240709 22:28:52 tid=140737348188544 INFO  EventLoop created and address= 0x7FFFFFFFE090, tid= 140737348188544, pid= 11679 - root/litchi/httpserver/inc/eventLoop.cpp:35
+20240709 22:28:52 tid=140737348188544 INFO  epollfd= 3, wakeupfd= 4 - root/litchi/httpserver/inc/eventLoop.cpp:36
+20240709 22:28:52 tid=140737348188544 INFO  TcpServer listen on 172.24.42.9:8888 - root/litchi/httpserver/inc/tcpServer.cpp:42
+20240709 22:28:52 tid=140737331779136 INFO  EventLoop created and address= 0x7FFFF6AAC9B0, tid= 140737331779136, pid= 11679 - root/litchi/httpserver/inc/eventLoop.cpp:35
+20240709 22:28:52 tid=140737331779136 INFO  epollfd= 8, wakeupfd= 9 - root/litchi/httpserver/inc/eventLoop.cpp:36
+20240709 22:28:52 tid=140737315382848 INFO  EventLoop created and address= 0x7FFFF5B099B0, tid= 140737315382848, pid= 11679 - root/litchi/httpserver/inc/eventLoop.cpp:35
+20240709 22:28:52 tid=140737315382848 INFO  epollfd= 11, wakeupfd= 12 - root/litchi/httpserver/inc/eventLoop.cpp:36
+20240709 22:28:54 tid=140737348188544 INFO  TcpServer::newConnection [litchi] - new connection [litchi-172.24.42.9:8888#1] from 210.39.1.100:42116 - root/litchi/httpserver/inc/tcpServer.cpp:106
+20240709 22:28:54 tid=140737348188544 INFO  TcpServer::newConnection [litchi] - new connection [litchi-172.24.42.9:8888#2] from 210.39.1.100:42117 - root/litchi/httpserver/inc/tcpServer.cpp:106
+20240709 22:28:54 tid=140737315382848 INFO  Headers GET / - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:28:54 tid=140737315382848 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Cache-Control: max-age=0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Upgrade-Insecure-Requests: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Headers GET /favicon.ico - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:28:54 tid=140737315382848 INFO  Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  Referer: http://8.147.235.188:8888/ - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:54 tid=140737315382848 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Headers POST /testPage1.html - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:28:57 tid=140737331779136 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Cache-Control: max-age=0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Content-Length: 0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Content-Type: application/x-www-form-urlencoded - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Origin: http://8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Referer: http://8.147.235.188:8888/ - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Upgrade-Insecure-Requests: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737348188544 INFO  TcpServer::newConnection [litchi] - new connection [litchi-172.24.42.9:8888#3] from 210.39.1.100:42118 - root/litchi/httpserver/inc/tcpServer.cpp:106
+20240709 22:28:57 tid=140737331779136 INFO  Headers GET /favicon.ico - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:28:57 tid=140737331779136 INFO  Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  Referer: http://8.147.235.188:8888/testPage1.html - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:57 tid=140737331779136 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Headers POST /index.html - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:28:58 tid=140737331779136 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Cache-Control: max-age=0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Content-Length: 0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Content-Type: application/x-www-form-urlencoded - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Origin: http://8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Referer: http://8.147.235.188:8888/testPage1.html - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Upgrade-Insecure-Requests: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737348188544 INFO  TcpServer::newConnection [litchi] - new connection [litchi-172.24.42.9:8888#4] from 210.39.1.100:42119 - root/litchi/httpserver/inc/tcpServer.cpp:106
+20240709 22:28:58 tid=140737331779136 INFO  Headers GET /favicon.ico - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:28:58 tid=140737331779136 INFO  Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  Referer: http://8.147.235.188:8888/index.html - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:28:58 tid=140737331779136 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Headers POST /testPage2.html - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:29:00 tid=140737315382848 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Cache-Control: max-age=0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Content-Length: 0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Content-Type: application/x-www-form-urlencoded - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Origin: http://8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Referer: http://8.147.235.188:8888/index.html - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Upgrade-Insecure-Requests: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737348188544 INFO  TcpServer::newConnection [litchi] - new connection [litchi-172.24.42.9:8888#5] from 210.39.1.100:42120 - root/litchi/httpserver/inc/tcpServer.cpp:106
+20240709 22:29:00 tid=140737315382848 INFO  Headers GET /favicon.ico - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:29:00 tid=140737315382848 INFO  Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  Referer: http://8.147.235.188:8888/testPage2.html - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:00 tid=140737315382848 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Headers POST /index.html - root/litchi/httpserver/serverStart.cpp:27
+20240709 22:29:01 tid=140737331779136 INFO  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Accept-Encoding: gzip, deflate - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Cache-Control: max-age=0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Connection: keep-alive - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Content-Length: 0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Content-Type: application/x-www-form-urlencoded - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  DNT: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Host: 8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Origin: http://8.147.235.188:8888 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Referer: http://8.147.235.188:8888/testPage2.html - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  Upgrade-Insecure-Requests: 1 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737331779136 INFO  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0 - root/litchi/httpserver/serverStart.cpp:31
+20240709 22:29:01 tid=140737348188544 INFO  TcpServer::newConnection [litchi] - new connection [litchi-172.24.42.9:8888#6] from 210.39.1.100:42121 - root/litchi/httpserver/inc/tcpServer.cpp:106

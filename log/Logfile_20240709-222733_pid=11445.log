@@ -1,0 +1,10 @@
+20240709 22:27:33 tid=140173850331520 INFO  EventLoop created and address= 0x7FFCD436D570, tid= 140173850331520, pid= 11445 - root/litchi/httpserver/inc/eventLoop.cpp:35
+20240709 22:27:33 tid=140173850331520 INFO  epollfd= 3, wakeupfd= 4 - root/litchi/httpserver/inc/eventLoop.cpp:36
+20240709 22:27:33 tid=140173850331520 ERROR bind error: Cannot assign requested address - root/litchi/httpserver/inc/mSocket.cpp:27
+20240709 22:27:33 tid=140173850331520 INFO  TcpServer listen on 172.19.46.27:8888 - root/litchi/httpserver/inc/tcpServer.cpp:42
+20240709 22:27:33 tid=140173825918528 INFO  EventLoop created and address= 0x7F7CC319B9B0, tid= 140173825918528, pid= 11445 - root/litchi/httpserver/inc/eventLoop.cpp:35
+20240709 22:27:33 tid=140173825918528 INFO  epollfd= 8, wakeupfd= 9 - root/litchi/httpserver/inc/eventLoop.cpp:36
+20240709 22:27:33 tid=140173817525824 INFO  EventLoop created and address= 0x7F7CC299A9B0, tid= 140173817525824, pid= 11445 - root/litchi/httpserver/inc/eventLoop.cpp:35
+20240709 22:27:33 tid=140173817525824 INFO  epollfd= 11, wakeupfd= 12 - root/litchi/httpserver/inc/eventLoop.cpp:36
+20240709 22:27:49 tid=140173850331520 INFO  EventLoop= 0x7FFCD436D570 loop exit - root/litchi/httpserver/inc/eventLoop.cpp:88
+20240709 22:27:49 tid=140173850331520 INFO  EventLoop= 0x7FFCD436D570, tid= 140173850331520, pid= 11445 destroyed - root/litchi/httpserver/inc/eventLoop.cpp:43

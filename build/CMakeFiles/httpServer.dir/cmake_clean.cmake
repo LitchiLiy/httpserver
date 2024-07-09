@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/litchily/litchily/httpserver/bin/httpServer"
-  "/home/litchily/litchily/httpserver/pdb/httpServer.pdb"
+  "../bin/httpServer"
+  "../pdb/httpServer.pdb"
   "CMakeFiles/httpServer.dir/inc/asyncLogging.cpp.o"
   "CMakeFiles/httpServer.dir/inc/asyncLogging.cpp.o.d"
   "CMakeFiles/httpServer.dir/inc/buffer.cpp.o"
