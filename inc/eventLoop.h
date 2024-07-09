@@ -80,6 +80,7 @@ public:
 
     // 确认channel移除
     bool hasChannel(Channel* ch);
+    void setMainEventLoop();
 
 private:
     void aboutNotInLoopThread();
@@ -117,6 +118,7 @@ private:
 
     // 终端输入退出机制
     std::shared_ptr<Channel> sp_quitChannel;
+    bool main_EventLoop = false;
 
 };
 

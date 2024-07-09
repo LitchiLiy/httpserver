@@ -5,7 +5,9 @@
 #include <timestamp.h>
 #include <map>
 #include <ctype.h>
+#include <fstream>
 
+#include <sstream>
 
 
 
@@ -148,6 +150,26 @@ public:
         swap(headers_, that.headers_);
     }
 
+    // 读取文件
+    std::string getPathhtml() const {
+        // 文件的相对路径是从服务器main的工程文件开始算起的, 也就是bin/Main
+        string path = "../httpPage";
+        if (path_ == "/") {
+            path += "/index.html";
+        }
+        else {
+            path += path_;
+        }
+        std::ifstream fStream(path.c_str());
+        if (!fStream.is_open()) {
+            // 文件无法打开
+            return "404";
+        }
+        std::stringstream ss;
+        ss << fStream.rdbuf();
+        return ss.str();
+    }
+
 
 private:
     /*
@@ -159,6 +181,7 @@ private:
     string query_;
     Timestamp recvTstamp_;
     std::map<string, string> headers_;
+
 };
 
 

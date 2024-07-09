@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>利洋的个人简历</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            color: #333;
+        }
+        .contact-info {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .skill-list, .project-description, .education-background, .honor-certificates, .self-evaluation {
+            list-style-type: none;
+            padding: 0;
+        }
+        .skill-list li, .project-description li, .education-background li, .honor-certificates li, .self-evaluation li {
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            gap: 200px; /* 按钮之间的间距 */
+        }
+        button {
+            font-size: 20px; /* 按钮文字大小 */
+            padding: 10px 20px; /* 按钮内边距 */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>利洋的个人简历</h1>
+        <div class="contact-info">
+            <p>电话：17722238669（微信同号）</p>
+            <p>邮箱：2952410791@qq.com</p>
+            <p>GitHub：<a href="https://github.com/LitchiLiy" target="_blank">https://github.com/LitchiLiy</a></p>
+            <p>期望实习岗位：研发工程师</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">IT技能</h2>
+            <ul class="skill-list">
+                <li>熟悉C++语言开发，熟悉C++11新特性(智能指针，Lambda表达式等)，熟悉常用STL容器。</li>
+                <li>熟悉Windows C++开发，掌握Linux操作系统开发环境与Socket网络编程。</li>
+                <li>熟悉计算机网络OSI七层模型、TCP/IP网络模型，熟悉TCP协议面向连接管理。</li>
+                <li>熟练掌握数据结构和算法，力扣刷题100+。</li>
+                <li>熟悉Python语言开发，熟悉使用numpy、matplotlib、cvxpy等。</li>
+                <li>熟悉Git、Vscode、SSH、Cmake、Xshell，Wireshark等开发工具。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">项目经历</h2>
+            <ul class="project-description">
+                <li>基于Lyapunov优化算法的无人机MEC资源分配方法（正在撰写的硕士论文）2022年至今</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">教育背景</h2>
+            <ul class="education-background">
+                <li>深圳大学 信息与通信工程专业 硕士 2022.09至今</li>
+                <li>深圳大学 电子科学与技术专业 学士 2018.09-2022.06</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">荣誉/证书</h2>
+            <ul class="honor-certificates">
+                <li>2023-2024学年获得深圳大学2022级硕士一等奖。</li>
+                <li>2022-2023学年获得深圳大学2022级硕士特等奖。</li>
+                <li>英语CET6。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">自我评价</h2>
+            <ul class="self-evaluation">
+                <li>热爱编写代码，具有信息检索和收集能力，善于运用GPT大模型处理项目中的编程问题。</li>
+                <li>自学与动手能力强，工作积极认真，为人友善，责任心强。</li>
+                <li>热爱运动：游泳、爬山、骑自行车等户外活动。</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<div align="center"><font size="5"> <strong>测试两个页面</strong></font></div>
+<br/>
+    <br/>
+
+
+
+
+
+
+    <form action="testPage1.html" method="post">
+         <div align="center"><button type="submit">测试页面1</button></div>
+            </form>
+    <br/><!-- 这个action只是URL而已, 会在前面自动加/testPage2.html 到服务器那边还是要修改一下路径 -->
+            <form action="testPage2.html" method="post">
+                    <div align="center"><button type="submit" >测试页面2</button></div>
+            </form>
+    <br/>
+
+    
+    </div>
+
+</html>

@@ -48,6 +48,8 @@ public:
     void setbody(const string& body) { body_ = body; }
 
     void appendToBuffer(Buffer* buf) const;
+
+
 };
 
 

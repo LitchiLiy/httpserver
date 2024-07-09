@@ -18,7 +18,14 @@ void defaultHttpCallback(const HttpRequest&, HttpResponse* resp) {
 }
 
 
-
+/**
+ * @brief 对于httpServer类来说, 最重要的函数就是setHttpCB函数,
+ *
+ * @param Loop
+ * @param listenAddr
+ * @param name
+ * @param option
+ */
 HttpServer::HttpServer(EventLoop* Loop,
                        const InetAddress& listenAddr,
                        const string& name,
@@ -69,7 +76,12 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn,
 }
 
 
-
+/**
+ * @brief 这个函数会被onMsg调用, 而onMsg会被conn的回调函数调用. 而这个函数会调用httpcb函数, 所以设置httpcb很重要. httbcb函数就是用来写response用的. 相当于状态机
+ *
+ * @param conn 这个i连接就是客户但的连接, 放在这里纯粹是为了使用连接的seng来发送消息
+ * @param req  这个req就是来自conn的ctx的req, 从noMsg代码中可以看出
+ */
 void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req) {
     const string& connection = req.getHeader("Connection");
     bool close = (connection == "close" || (req.showVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive"));

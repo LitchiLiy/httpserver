@@ -37,10 +37,7 @@ EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector
     LOG_INFO << "epollfd= " << p_Epoller->getEpollfd() << ", wakeupfd= " << m_wakeupFd;
 
 
-    // 一个退出机制. 识别终端的输入
-    sp_quitChannel = std::make_shared<Channel>(this, STDIN_FILENO);
-    sp_quitChannel->setReadCallBack(std::bind(&EventLoop::handleQuit, this, std::placeholders::_1));
-    sp_quitChannel->setReadEnable();
+
 
 }
 
@@ -202,7 +199,16 @@ bool EventLoop::hasChannel(Channel* ch) {
 }
 
 
+void EventLoop::setMainEventLoop() {
+    // 一个退出机制. 识别终端的输入
+    sp_quitChannel = std::make_shared<Channel>(this, STDIN_FILENO);
+    sp_quitChannel->setReadCallBack(std::bind(&EventLoop::handleQuit, this, std::placeholders::_1));
+    sp_quitChannel->setReadEnable();
+    main_EventLoop = true;
+}
+
 void EventLoop::handleQuit(Timestamp now) {
+
     char buf[1024];
     ssize_t n = read(0, buf, sizeof(buf));
     if (n > 0) {

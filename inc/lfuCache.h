@@ -123,8 +123,7 @@ LFUCache::LFUCache(int capicity) :
 }
 
 LFUCache::~LFUCache() {
-    while (Dummyhead_)
-    {
+    while (Dummyhead_) {
         freq_node pre = Dummyhead_;
         Dummyhead_ = Dummyhead_->getNext();
         pre->getValue().destory();
@@ -168,6 +167,14 @@ void LFUCache::addFreq(key_node& nowk, freq_node& nowf) {
         del(nowf);
 }
 
+/**
+ * @brief 输入一个key， 从val中返回value += 原本的频度值, 这里的val不是键值对的val和set不同, 这里的val返回的是频度
+ *
+ * @param key 键值对的key
+ * @param val 返回该key在内部保存的频度
+ * @return true
+ * @return false
+ */
 bool LFUCache::get(string& key, string& val) {
     if (!capacity_) return false;
     std::lock_guard<std::mutex> lock(mtx_);
@@ -183,6 +190,13 @@ bool LFUCache::get(string& key, string& val) {
     return false;
 }
 
+
+/**
+ * @brief 输入key, 如果用get没在列表中找到这个key, 就调用这个函数用来在map中新建一个key-value, key是键, val是值
+ *
+ * @param key 键值对的key
+ * @param val 键值对的value
+ */
 void LFUCache::set(string& key, string& val) {
     if (!capacity_) return;
     // printf("kmapsize = %d capacity = %d\n", kmap_.size(), capacity_);
@@ -203,8 +217,6 @@ void LFUCache::set(string& key, string& val) {
             del(head);
         }
     }
-    // key_node nowk = new Node<Key>();
-    // 使⽤内存池
     key_node nowk = new Node<Key>();
 
 

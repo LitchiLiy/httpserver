@@ -43,7 +43,7 @@ public:
     pointer address(reference x) const noexcept;
     const_pointer address(const_reference x) const noexcept;
 
-    // Can only allocate one object at a time. n and hint are ignored
+    // 最主要的两个函数，充当分配和释放的接口
     pointer allocate(size_type n = 1, const_pointer hint = 0);
     void deallocate(pointer p, size_type n = 1);
 
@@ -70,6 +70,13 @@ private:
     slot_pointer_ lastSlot_;
     slot_pointer_ freeSlots_;
 
+    /**
+     * @brief 为了计算内存偏移，优化存储结构
+     *
+     * @param p
+     * @param align
+     * @return size_type
+     */
     size_type padPointer(data_pointer_ p, size_type align) const noexcept;
     void allocateBlock();
 
@@ -79,8 +86,7 @@ private:
 
 template <typename T, size_t BlockSize>
 inline typename MemoryPool<T, BlockSize>::pointer
-MemoryPool<T, BlockSize>::allocate(size_type n, const_pointer hint)
-{
+MemoryPool<T, BlockSize>::allocate(size_type n, const_pointer hint) {
     if (freeSlots_ != nullptr) {
         pointer result = reinterpret_cast<pointer>(freeSlots_);
         freeSlots_ = freeSlots_->next;
@@ -97,8 +103,7 @@ MemoryPool<T, BlockSize>::allocate(size_type n, const_pointer hint)
 
 template <typename T, size_t BlockSize>
 inline void
-MemoryPool<T, BlockSize>::deallocate(pointer p, size_type n)
-{
+MemoryPool<T, BlockSize>::deallocate(pointer p, size_type n) {
     if (p != nullptr) {
         reinterpret_cast<slot_pointer_>(p)->next = freeSlots_;
         freeSlots_ = reinterpret_cast<slot_pointer_>(p);
@@ -110,8 +115,7 @@ MemoryPool<T, BlockSize>::deallocate(pointer p, size_type n)
 template <typename T, size_t BlockSize>
 inline typename MemoryPool<T, BlockSize>::size_type
 MemoryPool<T, BlockSize>::max_size()
-const noexcept
-{
+const noexcept {
     size_type maxBlocks = -1 / BlockSize;
     return (BlockSize - sizeof(data_pointer_)) / sizeof(slot_type_) * maxBlocks;
 }
@@ -121,8 +125,7 @@ const noexcept
 template <typename T, size_t BlockSize>
 template <class U, class... Args>
 inline void
-MemoryPool<T, BlockSize>::construct(U* p, Args&&... args)
-{
+MemoryPool<T, BlockSize>::construct(U* p, Args&&... args) {
     new (p) U(std::forward<Args>(args)...); // 完美转发
 }
 
@@ -131,8 +134,7 @@ MemoryPool<T, BlockSize>::construct(U* p, Args&&... args)
 template <typename T, size_t BlockSize>
 template <class U>
 inline void
-MemoryPool<T, BlockSize>::destroy(U* p)
-{
+MemoryPool<T, BlockSize>::destroy(U* p) {
     p->~U();
 }
 
@@ -141,8 +143,7 @@ MemoryPool<T, BlockSize>::destroy(U* p)
 template <typename T, size_t BlockSize>
 template <class... Args>
 inline typename MemoryPool<T, BlockSize>::pointer
-MemoryPool<T, BlockSize>::newElement(Args&&... args)
-{
+MemoryPool<T, BlockSize>::newElement(Args&&... args) {
     pointer result = allocate();
     construct<value_type>(result, std::forward<Args>(args)...);
     return result;
@@ -152,8 +153,7 @@ MemoryPool<T, BlockSize>::newElement(Args&&... args)
 
 template <typename T, size_t BlockSize>
 inline void
-MemoryPool<T, BlockSize>::deleteElement(pointer p)
-{
+MemoryPool<T, BlockSize>::deleteElement(pointer p) {
     if (p != nullptr) {
         p->~value_type();
         deallocate(p);
