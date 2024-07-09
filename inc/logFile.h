@@ -7,10 +7,15 @@
 #include <fstream>
 using namespace std;
 
-// 作用就是保存本地txt文件的fd, 然后将string信息写入文件, 还有冲刷的操作, 这就是基层类.
+// 作用就是保存本地txt文件的fd, 然后将string信息写入文件, 还有冲刷的操作, 这就是基层类., z
 class AppendFile
 {
 public:
+    /**
+     * @brief
+     *
+     * @param filename 这个filename是一个路径名字， 比如: /home/litchily/log.txt
+     */
     explicit AppendFile(const std::string& filename);
     ~AppendFile();
     void append(const char* logline, size_t len);
@@ -32,10 +37,10 @@ class LogFile
 {
 public:
     LogFile(const std::string& basename,
-        off_t rollSize,
-        bool threadSafe = true,
-        int flushInterval = 3,    // 冲刷周期为3
-        int checkEveryN = 1024);  // 检查count阈值为1024
+            off_t rollSize,
+            bool threadSafe = true,
+            int flushInterval = 3,    // 冲刷周期为3
+            int checkEveryN = 1024);  // 检查count阈值为1024
     ~LogFile();
 
     void append(const char* logline, int len);
