@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # 定义项目名称和语言
-project(Main LANGUAGES CXX)
+project(httpServer LANGUAGES CXX)
 
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 11)
@@ -21,7 +21,7 @@ include_directories(${CMAKE_SOURCE_DIR}/inc)
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/inc/*.cpp")
 
 # 设置可执行文件的名称和源文件列表
-add_executable(Main test17.cpp ${SOURCES})
+add_executable(httpServer serverStart.cpp ${SOURCES})
 
 # 可选：如果需要链接库，可以使用 target_link_libraries
 # target_link_libraries(Main PRIVATE some_library)

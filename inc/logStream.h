@@ -129,8 +129,7 @@ private:
 
 
 
-inline LogStream& operator<<(LogStream& s, const Fmt& fmt)
-{
+inline LogStream& operator<<(LogStream& s, const Fmt& fmt) {
     s.append(fmt.data(), fmt.length());
     return s;
 }

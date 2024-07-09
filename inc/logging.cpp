@@ -166,6 +166,8 @@ Logger::~Logger() {
     m_impl.finish();
     const LogStream::Buffer& buf(stream().buffer());
     g_output(buf.data(), buf.length());  // 如果不特地设置， gout地方就是stdout
+    defaultOutput(buf.data(), buf.length()); // 这个就是终端输出， 默认是stdout， 如果没有设置g_output， 则把这行注销掉
+
     if (m_impl.m_level == FATAL) {
         g_flush();
         // abort();

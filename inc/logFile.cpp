@@ -14,15 +14,14 @@
 
 
 
-// 打开文件, 设置偏移量
+// 打开文件, 设置偏移量， 输入的filename是相对与bin的Main的路径
 AppendFile::AppendFile(const string& filename) : fp_(fopen(filename.c_str(), "ae")) {
     writtenBytes_ = 0;
     assert(fp_ != nullptr);
     ::setbuf(fp_, buffer_); // 自定义一个缓冲区, 提高效率
 }
 
-AppendFile::~AppendFile()
-{
+AppendFile::~AppendFile() {
     ::fclose(fp_);
 }
 
@@ -31,8 +30,7 @@ AppendFile::~AppendFile()
 void AppendFile::append(const char* logline, const size_t len) {
     size_t written = 0;
 
-    while (written != len)
-    {
+    while (written != len) {
         size_t remain = len - written;
         size_t n = write(logline + written, remain);
         // if (n != remain)
@@ -63,10 +61,10 @@ size_t AppendFile::write(const char* logline, size_t len) {
 
 
 LogFile::LogFile(const string& basename,
-    off_t rollSize,
-    bool threadSafe,
-    int flushInterval,
-    int checkEveryN)
+                 off_t rollSize,
+                 bool threadSafe,
+                 int flushInterval,
+                 int checkEveryN)
     : basename_(basename),
     rollSize_(rollSize),
     flushInterval_(flushInterval),
@@ -75,48 +73,42 @@ LogFile::LogFile(const string& basename,
     // mutex_(threadSafe ? new MutexLock : NULL),
     startOfPeriod_(0),
     lastRoll_(0),
-    lastFlush_(0)
-{
-    assert(basename.find('/') == string::npos);
+    lastFlush_(0) {
+    // assert(basename.find('/') == string::npos);
     rollFile();
 }
 
 LogFile::~LogFile() = default;
 
-void LogFile::append(const char* logline, int len)
-{
+void LogFile::append(const char* logline, int len) {
     {
         lock_guard<mutex> lock(m_mutex);
         append_unlocked(logline, len);
     }
 }
 
-void LogFile::flush()
-{
+void LogFile::flush() {
     {
         lock_guard<mutex> lock(m_mutex);
         file_->flush();
     }
 }
 
-void LogFile::append_unlocked(const char* logline, int len)
-{
+void LogFile::append_unlocked(const char* logline, int len) {
     file_->append(logline, len);
 
     if (file_->writtenBytes() > rollSize_) // 我们设定了一个字节滚动阈值, 如果写入的字节数大于这个阈值
     {
         rollFile();
     }
-    else
-    {
+    else {
         ++count_;  // 日志追加计数器
         if (count_ >= checkEveryN_) // 检查计数阈值, 超过了就执行.
         {
             count_ = 0;
             time_t now = ::time(NULL); // 公元前至今的时间戳
             time_t thisPeriod_ = now / kRollPerSeconds_ * kRollPerSeconds_;
-            if (thisPeriod_ != startOfPeriod_)
-            {
+            if (thisPeriod_ != startOfPeriod_) {
                 rollFile();
             }
             else if (now - lastFlush_ > flushInterval_)  // 当前事件与上一次事件的差值超出了阈值.
@@ -129,14 +121,12 @@ void LogFile::append_unlocked(const char* logline, int len)
 }
 
 // 日志滚动, 每天或每小时新建一个日志
-bool LogFile::rollFile()
-{
+bool LogFile::rollFile() {
     time_t now = 0;
-    string filename = getLogFileName(basename_, &now);  // 拼接文件名
+    string filename = getLogFileName(basename_, &now);  // 拼接文件名, 带路径的
     time_t start = now / kRollPerSeconds_ * kRollPerSeconds_; // 出基于当前时间 now 的日志文件的起始时间
 
-    if (now > lastRoll_)
-    {
+    if (now > lastRoll_) {
         lastRoll_ = now;
         lastFlush_ = now;
         startOfPeriod_ = start;
@@ -148,8 +138,7 @@ bool LogFile::rollFile()
 
 
 // 这里设定文件名, Logfile_20240701-221705_pid=121137.log
-string LogFile::getLogFileName(const string& basename, time_t* now)
-{
+string LogFile::getLogFileName(const string& basename, time_t* now) {
     string filename;
     filename.reserve(basename.size() + 64);  // 预留足够的空间
     filename = basename;

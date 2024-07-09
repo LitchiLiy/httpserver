@@ -28,15 +28,12 @@ eventLoop结构
 #include <assert.h>
 #include <memory>
 #include <vector>
-
-
-
-
-
 #include <mutex>
 #include <functional>
 #include <timerId.h>
 #include <timestamp.h>
+#include <logging.h>
+
 
 
 // 都是以指针的形式存在
@@ -81,6 +78,9 @@ public:
     // 确认channel移除
     bool hasChannel(Channel* ch);
     void setMainEventLoop();
+
+    // 退出日志
+
 
 private:
     void aboutNotInLoopThread();

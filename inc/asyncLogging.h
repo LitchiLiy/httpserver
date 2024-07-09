@@ -38,7 +38,7 @@ private:
     void threadFunc();
 
 
-    typedef FixedBuffer<kLargeBuffer> tBuffer;
+    typedef FixedBuffer<kLargeBuffer> tBuffer; // 一个4M的buffer
     typedef vector<unique_ptr<tBuffer>> BufferVector;
     typedef BufferVector::value_type BufferPtr;
 

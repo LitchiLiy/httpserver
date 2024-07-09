@@ -17,7 +17,6 @@
 // EventLoop* t_loopInThisThread;
 
 EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector<callBack_f>{}) {
-
     looping_ = false;
     isquit = false;
     // std::cout << "EventLoop created"
@@ -35,9 +34,6 @@ EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector
 
     LOG_INFO << "EventLoop created and address= " << this << ", tid= " << pthread_self() << ", pid= " << getpid();
     LOG_INFO << "epollfd= " << p_Epoller->getEpollfd() << ", wakeupfd= " << m_wakeupFd;
-
-
-
 
 }
 
@@ -144,7 +140,7 @@ void EventLoop::wakeup() {
     eventfd_t one = 0xFFFF;
     auto n = eventfd_write(m_wakeupFd, one); // 如果成功输入那就是0?, 反正这里总是返回0, 确实没问题, 测试过read那边读出来是65536, 就是0xFFFF
     if (n < 0) {
-        std::cout << "wakeup error" << std::endl;
+        LOG_ERROR << "wakeup error";
     }
 }
 
@@ -153,14 +149,14 @@ void EventLoop::handleRead() {
     uint64_t one = 1;
     ssize_t n = read(m_wakeupFd, &one, sizeof(one));
     if (n != sizeof(one)) {
-        std::cout << "wakeup error" << std::endl;
+        LOG_ERROR << "EventLoop::handleRead() reads " << n << " bytes instead of 8";
     }
 }
 
 int EventLoop::createEventfd() {
     int fd = eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
     if (fd < 0) {
-        std::cout << "create eventfd error" << std::endl;
+        LOG_ERROR << "create eventfd error";
     }
     return fd;
 }

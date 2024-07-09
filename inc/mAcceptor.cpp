@@ -22,7 +22,7 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reusepor
     int opt = 1;
     setsockopt(m_acceptFd, SOL_SOCKET, SO_REUSEADDR | SOCK_NONBLOCK | SOCK_CLOEXEC, &opt, sizeof(opt));
     if (m_acceptFd < 0) {
-        perror("socket");
+        LOG_ERROR << "create socket error";
     }
     // 设置m_socket
     m_socket.setFd(m_acceptFd);

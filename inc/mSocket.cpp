@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <iostream>
 #include <arpa/inet.h>
+#include <logging.h>
+#include <errno.h>
 
 
 
@@ -22,7 +24,7 @@ void Socket::bindAddress(const InetAddress& localaddr) {
     struct sockaddr_in addr = localaddr.getSockAddr();
     int ret = bind(m_socketFd, (sockaddr*)&addr, sizeof(addr));
     if (ret < 0) {
-        perror("bind");
+        LOG_ERROR << "bind error: " << strerror(errno);
     }
 }
 
@@ -31,7 +33,7 @@ void Socket::startListen(int num = 10) {
     int ret = listen(m_socketFd, num); // 默认是10
     // 开始listen
     if (ret < 0) {
-        perror("listen");
+        LOG_ERROR << "listen error: " << strerror(errno);
     }
 }
 
@@ -53,7 +55,7 @@ int Socket::accept(InetAddress* peeraddr) {
         // std::cout << "Accepted new connection of fd: " << connfd << " Client address: " << ipstr << ":" << ntohs(addr.sin_port) << std::endl;
     }
     if (connfd < 0) {
-        perror("accept");
+        LOG_ERROR << "accept error: " << strerror(errno);
     }
     peeraddr->setSockAddr(addr);  // 保存地址
     return connfd;

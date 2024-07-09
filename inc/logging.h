@@ -15,11 +15,6 @@ Logger:最终为了实现功能, 将日志输出到文件中, 调用Logger中的
 
 
 
-
-
-
-
-
 class Logger {
 public:
     enum LogLevel {
@@ -99,8 +94,7 @@ private:
 
 extern Logger::LogLevel g_logLevel;
 
-inline Logger::LogLevel Logger::logLevel()
-{
+inline Logger::LogLevel Logger::logLevel() {
     return g_logLevel;
 }
 
