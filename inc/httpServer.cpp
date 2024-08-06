@@ -5,6 +5,7 @@
 #include <httpResponse.h>
 #include <callBacks.h>
 #include <tcpConnection.h>
+#include <eventLoop.h>
 
 /**
  * @brief 提供一个默认的httpserver的respoones模板， 就是404
@@ -35,6 +36,7 @@ HttpServer::HttpServer(EventLoop* Loop,
     server_.setConnectionCallback(std::bind(&HttpServer::onConnection, this, std::placeholders::_1));  // 这两部只是设置了应对之策而已
 
     server_.setMessageCallback(std::bind(&HttpServer::onMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+
 }
 
 void HttpServer::start() {
@@ -42,7 +44,7 @@ void HttpServer::start() {
 }
 
 /**
- * @brief 检查一下Tcp是否已经连接了, 如果链接了, 那就为这个链接配置上下文
+ * @brief 检查一下Tcp是否已经连接了, 如果链接了, 那就为这个链接配置上下文, 这个onConnection被tcpServer的onConCb指针保存， 然后再被conn的onConCb保存
  *
  * @param conn
  */
@@ -71,7 +73,7 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn,
 
     if (ctx->gotAll()) {
         onRequest(conn, ctx->request()); // 返回请求的存储信息类
-        ctx->reset();
+        ctx->reset(); // 清空ctx
     }
 }
 
@@ -84,10 +86,17 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn,
  */
 void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req) {
     const string& connection = req.getHeader("Connection");
-    bool close = (connection == "close" || (req.showVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive"));
+    bool close = (connection == "close" || (req.showVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive")); // http1.0是默认close的, 而http1.1是默认keep的
 
     HttpResponse Response(close);
     httpCallback_(req, &Response);// 调用response回调
+    // 设置长连接定时器
+    if (!Response.isCloseLive()) {
+        TcpConnectionPtr conntmp(conn);
+        auto lp = conntmp->getLoop();
+        lp->runAfter(60, std::bind(&TcpConnection::connectDestroyed, conntmp)); // 设置60s的定时器长连接销毁
+
+    }
     Buffer buf;
     Response.appendToBuffer(&buf);
     conn->send(&buf);
@@ -95,3 +104,4 @@ void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req)
         conn->shutdown();
     }
 }
+

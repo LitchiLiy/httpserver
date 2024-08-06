@@ -29,6 +29,7 @@ public:
 
     void start();
 
+
 private:
     void onConnection(const TcpConnectionPtr& conn);
     void onMessage(const TcpConnectionPtr& conn,
@@ -39,6 +40,8 @@ private:
 private:
     TcpServer server_;
     HttpCallback httpCallback_; // 这个东西的作用就是: 客户端发来请求报文, 处理成req类之后, 调用这个回调, 根据req来填写response. 作用就是填写response
+
+
 };
 
 #endif // HTTPSERVER_H

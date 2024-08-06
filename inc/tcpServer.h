@@ -40,9 +40,9 @@ public:
         kReusePort,
     };
     TcpServer(EventLoop* el,
-        const InetAddress& listenAddr,
-        const std::string& name,
-        Option option = kNoReusePort);
+              const InetAddress& listenAddr,
+              const std::string& name,
+              Option option = kNoReusePort);
     ~TcpServer();
 
 
@@ -61,6 +61,8 @@ public:
     void setMessageCallback(const MessageCallback& cb) { m_messageCallback = cb; }
     void setWriteCompleteCallback(const WriteCompleteCallback& cb) { m_writeCompleteCallback = cb; }
     void setThreadInitCallback(const threadInitCallBack& cb) { m_threadInitCallback = cb; }
+
+
 
 private:
     void newConnection(int sockfd, const InetAddress& peerAddr);
@@ -90,7 +92,9 @@ private:
 
     int nextConnId;
 
-    ConnectionMap m_connMap;
+    ConnectionMap m_connMap; // TcpServer保存着所有的连接ptr, 所有与客户端的连接的唯一保存地
+
+
 };
 
 

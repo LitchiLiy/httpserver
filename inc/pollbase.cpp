@@ -7,6 +7,7 @@
 #include <timestamp.h>
 #include <logging.h>
 
+string pollmode = "";
 
 
 Pollbase::Pollbase(EventLoop* loop)

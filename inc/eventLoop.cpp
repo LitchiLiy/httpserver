@@ -177,7 +177,13 @@ int EventLoop::createEventfd() {
 TimerId EventLoop::runAt(const Timestamp& when, const callBack_f& cb) {
     return m_timerQueue->addTimer(cb, when, 0.0);
 }
-
+/**
+ * @brief
+ *
+ * @param delay 单位是秒
+ * @param cb
+ * @return TimerId
+ */
 TimerId EventLoop::runAfter(double delay, const callBack_f& cb) {
     int64_t delta_us = Timestamp::now().showusec() + static_cast<int64_t>(delay * 1000 * 1000);
     Timestamp when = Timestamp(delta_us);

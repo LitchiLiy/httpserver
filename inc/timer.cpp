@@ -6,13 +6,13 @@ Timer::Timer(callBack_f cb_, Timestamp when_, double interval_) :
     m_cb(cb_),
     m_when(when_),
     m_interval(interval_),
-    is_Repeat(interval_ > 0.0)
-{
+    is_Repeat(interval_ > 0.0) {
     m_seq = m_AutomaticInt64.incrementAndGet();
 }
 
 
 Timer::~Timer() {
+
 }
 
 void Timer::runTimerCallBack() {

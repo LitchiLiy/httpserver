@@ -2,6 +2,7 @@
 #include <eventLoop.h>
 #include <unistd.h>
 
+extern string pollmode; // 选择select还是poll, 在main里设置
 
 
 typedef std::function<void()> callBack_f;
@@ -31,7 +32,7 @@ EventLoop* EventLoopThread::startLoop() {
 }
 
 void EventLoopThread::threadfunc() {  // 线程最终在Data中被InLoop中调用。
-    EventLoop loop;
+    EventLoop loop(pollmode);
 
 
     if (m_pthreadInitCallback) {

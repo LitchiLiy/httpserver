@@ -119,7 +119,7 @@ private:
     InetAddress m_localAddr;
     InetAddress m_peerAddr;
 
-    ConnectionCallback m_connectionCallback;
+    ConnectionCallback m_connectionCallback; // 调用tcpserver的connectionCB， 最终调用httpServer的onConnectionCB
     MessageCallback m_messageCallback; // 读到数据之后, 触发的回调
     CloseCallback m_closeCallback;
     HighWaterMarkCallback m_highWaterMarkCallback;

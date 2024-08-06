@@ -34,6 +34,8 @@ public:
 
     bool isStarted() const { return isstarted; }
     const string& name() const { return m_name; }
+
+
 private:
     EventLoop* m_fatherLoop;
     string m_name;
@@ -42,6 +44,7 @@ private:
     int m_nextThread;
     vector<shared_ptr<EventLoopThread>> m_threadVec;
     vector<EventLoop*> m_loopVec;
+
 };
 
 

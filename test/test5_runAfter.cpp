@@ -31,7 +31,7 @@ void* threadFunc(void* arg) {
 
 
 int main() {
-    EventLoop loop;
+    EventLoop loop("epoll");
     g_loop = &loop;
     /*
         测试本线程调用runAfter, runAt, runEvery这三函数`

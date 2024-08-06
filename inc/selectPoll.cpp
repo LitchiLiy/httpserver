@@ -7,6 +7,8 @@
 #include <channel.h>
 #include <logging.h>
 #include <errno.h>
+using namespace std;
+#include <iostream>
 
 
 
@@ -21,10 +23,19 @@ SelectPoll::~SelectPoll() {
 }
 
 Timestamp SelectPoll::poll(int timeoutMs, ChannelList* actchannels) {
+    // 初始化readFds_和writeFds_
+    FD_ZERO(&readfd_tmp);
+    FD_ZERO(&writefd_tmp);
+    FD_ZERO(&errorfd_tmp);
+
+    readfd_tmp = readFds_;
+    writefd_tmp = writeFds_;
+    errorfd_tmp = errorFds_;
 
     // listen数量默认为10
-    int numEvents = ::select(FD_SETSIZE, &readFds_, &writeFds_, &errorFds_, nullptr); // 这里如果不是fdsetsize, 则没法识别到文件, fdsetsize为1024
+    int numEvents = ::select(FD_SETSIZE, &readfd_tmp, &writefd_tmp, &errorfd_tmp, nullptr); // 这里如果不是fdsetsize, 则没法识别到文件, fdsetsize为1024 nullptr表示无限期阻塞
     Timestamp now(Timestamp::now());
+    // cout << "1" << endl;
     int saveErrno = errno;
 
     if (numEvents > 0) {
@@ -50,16 +61,13 @@ void SelectPoll::fillActChannel(int numEvents, ChannelList* actchannels) {
         for (auto it = m_channels.begin(); it != m_channels.end(); ++it) {
             Channel* channel = it->second;
             int fd = channel->showfd();
-            if (channel->isReading() && FD_ISSET(fd, &readFds_)) {
+            if (channel->isReading() && FD_ISSET(fd, &readfd_tmp)) {
+
                 channel->set_rEvent(EPOLLIN);
                 actchannels->push_back(channel);
             }
-            if (channel->isWriting() && FD_ISSET(fd, &writeFds_)) {
+            if (channel->isWriting() && FD_ISSET(fd, &writefd_tmp)) {
                 channel->set_rEvent(EPOLLOUT);
-                actchannels->push_back(channel);
-            }
-            if (channel->isNoneEvent() && FD_ISSET(fd, &errorFds_)) {
-                channel->set_rEvent(EPOLLERR);
                 actchannels->push_back(channel);
             }
         }
@@ -82,15 +90,13 @@ void SelectPoll::removeChannel(Channel* channel) {
     //     epollupdate(EPOLL_CTL_DEL, ch);
     // }
     // select只需要在对应set里删除就行了
-
-    if (channel->isReading() && FD_ISSET(chfd, &readFds_)) {
-        FD_CLR(chfd, &readFds_);
-    }
-    if (channel->isWriting() && FD_ISSET(chfd, &writeFds_)) {
-        FD_CLR(chfd, &writeFds_);
-    }
-    if (channel->isNoneEvent() && FD_ISSET(chfd, &errorFds_)) {
-        FD_CLR(chfd, &errorFds_);
+    if (chidx == kAdded) {
+        if (channel->isReading() && FD_ISSET(chfd, &readFds_)) {
+            FD_CLR(chfd, &readFds_);
+        }
+        if (channel->isWriting() && FD_ISSET(chfd, &writeFds_)) {
+            FD_CLR(chfd, &writeFds_);
+        }
     }
     channel->set_index(kNew);
 }
@@ -117,9 +123,6 @@ void SelectPoll::updateChannel(Channel* channel) {
         if (channel->isWriting()) {
             FD_SET(channel->showfd(), &writeFds_);
         }
-        if (channel->isNoneEvent()) {
-            FD_SET(channel->showfd(), &errorFds_);
-        }
     }
     else {
         int fdch = channel->showfd();
@@ -134,9 +137,6 @@ void SelectPoll::updateChannel(Channel* channel) {
             if (channel->isWriting() && FD_ISSET(fdch, &writeFds_)) {
                 FD_CLR(fdch, &writeFds_);
             }
-            if (channel->isNoneEvent() && FD_ISSET(fdch, &errorFds_)) {
-                FD_CLR(fdch, &errorFds_);
-            }
             channel->set_index(kDeleted);
         }
         else {
@@ -148,9 +148,6 @@ void SelectPoll::updateChannel(Channel* channel) {
             }
             if (FD_ISSET(fdch, &writeFds_)) {
                 FD_CLR(fdch, &writeFds_);
-            }
-            if (FD_ISSET(fdch, &errorFds_)) {
-                FD_CLR(fdch, &errorFds_);
             }
             // 再添加
             if (channel->isReading() && !FD_ISSET(fdch, &readFds_)) {

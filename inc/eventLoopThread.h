@@ -24,6 +24,7 @@ public:
 
     EventLoop* startLoop();
 
+
 private:
     void threadfunc();
 
@@ -35,6 +36,7 @@ private:
     Thread m_thread;
     threadInitCallBack m_pthreadInitCallback;
     EventLoop* m_loop; // EventLoop不能用shared指着，因为里面的mutex不行
+
 
 
     // 条件变量和锁

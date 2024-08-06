@@ -16,9 +16,7 @@ EventLoopThreadPool::EventLoopThreadPool(EventLoop* el, const string& nameArg) :
     m_name(nameArg),
     m_threadNum(0),
     m_nextThread(0),
-    isstarted(false)
-{
-}
+    isstarted(false) {}
 
 EventLoopThreadPool::~EventLoopThreadPool() {
 
@@ -33,8 +31,9 @@ void EventLoopThreadPool::startPool(const threadInitCallBack& cb) {
     for (int i = 0; i < m_threadNum; ++i) {
         char buf[m_name.size() + 32];
         snprintf(buf, sizeof(buf), "%s%d", m_name.c_str(), i);
-        EventLoopThread* thread = new EventLoopThread(cb, buf);
-        m_threadVec.emplace_back(thread);
+        EventLoopThread* thread = new EventLoopThread(cb, buf); // 
+
+        m_threadVec.emplace_back(thread); // 这里用一个sharedptr的数组来管理new
         m_loopVec.emplace_back(thread->startLoop());
     }
 

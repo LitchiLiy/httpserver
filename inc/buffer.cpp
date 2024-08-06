@@ -234,7 +234,7 @@ void Buffer::prependInt64(int64_t x) {
  * @return ssize_t
  */
 ssize_t Buffer::readFd(int fd, int* savedErrno) {
-    ssize_t n = 0;
+    long long n = 0;
     int flag = 1;
     char buf[10];
     memset(buf, 0, sizeof(buf));
@@ -262,11 +262,13 @@ ssize_t Buffer::readFd(int fd, int* savedErrno) {
                 // 对方没有数据了,跳出
                 flag = 0;
                 *savedErrno = errno;
+                // n = ret;
             }
             else {
                 // 错误了, 跳出
                 flag = 0;
                 *savedErrno = errno;
+                // n = -2;
             }
         }
     }

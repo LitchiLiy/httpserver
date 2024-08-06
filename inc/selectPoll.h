@@ -28,6 +28,10 @@ private:
     fd_set readFds_;
     fd_set writeFds_;
     fd_set errorFds_;
+
+    fd_set readfd_tmp;
+    fd_set writefd_tmp;
+    fd_set errorfd_tmp;
 };
 
 

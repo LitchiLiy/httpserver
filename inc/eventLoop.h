@@ -51,7 +51,7 @@ using cbf = void (*)();
 class EventLoop {
 public:
     typedef std::function<void()> callBack_f;
-    EventLoop(const string pollMode = "epoll");
+    EventLoop(const string pollMode);
     ~EventLoop();
 
     void loop();

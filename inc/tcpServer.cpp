@@ -41,6 +41,7 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const strin
     m_acceptor->setNewConnectionCallback(std::bind(&TcpServer::newConnection, this, std::placeholders::_1, std::placeholders::_2)); // 占位符, 表示调用时要传入两个参数
     LOG_INFO << "TcpServer listen on " << listenAddr.ipToString();
 
+
 }
 
 // 循环对我们保存的connectionMap进行destroy.
@@ -82,7 +83,7 @@ sockaddr_in TcpServer::getSockAddr(int sockfd) {
 
 
 
-void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
+void TcpServer::newConnection(int clientFd, const InetAddress& peerAddr) {
     m_loop->assertInLoopThread();
     EventLoop* threadLoop = m_threadPool->getNextLoop(); // tcpserver只有一个acceptor, 然后调用线程池中的一个线程来对接这个客户端
     char buf[64];
@@ -93,12 +94,12 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     ++nextConnId;
 
     // 这里从外部的sockfd获取他的本地地址
-    InetAddress localAddr(TcpServer::getSockAddr(sockfd)); // 服务器可能不止用一个fd来开放listen, 可能有多个本地listenfd, 这里获取客户端连接的那个
+    InetAddress localAddr(TcpServer::getSockAddr(clientFd)); // 服务器可能不止用一个fd来开放listen, 可能有多个本地listenfd, 这里获取客户端连接的那个
     // 创建一个connection, 这里其实传入的是线程池的loop, 但是为了测试我们这里放我们自己的
     // 实际测试: local和peer两个是不一样的
     TcpConnectionPtr conn(new TcpConnection(threadLoop,
                                             connName,
-                                            sockfd,
+                                            clientFd,
                                             localAddr,
                                             peerAddr));
 

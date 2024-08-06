@@ -49,6 +49,7 @@ public:
 
     void appendToBuffer(Buffer* buf) const;
 
+    bool isCloseLive() const { return closeConnection_; }
 
 };
 

@@ -170,7 +170,7 @@ void TcpConnection::handleClose() {
     assert(m_state == kConnected || m_state == kDisconnecting);
     setState(kDisconnected);
     m_channel->disableAll();
-    TcpConnectionPtr guardThis(std::make_shared<TcpConnection>(*this));
+    TcpConnectionPtr guardThis(shared_from_this());
     m_connectionCallback(guardThis); // 直接调用本地存储的连接回调函数
     m_closeCallback(guardThis); // 本地存储的关闭回调函数
 }
@@ -231,27 +231,36 @@ void TcpConnection::connectEstablished() {
 }
 
 
-// 断开连接
+// 断开连接, handleClose最终也是调用这个
 void TcpConnection::connectDestroyed() {
     m_loop->assertInLoopThread();
     if (m_state == kConnected) {
         setState(kDisconnected);
         m_channel->disableAll();
-        m_connectionCallback(std::make_shared<TcpConnection>(*this));
+        m_connectionCallback(shared_from_this());
+        close(m_channel->showfd());
     }
-    m_channel->remove();
+    if (m_channel->showidx() != kNew) {
+        m_channel->remove();
+    }
+
 }
 
 // 读句柄, 当需要读的时候调用这个, 会读数据到本buffer中, 当触发可读时, 会调用这个句柄.
 void TcpConnection::handleRead(Timestamp receiveTime) {
     m_loop->assertInLoopThread();
     int savedErrno = 0;
-    ssize_t n = m_inputBuffer.readFd(m_socket->fd(), &savedErrno);
+    long long n = m_inputBuffer.readFd(m_socket->fd(), &savedErrno);
     if (n > 0) {
         m_messageCallback(shared_from_this(), &m_inputBuffer, receiveTime);
     }
     else if (n == 0) { // 对端关闭了
-        handleClose();
+        if (errno == EAGAIN || errno == EWOULDBLOCK) {
+        }
+        else {
+            // 对端关闭
+            handleClose();
+        }
     }
     else { // 出错了
         errno = savedErrno;

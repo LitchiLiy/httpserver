@@ -14,7 +14,7 @@
 #include <asyncLogging.h>
 #include <logging.h>
 
-
+extern string pollmode;
 
 
 using namespace std;
@@ -51,7 +51,7 @@ void onRequest(const HttpRequest& req, HttpResponse* resp) {
     else {
         resp->setStatusCode(HttpResponse::k404NotFound);
         resp->setStatusMessage("Not Found");
-        resp->setCloseConnection(true);
+        resp->setCloseConnection(false);  // 这里如果没找到就关闭链接返回 Connection: close, 但是为了维持长连接， 我这里设置了false
     }
 }
 
@@ -62,9 +62,20 @@ void asyncOutput(const char* msg, int len) {
 }
 
 
-
-
 int main(int argc, char* argv[]) {
+    // argv[0] = "serverStart";
+    // argv[1] = poll方式;
+    if (argc > 1) {
+        if (strcmp(argv[1], "epoll") == 0) {
+            pollmode = "epoll";
+        }
+        else if (strcmp(argv[1], "select") == 0) {
+            pollmode = "select";
+        }
+    }
+    if (pollmode == "") {
+        pollmode = "epoll";
+    }
     // 日志同步线程 
     char name[256] = { '\0' };  // 文件名
     char arr[] = { "../log/Logfile" };   // 直接本地文件名
@@ -73,16 +84,19 @@ int main(int argc, char* argv[]) {
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
-    int numThreads = 2;
+    int numThreads = 0;
     if (argc > 1) {
         benchmark = true;
         Logger::setLogLevel(Logger::WARN);
         numThreads = atoi(argv[1]);
     }
-    EventLoop loop;
+
+
+    EventLoop loop(pollmode);
     loop.setMainEventLoop();
     // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
     HttpServer server(&loop, InetAddress("0.0.0.0", 8000, false), "litchi");
+
     server.setHttpCallback(onRequest);
     server.setThreadNum(numThreads);
     server.start();
