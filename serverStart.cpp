@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
-    int numThreads = 10;
+    int numThreads = 30;
     if (argc > 1) {
         benchmark = true;
         Logger::setLogLevel(Logger::WARN);
@@ -94,8 +94,8 @@ int main(int argc, char* argv[]) {
 
     EventLoop loop(pollmode);
     loop.setMainEventLoop();
-    // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
-    HttpServer server(&loop, InetAddress("0.0.0.0", 8000, false), "litchi");
+    HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
+    // HttpServer server(&loop, InetAddress("0.0.0.0", 8000, false), "litchi");
 
     server.setHttpCallback(onRequest);
     server.setThreadNum(numThreads);
