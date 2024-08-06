@@ -17,7 +17,7 @@
 // 打开文件, 设置偏移量， 输入的filename是相对与bin的Main的路径
 AppendFile::AppendFile(const string& filename) : fp_(fopen(filename.c_str(), "ae")) {
     writtenBytes_ = 0;
-    assert(fp_ != nullptr);
+    assert(fp_ != nullptr); // 这里出错， 说明文件夹不存在， 你先创建一个文件夹
     ::setbuf(fp_, buffer_); // 自定义一个缓冲区, 提高效率
 }
 

@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
-    int numThreads = 0;
+    int numThreads = 10;
     if (argc > 1) {
         benchmark = true;
         Logger::setLogLevel(Logger::WARN);
