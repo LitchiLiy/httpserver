@@ -26,6 +26,9 @@ void Socket::bindAddress(const InetAddress& localaddr) {
     if (ret < 0) {
         LOG_ERROR << "bind error: " << strerror(errno);
     }
+    else {
+        LOG_INFO << "Bind address success: " << localaddr.ipToString();
+    }
 }
 
 
@@ -34,6 +37,9 @@ void Socket::startListen(int num = 10) {
     // 开始listen
     if (ret < 0) {
         LOG_ERROR << "listen error: " << strerror(errno);
+    }
+    else {
+        LOG_INFO << "Listen address success on fd: " << m_socketFd;
     }
 }
 

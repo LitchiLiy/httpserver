@@ -76,6 +76,9 @@ int main(int argc, char* argv[]) {
     if (pollmode == "") {
         pollmode = "epoll";
     }
+
+
+
     // 日志同步线程 
     char name[256] = { '\0' };  // 文件名
     char arr[] = { "../log/Logfile" };   // 直接本地文件名
@@ -84,7 +87,7 @@ int main(int argc, char* argv[]) {
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
-    int numThreads = 30;
+    int numThreads = 3;
     if (argc > 1) {
         benchmark = true;
         Logger::setLogLevel(Logger::WARN);
@@ -94,8 +97,9 @@ int main(int argc, char* argv[]) {
 
     EventLoop loop(pollmode);
     loop.setMainEventLoop();
-    HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
-    // HttpServer server(&loop, InetAddress("0.0.0.0", 8000, false), "litchi");
+    // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
+    HttpServer server(&loop, InetAddress("0.0.0.0", 8888, false), "litchi");
+    // HttpServer server(&loop, InetAddress("172.19.46.27", 8888, false), "litchi"); // wsl地址
 
     server.setHttpCallback(onRequest);
     server.setThreadNum(numThreads);

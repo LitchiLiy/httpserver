@@ -1,0 +1,34 @@
+20240806 21:48:40 tid=140737347905920 INFO  EventLoop created and address= 0x7FFFFFFFCEF0, tid= 140737347905920, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140737347905920 INFO  TcpServer listen on 0.0.0.0:8888 - home/litchily/litchily/httpserver/inc/tcpServer.cpp:42
+20240806 21:48:40 tid=140737323493056 INFO  EventLoop created and address= 0x7FFFF62C5A20, tid= 140737323493056, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140737315100352 INFO  EventLoop created and address= 0x7FFFF5AC4A20, tid= 140737315100352, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140737306707648 INFO  EventLoop created and address= 0x7FFFF52C3A20, tid= 140737306707648, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140737298314944 INFO  EventLoop created and address= 0x7FFFF4AC2A20, tid= 140737298314944, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736951482048 INFO  EventLoop created and address= 0x7FFFDFFFEA20, tid= 140736951482048, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736943089344 INFO  EventLoop created and address= 0x7FFFDF7FDA20, tid= 140736943089344, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736934696640 INFO  EventLoop created and address= 0x7FFFDEFFCA20, tid= 140736934696640, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736926303936 INFO  EventLoop created and address= 0x7FFFDE7FBA20, tid= 140736926303936, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736917911232 INFO  EventLoop created and address= 0x7FFFDDFFAA20, tid= 140736917911232, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736909518528 INFO  EventLoop created and address= 0x7FFFDD7F9A20, tid= 140736909518528, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736901125824 INFO  EventLoop created and address= 0x7FFFDCFF8A20, tid= 140736901125824, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736414611136 INFO  EventLoop created and address= 0x7FFFBFFFEA20, tid= 140736414611136, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736406218432 INFO  EventLoop created and address= 0x7FFFBF7FDA20, tid= 140736406218432, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736397825728 INFO  EventLoop created and address= 0x7FFFBEFFCA20, tid= 140736397825728, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736389433024 INFO  EventLoop created and address= 0x7FFFBE7FBA20, tid= 140736389433024, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736381040320 INFO  EventLoop created and address= 0x7FFFBDFFAA20, tid= 140736381040320, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:40 tid=140736372647616 INFO  EventLoop created and address= 0x7FFFBD7F9A20, tid= 140736372647616, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140736364254912 INFO  EventLoop created and address= 0x7FFFBCFF8A20, tid= 140736364254912, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735877740224 INFO  EventLoop created and address= 0x7FFF9FFFEA20, tid= 140735877740224, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735869347520 INFO  EventLoop created and address= 0x7FFF9F7FDA20, tid= 140735869347520, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735860954816 INFO  EventLoop created and address= 0x7FFF9EFFCA20, tid= 140735860954816, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735852562112 INFO  EventLoop created and address= 0x7FFF9E7FBA20, tid= 140735852562112, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735844169408 INFO  EventLoop created and address= 0x7FFF9DFFAA20, tid= 140735844169408, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735835776704 INFO  EventLoop created and address= 0x7FFF9D7F9A20, tid= 140735835776704, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735827384000 INFO  EventLoop created and address= 0x7FFF9CFF8A20, tid= 140735827384000, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735340869312 INFO  EventLoop created and address= 0x7FFF7FFFEA20, tid= 140735340869312, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735332476608 INFO  EventLoop created and address= 0x7FFF7F7FDA20, tid= 140735332476608, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735324083904 INFO  EventLoop created and address= 0x7FFF7EFFCA20, tid= 140735324083904, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735315691200 INFO  EventLoop created and address= 0x7FFF7E7FBA20, tid= 140735315691200, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:48:41 tid=140735307298496 INFO  EventLoop created and address= 0x7FFF7DFFAA20, tid= 140735307298496, pid= 171027 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240806 21:49:03 tid=140737347905920 INFO  EventLoop= 0x7FFFFFFFCEF0 loop exit - home/litchily/litchily/httpserver/inc/eventLoop.cpp:101
+20240806 21:49:03 tid=140737347905920 INFO  EventLoop= 0x7FFFFFFFCEF0, tid= 140737347905920, pid= 171027 destroyed - home/litchily/litchily/httpserver/inc/eventLoop.cpp:56
