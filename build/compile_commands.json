@@ -1,132 +1,170 @@
 [
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/serverStart.cpp.o -c /root/litchi/httpserver/serverStart.cpp",
-  "file": "/root/litchi/httpserver/serverStart.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/serverStart.cpp.o -c /home/litchily/litchily/httpserver/serverStart.cpp",
+  "file": "/home/litchily/litchily/httpserver/serverStart.cpp",
+  "output": "CMakeFiles/httpServer.dir/serverStart.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/asyncLogging.cpp.o -c /root/litchi/httpserver/inc/asyncLogging.cpp",
-  "file": "/root/litchi/httpserver/inc/asyncLogging.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/asyncLogging.cpp.o -c /home/litchily/litchily/httpserver/inc/asyncLogging.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/asyncLogging.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/asyncLogging.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/buffer.cpp.o -c /root/litchi/httpserver/inc/buffer.cpp",
-  "file": "/root/litchi/httpserver/inc/buffer.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/buffer.cpp.o -c /home/litchily/litchily/httpserver/inc/buffer.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/buffer.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/buffer.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/channel.cpp.o -c /root/litchi/httpserver/inc/channel.cpp",
-  "file": "/root/litchi/httpserver/inc/channel.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/channel.cpp.o -c /home/litchily/litchily/httpserver/inc/channel.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/channel.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/channel.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/connector.cpp.o -c /root/litchi/httpserver/inc/connector.cpp",
-  "file": "/root/litchi/httpserver/inc/connector.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/connector.cpp.o -c /home/litchily/litchily/httpserver/inc/connector.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/connector.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/connector.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/epoller.cpp.o -c /root/litchi/httpserver/inc/epoller.cpp",
-  "file": "/root/litchi/httpserver/inc/epoller.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/epoller.cpp.o -c /home/litchily/litchily/httpserver/inc/epoller.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/epoller.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/epoller.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/eventLoop.cpp.o -c /root/litchi/httpserver/inc/eventLoop.cpp",
-  "file": "/root/litchi/httpserver/inc/eventLoop.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/eventLoop.cpp.o -c /home/litchily/litchily/httpserver/inc/eventLoop.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/eventLoop.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/eventLoop.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/eventLoopThread.cpp.o -c /root/litchi/httpserver/inc/eventLoopThread.cpp",
-  "file": "/root/litchi/httpserver/inc/eventLoopThread.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/eventLoopThread.cpp.o -c /home/litchily/litchily/httpserver/inc/eventLoopThread.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/eventLoopThread.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/eventLoopThread.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/eventLoopThreadPool.cpp.o -c /root/litchi/httpserver/inc/eventLoopThreadPool.cpp",
-  "file": "/root/litchi/httpserver/inc/eventLoopThreadPool.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/eventLoopThreadPool.cpp.o -c /home/litchily/litchily/httpserver/inc/eventLoopThreadPool.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/eventLoopThreadPool.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/eventLoopThreadPool.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/httpContext.cpp.o -c /root/litchi/httpserver/inc/httpContext.cpp",
-  "file": "/root/litchi/httpserver/inc/httpContext.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/httpContext.cpp.o -c /home/litchily/litchily/httpserver/inc/httpContext.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/httpContext.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/httpContext.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/httpResponse.cpp.o -c /root/litchi/httpserver/inc/httpResponse.cpp",
-  "file": "/root/litchi/httpserver/inc/httpResponse.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/httpResponse.cpp.o -c /home/litchily/litchily/httpserver/inc/httpResponse.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/httpResponse.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/httpResponse.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/httpServer.cpp.o -c /root/litchi/httpserver/inc/httpServer.cpp",
-  "file": "/root/litchi/httpserver/inc/httpServer.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/httpServer.cpp.o -c /home/litchily/litchily/httpserver/inc/httpServer.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/httpServer.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/httpServer.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/logFile.cpp.o -c /root/litchi/httpserver/inc/logFile.cpp",
-  "file": "/root/litchi/httpserver/inc/logFile.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/logFile.cpp.o -c /home/litchily/litchily/httpserver/inc/logFile.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/logFile.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/logFile.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/logStream.cpp.o -c /root/litchi/httpserver/inc/logStream.cpp",
-  "file": "/root/litchi/httpserver/inc/logStream.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/logStream.cpp.o -c /home/litchily/litchily/httpserver/inc/logStream.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/logStream.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/logStream.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/logging.cpp.o -c /root/litchi/httpserver/inc/logging.cpp",
-  "file": "/root/litchi/httpserver/inc/logging.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/logging.cpp.o -c /home/litchily/litchily/httpserver/inc/logging.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/logging.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/logging.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/mAcceptor.cpp.o -c /root/litchi/httpserver/inc/mAcceptor.cpp",
-  "file": "/root/litchi/httpserver/inc/mAcceptor.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/mAcceptor.cpp.o -c /home/litchily/litchily/httpserver/inc/mAcceptor.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/mAcceptor.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/mAcceptor.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/mInetAddress.cpp.o -c /root/litchi/httpserver/inc/mInetAddress.cpp",
-  "file": "/root/litchi/httpserver/inc/mInetAddress.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/mInetAddress.cpp.o -c /home/litchily/litchily/httpserver/inc/mInetAddress.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/mInetAddress.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/mInetAddress.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/mSocket.cpp.o -c /root/litchi/httpserver/inc/mSocket.cpp",
-  "file": "/root/litchi/httpserver/inc/mSocket.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/mSocket.cpp.o -c /home/litchily/litchily/httpserver/inc/mSocket.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/mSocket.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/mSocket.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/memoryPool.cpp.o -c /root/litchi/httpserver/inc/memoryPool.cpp",
-  "file": "/root/litchi/httpserver/inc/memoryPool.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/memoryPool.cpp.o -c /home/litchily/litchily/httpserver/inc/memoryPool.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/memoryPool.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/memoryPool.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/tcpClient.cpp.o -c /root/litchi/httpserver/inc/tcpClient.cpp",
-  "file": "/root/litchi/httpserver/inc/tcpClient.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/pollbase.cpp.o -c /home/litchily/litchily/httpserver/inc/pollbase.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/pollbase.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/pollbase.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/tcpConnection.cpp.o -c /root/litchi/httpserver/inc/tcpConnection.cpp",
-  "file": "/root/litchi/httpserver/inc/tcpConnection.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/selectPoll.cpp.o -c /home/litchily/litchily/httpserver/inc/selectPoll.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/selectPoll.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/selectPoll.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/tcpServer.cpp.o -c /root/litchi/httpserver/inc/tcpServer.cpp",
-  "file": "/root/litchi/httpserver/inc/tcpServer.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/tcpClient.cpp.o -c /home/litchily/litchily/httpserver/inc/tcpClient.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/tcpClient.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/tcpClient.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/thread.cpp.o -c /root/litchi/httpserver/inc/thread.cpp",
-  "file": "/root/litchi/httpserver/inc/thread.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/tcpConnection.cpp.o -c /home/litchily/litchily/httpserver/inc/tcpConnection.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/tcpConnection.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/tcpConnection.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/timer.cpp.o -c /root/litchi/httpserver/inc/timer.cpp",
-  "file": "/root/litchi/httpserver/inc/timer.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/tcpServer.cpp.o -c /home/litchily/litchily/httpserver/inc/tcpServer.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/tcpServer.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/tcpServer.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/timerQueue.cpp.o -c /root/litchi/httpserver/inc/timerQueue.cpp",
-  "file": "/root/litchi/httpserver/inc/timerQueue.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/thread.cpp.o -c /home/litchily/litchily/httpserver/inc/thread.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/thread.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/thread.cpp.o"
 },
 {
-  "directory": "/root/litchi/httpserver/build",
-  "command": "/usr/bin/g++  -I/root/litchi/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/timestamp.cpp.o -c /root/litchi/httpserver/inc/timestamp.cpp",
-  "file": "/root/litchi/httpserver/inc/timestamp.cpp"
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/timer.cpp.o -c /home/litchily/litchily/httpserver/inc/timer.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/timer.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/timer.cpp.o"
+},
+{
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/timerQueue.cpp.o -c /home/litchily/litchily/httpserver/inc/timerQueue.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/timerQueue.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/timerQueue.cpp.o"
+},
+{
+  "directory": "/home/litchily/litchily/httpserver/build",
+  "command": "/usr/bin/g++  -I/home/litchily/litchily/httpserver/inc -g -std=gnu++11 -o CMakeFiles/httpServer.dir/inc/timestamp.cpp.o -c /home/litchily/litchily/httpserver/inc/timestamp.cpp",
+  "file": "/home/litchily/litchily/httpserver/inc/timestamp.cpp",
+  "output": "CMakeFiles/httpServer.dir/inc/timestamp.cpp.o"
 }
 ]

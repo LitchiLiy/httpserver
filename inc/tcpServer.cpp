@@ -89,7 +89,6 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr) {
     snprintf(buf, sizeof buf, "-%s#%d", m_ipPort.c_str(), nextConnId);
 
 
-
     string connName = m_name + buf; // 客户端的名字由： 服务器名字 + 服务器的ip + 客户端在服务器内部的编号组成
     ++nextConnId;
 

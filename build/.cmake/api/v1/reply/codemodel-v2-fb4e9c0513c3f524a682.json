@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "httpServer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-httpServer-Debug-15b15308e1a980b05080.json",
+					"jsonFile" : "target-httpServer-Debug-bc21eb03093d49c8fdb9.json",
 					"name" : "httpServer",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/root/litchi/httpserver/build",
-		"source" : "/root/litchi/httpserver"
+		"build" : "/home/litchily/litchily/httpserver/build",
+		"source" : "/home/litchily/litchily/httpserver"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 6
 	}
 }

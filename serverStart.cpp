@@ -81,8 +81,8 @@ int main(int argc, char* argv[]) {
     }
     EventLoop loop;
     loop.setMainEventLoop();
-    HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
-    // HttpServer server(&loop, InetAddress("0.0.0.0", 8000, false), "litchi");
+    // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
+    HttpServer server(&loop, InetAddress("0.0.0.0", 8000, false), "litchi");
     server.setHttpCallback(onRequest);
     server.setThreadNum(numThreads);
     server.start();

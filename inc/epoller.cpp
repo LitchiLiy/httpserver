@@ -3,15 +3,14 @@
 #include <eventLoop.h>
 #include <sys/epoll.h>
 #include <string.h>
+#include <unistd.h>
 
 
 
-const int kNew = -1;
-const int kAdded = 1;
-const int kDeleted = 2;
 
 
-Epoller::Epoller(EventLoop* el) : m_El(el) {
+
+Epoller::Epoller(EventLoop* el) :Pollbase(el) {
     // epoll初始化
     m_Epollfd = epoll_create1(EPOLL_CLOEXEC);
     // cout << "mEpollfd: " << m_Epollfd << endl;
@@ -19,41 +18,41 @@ Epoller::Epoller(EventLoop* el) : m_El(el) {
 }
 
 Epoller::~Epoller() {
-
+    close(m_Epollfd);
 }
 /*
     @brief: 他只对int fd, int event, revent和map进行改动.
 */
-void Epoller::updateChannel(Channel* ch) {
+void Epoller::updateChannel(Channel* channel) {
     // 对于新的或者是已经删除的， 就新添加， 不然就修改或删除
     // 先判断idx是否有值.
-    int ch_idx = ch->showidx();
+    int ch_idx = channel->showidx();
     if (ch_idx == kNew || ch_idx == kDeleted) {
 
         if (ch_idx == kNew) {
-            assert(m_channels.find(ch->showfd()) == m_channels.end());
-            m_channels[ch->showfd()] = ch;
+            assert(m_channels.find(channel->showfd()) == m_channels.end());
+            m_channels[channel->showfd()] = channel;
         }
         else {
             // kDeleted
-            assert(m_channels.find(ch->showfd()) != m_channels.end());
-            assert(m_channels[ch->showfd()] == ch); // mchannel, 移除频道和删除channel是两码事
+            assert(m_channels.find(channel->showfd()) != m_channels.end());
+            assert(m_channels[channel->showfd()] == channel); // mchannel, 移除频道和删除channel是两码事
         }
-        ch->set_index(kAdded);
-        epollupdate(EPOLL_CTL_ADD, ch);
+        channel->set_index(kAdded);
+        epollupdate(EPOLL_CTL_ADD, channel);
     }
     else {
-        int fdch = ch->showfd();
+        int fdch = channel->showfd();
         assert(m_channels.find(fdch) != m_channels.end());
-        assert(m_channels[fdch] == ch);
-        assert(ch->showidx() == kAdded);
-        if (ch->isNoneEvent()) {
+        assert(m_channels[fdch] == channel);
+        assert(channel->showidx() == kAdded);
+        if (channel->isNoneEvent()) {
             // 不对任何感兴趣
-            epollupdate(EPOLL_CTL_DEL, ch);
-            ch->set_index(kDeleted);
+            epollupdate(EPOLL_CTL_DEL, channel);
+            channel->set_index(kDeleted);
         }
         else {
-            epollupdate(EPOLL_CTL_MOD, ch);
+            epollupdate(EPOLL_CTL_MOD, channel);
         }
     }
 }
@@ -69,21 +68,21 @@ void Epoller::epollupdate(int op, Channel* ch) {
     }
 }
 
-void Epoller::removeChannel(Channel* ch) {
-    int chfd = ch->showfd();
-    int chidx = ch->showidx();
+void Epoller::removeChannel(Channel* channel) {
+    int chfd = channel->showfd();
+    int chidx = channel->showidx();
     assert(m_channels.find(chfd) != m_channels.end());
-    assert(m_channels[chfd] == ch);
-    assert(ch->isNoneEvent());
+    assert(m_channels[chfd] == channel);
+    assert(channel->isNoneEvent());
     assert(chidx == kAdded || chidx == kDeleted);
     m_channels.erase(chfd);
     if (chidx == kAdded) {  // 从epoll中移除
-        epollupdate(EPOLL_CTL_DEL, ch);
+        epollupdate(EPOLL_CTL_DEL, channel);
     }
-    ch->set_index(kNew);
+    channel->set_index(kNew);
 }
 
-void Epoller::fillActChannel(int actNum, vector<Channel*>* actchannels) {
+void Epoller::fillActChannel(int actNum, ChannelList* actchannels) {
     // 就是把相应的channal指针放到act里面去
 
     for (int it = 0; it < actNum; it++) {
@@ -97,7 +96,7 @@ void Epoller::fillActChannel(int actNum, vector<Channel*>* actchannels) {
     }
 }
 
-Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
+Timestamp Epoller::poll(int timeoutMs, ChannelList* actchannels) {
 
     int actNum = 0;
     actNum = epoll_wait(m_Epollfd, &*m_reventVec.begin(), m_reventVec.size(), timeoutMs);
@@ -112,20 +111,15 @@ Timestamp Epoller::epolling(int timeoutMs, vector<Channel*>* actchannels) {
         }
     }
     else if (actNum == 0) {
-        cout << "epoll_wait timeout, nothing happen" << endl;
+        LOG_ERROR << "epoller::poll() timeout";
     }
     else {
-        cout << "errno = " << saveErrno << endl; // errno = 4就是收到了中断信号EINTR
+        LOG_ERROR << "epoller::poll() error: " << strerror(saveErrno); // errno = 4就是收到了中断信号EINTR
         if (saveErrno != EINTR) {
             errno = saveErrno;
-            cout << "EPollPoller::poll()" << endl;
+            LOG_ERROR << "epoller::poll() error: " << strerror(errno);
         }
     }
     return now;
 }
 
-bool Epoller::hasChannel(Channel* ch) {
-    m_El->assertInLoopThread();
-    auto it = m_channels.find(ch->showfd());
-    return it != m_channels.end() && it->second == ch;
-}

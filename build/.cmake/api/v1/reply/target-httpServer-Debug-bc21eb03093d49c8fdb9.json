@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/root/litchi/httpserver/bin/httpServer"
+			"path" : "/home/litchily/litchily/httpserver/bin/httpServer"
 		}
 	],
 	"backtrace" : 1,
@@ -42,17 +42,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
-				},
-				{
-					"fragment" : "-std=gnu++11"
+					"fragment" : "-g -std=gnu++11"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/root/litchi/httpserver/inc"
+					"path" : "/home/litchily/litchily/httpserver/inc"
 				}
 			],
 			"language" : "CXX",
@@ -91,7 +88,9 @@
 				22,
 				23,
 				24,
-				25
+				25,
+				26,
+				27
 			]
 		}
 	],
@@ -149,7 +148,9 @@
 				22,
 				23,
 				24,
-				25
+				25,
+				26,
+				27
 			]
 		}
 	],
@@ -267,6 +268,18 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "inc/memoryPool.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/pollbase.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "inc/selectPoll.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

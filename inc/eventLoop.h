@@ -22,7 +22,7 @@ eventLoop结构
 #if !defined(EVENTLOOP_H)
 #define EVENTLOOP_H
 
-
+#include <pollbase.h>
 #include <pthread.h>
 #include <iostream>
 #include <assert.h>
@@ -51,7 +51,7 @@ using cbf = void (*)();
 class EventLoop {
 public:
     typedef std::function<void()> callBack_f;
-    EventLoop();
+    EventLoop(const string pollMode = "epoll");
     ~EventLoop();
 
     void loop();
@@ -87,7 +87,7 @@ private:
     bool looping_;
     const pthread_t threadId_;
     bool isquit;
-    std::shared_ptr<Epoller> p_Epoller;
+    std::shared_ptr<Pollbase> m_pbasePtr;
     std::vector<Channel*> v_actChannels;
 
     // 新增runInLoop

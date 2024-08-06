@@ -9,6 +9,9 @@
 #include <logging.h>
 #include <sys/socket.h>
 #include <string.h>
+#include <selectPoll.h>
+#include <pollbase.h>
+
 
 
 
@@ -16,7 +19,7 @@
 // // 一个静态指针, 用来指向运行当前函数的线程, 没啥用
 // EventLoop* t_loopInThisThread;
 
-EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector<callBack_f>{}) {
+EventLoop::EventLoop(const string pollmode) :threadId_(pthread_self()), v_pendingFunctors(std::vector<callBack_f>{}) {
     looping_ = false;
     isquit = false;
     // std::cout << "EventLoop created"
@@ -25,7 +28,17 @@ EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector
     //     << threadId_
     //     << std::endl;
     // t_loopInThisThread = this;
-    p_Epoller = std::make_shared<Epoller>(this);
+    if (pollmode == "epoll") {
+        m_pbasePtr = shared_ptr<Pollbase>(new Epoller(this));
+    }
+    else if (pollmode == "select") {
+        m_pbasePtr = shared_ptr<Pollbase>(new SelectPoll(this));
+    }
+    else {
+        LOG_ERROR << "pollmode is not right, please check it";
+    }
+    // m_pbasePtr = shared_ptr<Pollbase>(new Epoller(this));
+    // m_pbasePtr = shared_ptr<Pollbase>(new SelectPoll(this));
     m_wakeupFd = createEventfd();
     sp_wakeupChannel = std::make_shared<Channel>(this, m_wakeupFd);
     sp_wakeupChannel->setReadCallBack(std::bind(&EventLoop::handleRead, this));
@@ -33,7 +46,7 @@ EventLoop::EventLoop() :threadId_(pthread_self()), v_pendingFunctors(std::vector
     m_timerQueue = std::make_shared<TimerQueue>(this); // 定时器一个channel, wakeup一个channel
 
     LOG_INFO << "EventLoop created and address= " << this << ", tid= " << pthread_self() << ", pid= " << getpid();
-    LOG_INFO << "epollfd= " << p_Epoller->getEpollfd() << ", wakeupfd= " << m_wakeupFd;
+    // LOG_INFO << "epollfd= " << m_pbasePtr->getEpollfd() << ", wakeupfd= " << m_wakeupFd;
 
 }
 
@@ -75,7 +88,7 @@ void EventLoop::loop() {
     isquit = false;
     while (!isquit) {
         v_actChannels.clear();
-        Timestamp recTime = p_Epoller->epolling(-1, &v_actChannels);
+        Timestamp recTime = m_pbasePtr->poll(-1, &v_actChannels);
         isEventHandling = true;
         for (Channel* ch : v_actChannels) {
             currentActiveChannel_ = ch;
@@ -99,7 +112,7 @@ void EventLoop::quit() {
 void EventLoop::updateChannel(Channel* ch) {
     assert(ch->ownerloop() == this);
     assertInLoopThread();
-    p_Epoller->updateChannel(ch);
+    m_pbasePtr->updateChannel(ch);
 }
 
 void EventLoop::runInLoop(callBack_f cb) {
@@ -185,13 +198,13 @@ void EventLoop::remove(Channel* ch) {
         assert(currentActiveChannel_ == ch ||
                std::find(v_actChannels.begin(), v_actChannels.end(), ch) == v_actChannels.end());
     }
-    p_Epoller->removeChannel(ch);
+    m_pbasePtr->removeChannel(ch);
 }
 
 bool EventLoop::hasChannel(Channel* ch) {
     assert(ch->ownerloop() == this);
     assertInLoopThread();
-    return p_Epoller->hasChannel(ch);
+    return m_pbasePtr->findChannel(ch);
 }
 
 
