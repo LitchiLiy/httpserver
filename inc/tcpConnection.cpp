@@ -31,7 +31,9 @@ TcpConnection::TcpConnection(EventLoop* loop, const string& name, int sockfd, co
     m_peerAddr(peerAddr),
     m_state(kConnecting), // 这表明构建这个实例的时候是正在连接的时候
     isreading(true),
-    m_highWaterMark(64 * 1024 * 1024) {
+    m_highWaterMark(64 * 1024 * 1024),
+    TimeCloseing(false),
+    m_inputBuffer(1024) {
     m_channel->setReadCallBack(
         std::bind(&TcpConnection::handleRead, this, std::placeholders::_1)); // functional里面的东西
 
@@ -45,6 +47,7 @@ TcpConnection::TcpConnection(EventLoop* loop, const string& name, int sockfd, co
         std::bind(&TcpConnection::handleError, this));
 
     m_socket->setKeepAlive(true);
+
 }
 
 
@@ -137,7 +140,7 @@ void TcpConnection::send(Buffer* buf) {
 
 // 与关闭嘻嘻相关
 void TcpConnection::shutdown() { // 从已连接的状态到正在关闭的状态, 然后调用shutdownInLoop
-    if (m_state = kConnected) {
+    if (m_state == kConnected) {
         setState(kDisconnecting);
         m_loop->runInLoop(std::bind(&TcpConnection::shutdownInLoop, this));
     }
@@ -167,6 +170,9 @@ void TcpConnection::forceCloseInLoop() {
 }
 void TcpConnection::handleClose() {
     m_loop->assertInLoopThread();
+    if (m_state == kDisconnected) {
+        return;
+    }
     assert(m_state == kConnected || m_state == kDisconnecting);
     setState(kDisconnected);
     m_channel->disableAll();
@@ -240,17 +246,22 @@ void TcpConnection::connectDestroyed() {
         m_connectionCallback(shared_from_this());
         close(m_channel->showfd());
     }
-    if (m_channel->showidx() != kNew) {
+    if (m_channel->showidx() != kNew) { // 这里必须要这样不然重复关闭
         m_channel->remove();
     }
-
 }
 
 // 读句柄, 当需要读的时候调用这个, 会读数据到本buffer中, 当触发可读时, 会调用这个句柄.
 void TcpConnection::handleRead(Timestamp receiveTime) {
+    // auto iiii = shared_from_this().use_count();
+    // cout << iiii << endl;
     m_loop->assertInLoopThread();
     int savedErrno = 0;
+    // 为了不出现错误, 这里清空inputbuf
+    m_inputBuffer.retrieveAll();
     long long n = m_inputBuffer.readFd(m_socket->fd(), &savedErrno);
+    // iiii = shared_from_this().use_count();./
+    // cout << "n = " << n << endl;
     if (n > 0) {
         m_messageCallback(shared_from_this(), &m_inputBuffer, receiveTime);
     }
@@ -264,7 +275,7 @@ void TcpConnection::handleRead(Timestamp receiveTime) {
     }
     else { // 出错了
         errno = savedErrno;
-        handleError();
+        connectDestroyed();
     }
 }
 
@@ -335,6 +346,7 @@ void TcpConnection::handleWrite() {
 // 出错句柄
 void TcpConnection::handleError() {
     m_loop->assertInLoopThread();
-    std::cout << "TcpConnection::handleError() " << std::endl;
+    // std::cout << "TcpConnection::handleError() " << std::endl;
+    // handleClose();
 }
 

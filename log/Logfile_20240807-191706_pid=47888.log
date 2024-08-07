@@ -1,0 +1,14 @@
+20240807 19:17:06 tid=140737347905920 INFO  EventLoop created and address= 0x7FFFFFFFD3B0, tid= 140737347905920, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737347905920 INFO  Bind address success: 0.0.0.0:14789 - home/litchily/litchily/httpserver/inc/mSocket.cpp:30
+20240807 19:17:06 tid=140737347905920 INFO  TcpServer listen on 0.0.0.0:14789 - home/litchily/litchily/httpserver/inc/tcpServer.cpp:42
+20240807 19:17:06 tid=140737071056576 INFO  EventLoop created and address= 0x7FFFE7207A20, tid= 140737071056576, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737062663872 INFO  EventLoop created and address= 0x7FFFE6A06A20, tid= 140737062663872, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737054271168 INFO  EventLoop created and address= 0x7FFFE6205A20, tid= 140737054271168, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737045878464 INFO  EventLoop created and address= 0x7FFFE5A04A20, tid= 140737045878464, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737037485760 INFO  EventLoop created and address= 0x7FFFE5203A20, tid= 140737037485760, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737029093056 INFO  EventLoop created and address= 0x7FFFE4A02A20, tid= 140737029093056, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140736683038400 INFO  EventLoop created and address= 0x7FFFCFFFCA20, tid= 140736683038400, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140736674645696 INFO  EventLoop created and address= 0x7FFFCF7FBA20, tid= 140736674645696, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140736666252992 INFO  EventLoop created and address= 0x7FFFCEFFAA20, tid= 140736666252992, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140736657860288 INFO  EventLoop created and address= 0x7FFFCE7F9A20, tid= 140736657860288, pid= 47888 - home/litchily/litchily/httpserver/inc/eventLoop.cpp:48
+20240807 19:17:06 tid=140737347905920 INFO  Listen address success on fd: 7 - home/litchily/litchily/httpserver/inc/mSocket.cpp:42

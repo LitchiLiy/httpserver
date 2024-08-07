@@ -88,20 +88,20 @@ void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req)
     const string& connection = req.getHeader("Connection");
     bool close = (connection == "close" || (req.showVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive")); // http1.0是默认close的, 而http1.1是默认keep的
 
-    HttpResponse Response(close);
+    HttpResponse Response(close); // 这个close会被下面的回调所修正,不用担心他的影响
     httpCallback_(req, &Response);// 调用response回调
     // 设置长连接定时器
-    if (!Response.isCloseLive()) {
-        TcpConnectionPtr conntmp(conn);
-        auto lp = conntmp->getLoop();
-        lp->runAfter(60, std::bind(&TcpConnection::connectDestroyed, conntmp)); // 设置60s的定时器长连接销毁
-
+    if (!Response.isCloseLive() && !conn->isTimeCloseing()) {
+        // if (!Response.isCloseLive()) {
+        auto lp = conn->getLoop();
+        conn->TimeCloseing = true;
+        lp->runAfter(120, std::bind(&TcpConnection::connectDestroyed, conn)); // 设置60s的定时器长连接销毁, 用shutdown总会出毛病, 不知道为啥
     }
     Buffer buf;
     Response.appendToBuffer(&buf);
     conn->send(&buf);
     if (Response.closeConnection()) {
-        conn->shutdown();
+        conn->shutdown(); // 这只是关闭我们这边的写而已
     }
 }
 

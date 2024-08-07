@@ -20,10 +20,10 @@ FixedBuffer就是记录数据用的, 当作一个纯纯的buffer, 有添加, 重
 using namespace std;
 
 
-const int kSmallBuffer = 4000;
-const int kLargeBuffer = 4000 * 1000;
+const long long kSmallBuffer = 1024 * 1024 / 8;
+const long long kLargeBuffer = 1024 * 1024 * 1024 / 8;
 
-template<int SIZE>
+template<long long SIZE>
 class FixedBuffer {
 public:
     FixedBuffer() :m_cur(m_data) {
@@ -42,7 +42,10 @@ public:
     const char* data() const { return m_data; }
     int length() const { return static_cast<int>(m_cur - m_data); }
     char* current() { return m_cur; }
-    int avail() const { return static_cast<int>(end() - m_cur); } // 检查剩余空间是否还有剩下的
+    int avail() const {
+        auto ret = end() - m_cur; // 正常ret为4000
+        return static_cast<int>(ret);
+    } // 检查剩余空间是否还有剩下的
     void add(size_t len) { m_cur += len; }
 
     void reset() { m_cur = m_data; }

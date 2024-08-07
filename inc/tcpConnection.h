@@ -82,6 +82,9 @@ public:
     void setContext(const HttpContext& ctx) { m_context = ctx; };
     HttpContext* getContext() { return &m_context; };
 
+    bool isTimeCloseing() const { return TimeCloseing; }
+    bool TimeCloseing = false;
+
 
 
 
@@ -131,6 +134,8 @@ private:
     Buffer m_outputBuffer;
 
     HttpContext m_context;
+
+
 
 
 };

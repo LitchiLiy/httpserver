@@ -15,8 +15,8 @@
 #include <logging.h>
 
 extern string pollmode;
-
-
+extern bool isshowTerminal;
+bool closealive = true;
 using namespace std;
 
 
@@ -46,12 +46,13 @@ void onRequest(const HttpRequest& req, HttpResponse* resp) {
         resp->setContentType("text/html");
         resp->addHeader("Server", "litchily");
         resp->setbody(body);
-
+        resp->setCloseConnection(closealive);  // 这里如果没找到就关闭链接返回 Connection: close, 但是为了维持长连接， 我这里设置了false
     }
     else {
         resp->setStatusCode(HttpResponse::k404NotFound);
         resp->setStatusMessage("Not Found");
-        resp->setCloseConnection(false);  // 这里如果没找到就关闭链接返回 Connection: close, 但是为了维持长连接， 我这里设置了false
+        // resp->setCloseConnection(false);  // 这里如果没找到就关闭链接返回 Connection: close, 但是为了维持长连接， 我这里设置了false
+        resp->setCloseConnection(closealive); // 如果想设置短连接, 这里设置为true就行了, 后面会根据回复的close, 服务器这边主动关闭链接或者60s后服务器关闭连接
     }
 }
 
@@ -87,7 +88,7 @@ int main(int argc, char* argv[]) {
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
-    int numThreads = 3;
+    int numThreads = 10;
     if (argc > 1) {
         benchmark = true;
         Logger::setLogLevel(Logger::WARN);
@@ -97,8 +98,11 @@ int main(int argc, char* argv[]) {
 
     EventLoop loop(pollmode);
     loop.setMainEventLoop();
+    closealive = false;
+    isshowTerminal = true;
+
     // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
-    HttpServer server(&loop, InetAddress("0.0.0.0", 8888, false), "litchi");
+    HttpServer server(&loop, InetAddress("0.0.0.0", 14789, false), "litchi");
     // HttpServer server(&loop, InetAddress("172.19.46.27", 8888, false), "litchi"); // wsl地址
 
     server.setHttpCallback(onRequest);

@@ -41,7 +41,7 @@ size_t Buffer::readableBytesNum() const {
     return m_writerIndex - m_readerIndex;
 }
 size_t Buffer::writableBytesNum() const {
-    return m_buffer.size() - m_writerIndex;
+    return m_buffer.size() >= m_writerIndex ? m_buffer.size() - m_writerIndex : -1;
 }
 size_t Buffer::prependableBytesNum() const {
     return m_readerIndex;
@@ -236,7 +236,7 @@ void Buffer::prependInt64(int64_t x) {
 ssize_t Buffer::readFd(int fd, int* savedErrno) {
     long long n = 0;
     int flag = 1;
-    char buf[10];
+    char buf[50];
     memset(buf, 0, sizeof(buf));
     int ret = 0;
     while (flag) {
@@ -308,5 +308,6 @@ void Buffer::makeSpace(size_t len) {
         m_readerIndex = kCheapPrepend;
         m_writerIndex = m_readerIndex + readable;
         assert(readable == readableBytesNum());
+        assert(writableBytesNum() >= len);
     }
 }

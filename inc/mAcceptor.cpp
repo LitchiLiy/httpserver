@@ -45,7 +45,7 @@ Acceptor::~Acceptor() {
 
 void Acceptor::listen() { // 简单listen, 然后使能channel, 当你要开始监听的时候才开始使能.
     m_loop->isInLoopThread();
-    m_socket.startListen(10);
+    m_socket.startListen(30);
     m_channel.setReadEnable();
     isListening = true;
 }
