@@ -83,6 +83,7 @@ void TimerQueue::addTimerInLoop(Timer* timer) {
     // addTimer一定要在本线程调用才行. 
     m_loop->assertInLoopThread();
     bool earliestChanged = insertTimerSet(timer);
+    // 判断是否为唯一一个插入的timer或者排在第一位
     if (earliestChanged) {
         resetTimerfd(m_queueTimerfd, timer->showExpired());
     }
@@ -195,11 +196,17 @@ void TimerQueue::cancel(TimerId id) {
     m_loop->runInLoop(std::bind(&TimerQueue::cancelInLoop, this, id));
 }
 
+/**
+ * @brief 取消的原理是, 检查Timer地址和seq组成的pair, 在act里面, 则将他们推出去.
+ *
+ * @param id
+ */
 void TimerQueue::cancelInLoop(TimerId id) {
     m_loop->assertInLoopThread();
     assert(timers_.size() == m_activeTimerSet.size());
     actTimer timer(id.m_timer, id.m_seq);
     auto it = m_activeTimerSet.find(timer);
+    // 确定能找到
     if (it != m_activeTimerSet.end()) {
         size_t n = timers_.erase(Entry(it->first->showExpired(), it->first));
         assert(n == 1);
@@ -209,5 +216,8 @@ void TimerQueue::cancelInLoop(TimerId id) {
     else if (callingExpiredTimers_) { // 如果正在执行处理内部的定时器, 那就先存起来待会再取消
         m_cancelingTimerSet.insert(timer);
     }
+    // 此时已经没有那个了
+    Timer* nowTimer = m_activeTimerSet.begin()->first;
+    resetTimerfd(m_queueTimerfd, nowTimer->showExpired());
     assert(timers_.size() == m_activeTimerSet.size());
 }

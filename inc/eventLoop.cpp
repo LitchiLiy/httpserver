@@ -28,15 +28,8 @@ EventLoop::EventLoop(const string pollmode) :threadId_(pthread_self()), v_pendin
     //     << threadId_
     //     << std::endl;
     // t_loopInThisThread = this;
-    if (pollmode == "epoll") {
-        m_pbasePtr = shared_ptr<Pollbase>(new Epoller(this));
-    }
-    else if (pollmode == "select") {
-        m_pbasePtr = shared_ptr<Pollbase>(new SelectPoll(this));
-    }
-    else {
-        LOG_ERROR << "pollmode is not right, please check it";
-    }
+    m_pbasePtr = shared_ptr<Pollbase>(pollfact_.createPoll(pollmode, this));
+
     // m_pbasePtr = shared_ptr<Pollbase>(new Epoller(this));
     // m_pbasePtr = shared_ptr<Pollbase>(new SelectPoll(this));
     m_wakeupFd = createEventfd();
@@ -233,4 +226,8 @@ void EventLoop::handleQuit(Timestamp now) {
         }
     }
 
+}
+
+void EventLoop::cancelTimer(TimerId timerid) {
+    m_timerQueue->cancel(timerid);
 }

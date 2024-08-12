@@ -10,7 +10,8 @@
 
 
 using namespace std;
-
+AsyncLogging* AsyncLogging::ALPtr = nullptr;
+std::mutex AsyncLogging::Mtx_;
 
 AsyncLogging::AsyncLogging(const string& basename_, off_t rollSize, int flushInterval) :
     basename(basename_),

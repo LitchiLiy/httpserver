@@ -16,6 +16,8 @@
 
 extern string pollmode;
 extern bool isshowTerminal;
+extern int longConnectionTime;
+
 bool closealive = true;
 using namespace std;
 
@@ -38,7 +40,7 @@ void onRequest(const HttpRequest& req, HttpResponse* resp) {
     //         std::cout << header.first << ": " << header.second << std::endl;
     //     }
     // }
-
+    // 获取html文件
     const string body = req.getPathhtml();
     if (body != "404") {
         resp->setStatusCode(HttpResponse::k200Ok);
@@ -84,7 +86,8 @@ int main(int argc, char* argv[]) {
     char name[256] = { '\0' };  // 文件名
     char arr[] = { "../log/Logfile" };   // 直接本地文件名
     strncpy(name, arr, sizeof name - 1);
-    g_asyncLog = std::make_shared<AsyncLogging>(name, 50 * 1024 * 1024);
+    // g_asyncLog = std::make_shared<AsyncLogging>(name, 50 * 1024 * 1024);
+    g_asyncLog = std::shared_ptr<AsyncLogging>(AsyncLogging::getAsyncLog(name, 50 * 1024 * 1024 / 8)); // 50Mbit就一个文件
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
@@ -98,13 +101,15 @@ int main(int argc, char* argv[]) {
 
     EventLoop loop(pollmode);
     loop.setMainEventLoop();
-    closealive = false;
-    isshowTerminal = true;
+    closealive = false; // 是否断开
+    isshowTerminal = true; // 是否在终端展示
+    longConnectionTime = 60;  // 长连接定时器
 
+    // LOG_INFO << "服务器地址为" << "http://172.19.46.27:14789";
     // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");
     HttpServer server(&loop, InetAddress("0.0.0.0", 14789, false), "litchi");
     // HttpServer server(&loop, InetAddress("172.19.46.27", 8888, false), "litchi"); // wsl地址
-
+    // http://172.19.46.27:14789
     server.setHttpCallback(onRequest);
     server.setThreadNum(numThreads);
     server.start();

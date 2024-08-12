@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <stringPiece.h>
+#include <timerId.h>
 
 #include <mInetAddress.h>
 #include <callBacks.h>
@@ -84,7 +85,7 @@ public:
 
     bool isTimeCloseing() const { return TimeCloseing; }
     bool TimeCloseing = false;
-
+    TimerId timerid_;
 
 
 
@@ -134,8 +135,6 @@ private:
     Buffer m_outputBuffer;
 
     HttpContext m_context;
-
-
 
 
 };

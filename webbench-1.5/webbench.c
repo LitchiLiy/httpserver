@@ -464,14 +464,14 @@ void benchcore(const char* host, const int port, const char* req) {
             return;
          }
          if (s < 0) {
-            failed++;
+            failed++; // 连接失败时, fail++
             continue;
          }
          // 向服务器发送请求
          // printf("send request start\n");
          if (rlen != write(s, req, rlen)) {
             // printf("write error\n");
-            failed++;
+            failed++; // 发送数量不对等: 理解为服务器缓冲区满了, 没发完也会faile++
             close(s);
             s = -1;
             while (s < 0) {
@@ -495,7 +495,7 @@ void benchcore(const char* host, const int port, const char* req) {
                // printf("read response count: %d\n", i);
                if (i < 0) {
                   // printf("read error\n");
-                  failed++;
+                  failed++;  // 读取失败, 反正read为-1时为fail++
                   close(s);
                   goto keep_alive;
                }

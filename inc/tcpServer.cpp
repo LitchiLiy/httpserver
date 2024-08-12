@@ -34,7 +34,8 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const strin
     m_ipPort(listenAddr.ipToString()),
     m_name(nameArg),
     m_acceptor(new Acceptor(loop, listenAddr, option == kReusePort)),
-    m_threadPool(new EventLoopThreadPool(loop, nameArg)),
+    // m_threadPool(new EventLoopThreadPool(loop, nameArg)),
+    m_threadPool(EventLoopThreadPool::getThreadPool(loop, nameArg)),
     m_connectionCallback(defaultConnectionCallback), // 这里确实将默认函数放进去了，已经测试过了
     m_messageCallback(defaultMessageCallback),
     nextConnId(1) {
@@ -71,11 +72,17 @@ void TcpServer::start() {
     // m_loop->runInLoop(std::bind(&Acceptor::listen, m_acceptor.get()));
 }
 
+/**
+ * @brief 获取服务器绑定的地址,
+ *
+ * @param sockfd
+ * @return sockaddr_in
+ */
 sockaddr_in TcpServer::getSockAddr(int sockfd) {
     struct sockaddr_in addr;
     memset(&addr, 0, sizeof(addr));
     socklen_t addrlen = static_cast<socklen_t>(sizeof(addr));
-    if (getsockname(sockfd, (struct sockaddr*)&addr, &addrlen) < 0) { // 获取客户端sockfd连接的那个服务器地址
+    if (getsockname(sockfd, (struct sockaddr*)&addr, &addrlen) < 0) { // 获取服务器绑定的地址
         perror("getsockname");
     }
     return addr;
@@ -102,8 +109,10 @@ void TcpServer::newConnection(int clientFd, const InetAddress& peerAddr) {
                                             clientFd,
                                             localAddr,
                                             peerAddr));
+    string tmpS = localAddr.ipToString();
+    m_CSIpMap[tmpS] = peerAddr.ipToString();
 
-    LOG_INFO << "TcpServer::newConnection [" << this->name() << "] - new connection [" << conn->name() << "] from " << peerAddr.ipToString();
+    LOG_INFO << "TcpServer bind in [" << tmpS << "] - new connection Client IP is [" << peerAddr.ipToString() << "]";
 
 
     // LOG_INFO << conn.use_count();
@@ -113,7 +122,7 @@ void TcpServer::newConnection(int clientFd, const InetAddress& peerAddr) {
     // 这里设置回调函数
     // m_connectionCallback(conn);
     conn->setConnectionCallback(m_connectionCallback);   // 外部构建tcpserver是set的mconnectCb
-    // m_connectionCallback(conn);
+    // m_connectionCallback(conn);a
     conn->setMessageCallback(m_messageCallback);    // 外部构建的想让服务器怎么回应的cb
     conn->setWriteCompleteCallback(m_writeCompleteCallback);
     conn->setCloseCallback(std::bind(&TcpServer::removeConnection, this, std::placeholders::_1));

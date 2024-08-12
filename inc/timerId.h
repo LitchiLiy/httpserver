@@ -19,6 +19,7 @@ public:
     TimerId(Timer* timer, seq_t seq) : m_timer(std::move(timer)), m_seq(seq) {
 
     }
+    Timer* showTimer() { return m_timer; }
 
     friend class TimerQueue; // 作为友元, 其内部函数是可以调用TimerQueue的私有变量的
 };

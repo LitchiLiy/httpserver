@@ -8,8 +8,8 @@
 
 
 using namespace std;
-
-
+EventLoopThreadPool* EventLoopThreadPool::ELTPtr = nullptr;
+std::mutex EventLoopThreadPool::Mtx_;
 
 EventLoopThreadPool::EventLoopThreadPool(EventLoop* el, const string& nameArg) :
     m_fatherLoop(el),
@@ -19,6 +19,8 @@ EventLoopThreadPool::EventLoopThreadPool(EventLoop* el, const string& nameArg) :
     isstarted(false) {}
 
 EventLoopThreadPool::~EventLoopThreadPool() {
+    // 线程池声明由tcpserver来掌管.
+    ELTPtr = nullptr;
 
 }
 

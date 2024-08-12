@@ -18,6 +18,10 @@ class Timestamp;
 
 class HttpContext {
 public:
+    /**
+     * @brief 状态: 期望请求行, 期望请求头部, 期望请求体, 已获得所有
+     *
+     */
     enum HttpRequestParseState {
         kExpectRequestLine, kExpectHeaders, kExpectBody, kGotAll
     };
@@ -27,6 +31,14 @@ public:
     HttpContext() : state_(kExpectRequestLine) {}
 
 public:
+    /**
+     * @brief 解析请求行
+     *
+     * @param buf
+     * @param receiveTime
+     * @return true
+     * @return false
+     */
     bool parseRequest(Buffer* buf, Timestamp receiveTime);   // 核心函数
 
     bool gotAll() const {

@@ -93,6 +93,7 @@ private:
     int nextConnId;
 
     ConnectionMap m_connMap; // TcpServer保存着所有的连接ptr, 所有与客户端的连接的唯一保存地
+    std::map<string, string> m_CSIpMap;
 
 
 };

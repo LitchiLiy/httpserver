@@ -7,6 +7,8 @@
 #include <tcpConnection.h>
 #include <eventLoop.h>
 
+int longConnectionTime = 0;
+
 /**
  * @brief 提供一个默认的httpserver的respoones模板， 就是404
  *
@@ -94,8 +96,11 @@ void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req)
     if (!Response.isCloseLive() && !conn->isTimeCloseing()) {
         // if (!Response.isCloseLive()) {
         auto lp = conn->getLoop();
-        conn->TimeCloseing = true;
-        lp->runAfter(120, std::bind(&TcpConnection::connectDestroyed, conn)); // 设置60s的定时器长连接销毁, 用shutdown总会出毛病, 不知道为啥
+        // conn->TimeCloseing = true;
+        // 每次得到的seq都不同
+        auto tmp = conn->timerid_;
+        conn->timerid_ = lp->runAfter(longConnectionTime, std::bind(&TcpConnection::connectDestroyed, conn)); // 设置60s的定时器长连接销毁, 用shutdown总会出毛病, 不知道为啥
+        if (tmp.showTimer() != nullptr) lp->cancelTimer(tmp); // 如果不为空, condest触发了会使得这里为空
     }
     Buffer buf;
     Response.appendToBuffer(&buf);

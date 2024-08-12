@@ -9,6 +9,8 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <mutex>
+#include <memory>
 
 using namespace std;
 
@@ -21,9 +23,24 @@ class EventLoopThread;
 
 class EventLoopThreadPool {
 public:
-    EventLoopThreadPool(EventLoop* el, const string& nameArg);
-    ~EventLoopThreadPool();
+    // 懒汉式
+    static  EventLoopThreadPool* getThreadPool(EventLoop* el, const string& nameArg) {
+        // 双重检查来提高性能
+        if (ELTPtr == nullptr) {
+            lock_guard<std::mutex> lock_(Mtx_);
+            if (ELTPtr == nullptr) {
+                ELTPtr = new EventLoopThreadPool(el, nameArg);
+            }
+        }
+        return ELTPtr;
+    }
+    static std::mutex Mtx_;
 
+private:
+    EventLoopThreadPool(EventLoop* el, const string& nameArg);
+
+public:
+    ~EventLoopThreadPool();
     void setThreadNum(int numThreads) { m_threadNum = numThreads; };
     void startPool(const threadInitCallBack& cb = threadInitCallBack());
 
@@ -45,7 +62,10 @@ private:
     vector<shared_ptr<EventLoopThread>> m_threadVec;
     vector<EventLoop*> m_loopVec;
 
+    // 懒汉
+    static EventLoopThreadPool* ELTPtr;
 };
+
 
 
 

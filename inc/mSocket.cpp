@@ -27,7 +27,11 @@ void Socket::bindAddress(const InetAddress& localaddr) {
         LOG_ERROR << "bind error: " << strerror(errno);
     }
     else {
-        LOG_INFO << "Bind address success: " << localaddr.ipToString();
+        sockaddr_in addrtmp;
+        socklen_t lentmp = sizeof(addrtmp);
+        getsockname(m_socketFd, (struct sockaddr*)&addrtmp, &lentmp);
+
+        LOG_INFO << "Bind address success: " << inet_ntoa(addrtmp.sin_addr) << ":" << ntohs(addr.sin_port); // 还是0.0.0.0没法
     }
 }
 

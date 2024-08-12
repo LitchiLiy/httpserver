@@ -8,6 +8,7 @@
 #include <memory>
 #include <unistd.h>
 #include <logging.h>
+#include <timerId.h>
 
 
 
@@ -33,6 +34,7 @@ TcpConnection::TcpConnection(EventLoop* loop, const string& name, int sockfd, co
     isreading(true),
     m_highWaterMark(64 * 1024 * 1024),
     TimeCloseing(false),
+    timerid_(nullptr, -1),
     m_inputBuffer(1024) {
     m_channel->setReadCallBack(
         std::bind(&TcpConnection::handleRead, this, std::placeholders::_1)); // functional里面的东西
@@ -240,6 +242,7 @@ void TcpConnection::connectEstablished() {
 // 断开连接, handleClose最终也是调用这个
 void TcpConnection::connectDestroyed() {
     m_loop->assertInLoopThread();
+    timerid_ = TimerId(nullptr, -1); // 连接断开, 重置timerid
     if (m_state == kConnected) {
         setState(kDisconnected);
         m_channel->disableAll();

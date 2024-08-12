@@ -33,6 +33,7 @@ eventLoop结构
 #include <timerId.h>
 #include <timestamp.h>
 #include <logging.h>
+#include <pollFactory.h>
 
 
 
@@ -79,8 +80,10 @@ public:
     bool hasChannel(Channel* ch);
     void setMainEventLoop();
 
-    // 退出日志
 
+    PollFactory pollfact_;
+
+    void cancelTimer(TimerId timerid);
 
 private:
     void aboutNotInLoopThread();

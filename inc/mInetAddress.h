@@ -35,6 +35,12 @@ public:
     short ptonIp() const;
     in_addr_t ptonIpPort() const;
 
+
+    /**
+     * @brief 将ip地址字符串化
+     *
+     * @return string
+     */
     string ipToString() const;
 
     static sockaddr_in getLocalAddr(int sockfd);

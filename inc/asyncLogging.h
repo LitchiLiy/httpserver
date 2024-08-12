@@ -21,8 +21,28 @@ using namespace std;
 
 class AsyncLogging {
 public:
+    /**
+     * @brief 懒汉式创建一个同步异步日志系统
+     *
+     * @param basename
+     * @param roolSize
+     * @return AsyncLogging*
+     */
+    static AsyncLogging* getAsyncLog(const string& basename, off_t roolSize) {
+        if (ALPtr == nullptr) {
+            lock_guard<std::mutex> lock_(Mtx_);
+            if (ALPtr == nullptr) {
+                ALPtr = new AsyncLogging(basename, roolSize);
+            }
+        }
+        return ALPtr;
+    }
 
+private:
     AsyncLogging(const string& basename, off_t rollSize, int flushInterval = 3);
+    static std::mutex Mtx_;
+    static AsyncLogging* ALPtr;
+public:
     ~AsyncLogging() {
         if (isrunning) {
             stop();
