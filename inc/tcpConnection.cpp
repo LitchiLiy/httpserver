@@ -290,6 +290,7 @@ void TcpConnection::handleWrite() {
             ssize_t n = write(m_channel->showfd(), m_outputBuffer.peek(), m_outputBuffer.readableBytesNum());
             if (n > 0) {
                 m_outputBuffer.retrieve(n);
+
             }
             else if (n == 0) {
                 // 输出写外了, 
@@ -301,6 +302,7 @@ void TcpConnection::handleWrite() {
                     if (m_state == kDisconnecting) {
                         shutdownInLoop();
                     }
+                    break;  // 写外了就退出循环, 不然下一轮再进入循环由于我们已经shutdown了写, 会导致write那里出错
                 }
             }
             else {

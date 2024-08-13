@@ -95,15 +95,15 @@ void LogFile::flush() {
 }
 
 void LogFile::append_unlocked(const char* logline, int len) {
-    file_->append(logline, len);
+    file_->append(logline, len); // 单纯的往文件中写入logline信息
 
-    if (file_->writtenBytes() > rollSize_) // 我们设定了一个字节滚动阈值, 如果写入的字节数大于这个阈值
+    if (file_->writtenBytes() > rollSize_) // 我们设定了一个字节滚动阈值, 如果写入的字节数大于这个阈值, 那么就换个文件夹
     {
         rollFile();
     }
     else {
         ++count_;  // 日志追加计数器
-        if (count_ >= checkEveryN_) // 检查计数阈值, 超过了就执行.
+        if (count_ >= checkEveryN_) // 检查计数阈值, 超过了就执行., 这段的意思就是, 如果不能换个文件夹, 那么至少要把文件中的数据flush进去, 及时写入文件中避免丢失.
         {
             count_ = 0;
             time_t now = ::time(NULL); // 公元前至今的时间戳
@@ -120,17 +120,18 @@ void LogFile::append_unlocked(const char* logline, int len) {
     }
 }
 
-// 日志滚动, 每天或每小时新建一个日志
+// 日志滚动, 就是换文件的意思. 这个文件大小差不多了, 就会换文件. 只负责换文件的义务
 bool LogFile::rollFile() {
     time_t now = 0;
     string filename = getLogFileName(basename_, &now);  // 拼接文件名, 带路径的
     time_t start = now / kRollPerSeconds_ * kRollPerSeconds_; // 出基于当前时间 now 的日志文件的起始时间
 
+    // 这里纯粹是为了防止瞬时触发
     if (now > lastRoll_) {
         lastRoll_ = now;
         lastFlush_ = now;
         startOfPeriod_ = start;
-        file_.reset(new AppendFile(filename));  // 新建文件
+        file_.reset(new AppendFile(filename));  // 新建文件, 构造函数打开了一个fd为filename的文件
         return true;
     }
     return false;

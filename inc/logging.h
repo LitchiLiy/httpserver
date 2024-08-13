@@ -35,7 +35,7 @@ public:
         SourceFile(const char(&arr)[N]) :m_data(arr), m_size(N - 1) {
             const char* slash = strchr(m_data, '/');  // 找最后一个出现的地址
             if (slash) {
-                m_data = slash + 1;
+                m_data = slash + 1; // 取出文件名.不包含路径
             }
             m_size = static_cast<int>(strlen(m_data));
         }
@@ -51,8 +51,8 @@ public:
         const char* data() const { return m_data; };
         int size() const { return m_size; };
 
-        const char* m_data;
-        int m_size;
+        const char* m_data; // 不包含任何斜杠的文件名 
+        int m_size; // 文件名字符串长度
     };
 
     Logger(SourceFile file, int line);
@@ -61,15 +61,15 @@ public:
     Logger(SourceFile file, int line, bool toAbort);
     ~Logger();
 
-    LogStream& stream() { return m_impl.m_stream; }
+    LogStream& stream() { return m_impl.m_stream; } // 实例存折一个1Mbit大小的buffer, 然后有各种<<运算符存入到buffer中.
 
     static LogLevel logLevel();
     static void setLogLevel(LogLevel level);
 
     typedef void (*OutputFunc)(const char* msg, int len);
     typedef void (*FlushFunc)();
-    static void setOutput(OutputFunc out);
-    static void setFlush(FlushFunc flush);
+    static void setOutput(OutputFunc out);  // 静态函数, 用来设置默认的输出函数
+    static void setFlush(FlushFunc flush);  // 用来设置默认的flash函数
     // static void setTimeZone(const char* zone);
 
 

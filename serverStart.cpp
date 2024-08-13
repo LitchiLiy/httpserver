@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
     loop.setMainEventLoop();
     closealive = false; // 是否断开
     isshowTerminal = true; // 是否在终端展示
-    longConnectionTime = 60;  // 长连接定时器
+    longConnectionTime = 10;  // 长连接定时器
 
     // LOG_INFO << "服务器地址为" << "http://172.19.46.27:14789";
     // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");

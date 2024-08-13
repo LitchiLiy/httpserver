@@ -70,9 +70,12 @@ private:
 class LogStream {
     typedef LogStream self;
 public:
-    typedef FixedBuffer<kSmallBuffer> Buffer; // 一个char为一个字节, 4000个字节为一个kSmall, 也就是一个日志32kb.
+    typedef FixedBuffer<kSmallBuffer> Buffer; // 一个char为一个字节, 1Mbit大小
     LogStream() = default;
     ~LogStream() = default;
+
+
+    // 重构各种类型的数据的<<操作符. 符合的有布尔变量, 各种整形, 长整型, 浮点数, void*类型, string类型, buffer类
 
     self& operator<<(bool v);
     self& operator<<(short);
@@ -105,7 +108,7 @@ private:
     template<typename T>
     void formatInteger(T); // <<符号就会调用这个函数, 将数据写入buffer中, 但是超出范围不会执行写入, 而是跳过
 
-    Buffer m_buffer;
+    Buffer m_buffer; // 1Mbit大小
     static const int kMaxNumericSize = 48;
 };
 

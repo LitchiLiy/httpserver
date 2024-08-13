@@ -2,19 +2,82 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>这是测试页面1, 点击下方返回主页面</title>
+    <title>服务器压力测试报告</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .test-result {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>这是测试页面1, 点击下方按钮返回主页面</h1>
-    <!-- 按钮用于重新加载页面 -->
+    <div class="container">
+        <h1>服务器压力测试报告</h1>
+        <h2>服务器压力测试设置</h2>
+        <p><strong>Web服务器设置：</strong></p>
+        <ol>
+            <li>IO复用方式选epoll方式。</li>
+            <li>线程池线程数设置为10个线程。</ol>
+            <li>开启异步日志系统记录日志到本地文件，但禁止日志信息输出在终端。</li>
+        </ol>
+        
+        <p><strong>Webbench设置：</strong></p>
+        <ol>
+            <li>测试时间为30s。</li>
+            <li>向服务器发起GET请求的客户端数量为500个。</li>
+            <li>长连接压力测试使用HTTP/1.1版本。</li>
+        </ol>
+
+        <h2>长连接压力测试结果</h2>
+        <p>如下图所示，设置测试时间30s，500个客户端并发连接服务器并发起HTTP请求报文，请求方式为GET。结果表明在长连接模式下服务器处理页面的速率为3082268 page/min，即服务器QPS（秒查询率）为5万多。</p>
+        <!-- 此处添加长连接测试结果的图片，替换为你的实际图片路径 -->
+        <div class="test-result">
+            <img src="keepAlive.jpg" alt="长连接压力测试结果">
+        </div>
+
+        <h2>短连接压力测试结果</h2>
+        <p>如下图所示，测试的设置同上，请求方式为GET。结果表明在短连接模式下服务器处理页面的速率为29万多，即服务器QPS为4800多。</p>
+        <!-- 此处添加短连接测试结果的图片，替换为你的实际图片路径 -->
+        <div class="test-result">
+            <img src="close.jpg" alt="短连接压力测试结果">
+        </div>
+
+        <h2>异步日志系统相关</h2>
+        <p>如下图所示为日志系统记录的客户端发来的HTTP请求报文信息(短连接)</p>
+        <!-- 此处添加短连接测试结果的图片，替换为你的实际图片路径 -->
+        <div class="test-result">
+            <img src="log1.png" alt="短连接压力测试结果">
+        </div>
+        <p>全都以log形式的文件保存在服务器本地</p>
+        <!-- 此处添加短连接测试结果的图片，替换为你的实际图片路径 -->
+        <div class="test-result">
+            <img src="log2.png" alt="短连接压力测试结果">
+        </div>
+    </div>
+
+    
+    <!-- 按钮用于返回主页面 -->
     <br/>
-            <form action="index.html" method="post">
-                    <div align="center"><button type="submit" >返回主页面</button></div>
-            </form>
+    <form action="index.html" method="get">
+        <div align="center">
+            <button type="submit">返回主页面</button>
+        </div>
+    </form>
     <br/>
-
-
-
-
 </body>
 </html>

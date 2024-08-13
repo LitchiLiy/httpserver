@@ -30,9 +30,14 @@ AsyncLogging::AsyncLogging(const string& basename_, off_t rollSize, int flushInt
 
 
 
-
+/**
+ * @brief 提供了一个append接口, 当开启AsyncLogging线程之后, 可以调用这个接口写东西.
+ *
+ * @param logline
+ * @param len
+ */
 void AsyncLogging::append(const char* logline, size_t len) {
-    lock_guard<mutex> lock(m_mutex); // 锁住, 只有我一个线程能用
+    lock_guard<mutex> lock(m_mutex); // 锁住, 我在写的时候, 后端不能用, 只能等我写完后端才能
     if (currentBuffer->avail() > len)  // 当前的buffer能装下, 
     {
         currentBuffer->append(logline, len);
@@ -47,12 +52,12 @@ void AsyncLogging::append(const char* logline, size_t len) {
             currentBuffer.reset(new tBuffer); // 新建一个buffer
         }
         currentBuffer->append(logline, len); // 装进去
-        m_cond.notify_one(); // 唤醒线程的执行函数
+        m_cond.notify_one(); // 唤醒后端的vecpushback流程
     }
 }
 
 /**
- * @brief 当你创建了AsyncLogging对象, 调用start, 他会创建一个线程， 线程就会运行这个函数。
+ * @brief 当你创建了AsyncLogging对象, 调用start, 他会创建一个线程， 线程就会运行这个函数。 同步线程干了什么事情:前端有一个buffer缓冲区, 日志往buffer前端写, 然后同步锁住, 将前端buffer插入vec中, 然后交换写vec与插入vec, 然插入vec继续插入, 前端buffer继续buffer, 接下来就是遍历后端vec的buffer将他们的数据全部插入了.
  *
  */
 void AsyncLogging::threadFunc() {
@@ -64,12 +69,17 @@ void AsyncLogging::threadFunc() {
         m_cond.notify_all(); // 这里把start的wait函数唤醒
     }
     LogFile output(basename, rollSize, false); // 打开一个输出文件的fd
+
+    // 两个缓冲区
     BufferPtr newBuffer1(new tBuffer);
     BufferPtr newBuffer2(new tBuffer);
+
     newBuffer1->bzero();
     newBuffer2->bzero();
     BufferVector buffersToWrite;
     buffersToWrite.reserve(16);  // 预留空间
+
+
     while (isrunning) {
         assert(newBuffer1 && newBuffer1->length() == 0);
         assert(newBuffer2 && newBuffer2->length() == 0);
@@ -78,7 +88,7 @@ void AsyncLogging::threadFunc() {
         {
             unique_lock<mutex> lock(m_cond_mutex);
             if (bufferVec.empty()) {  // 不经常用
-                m_cond.wait_for(lock, chrono::microseconds(flushInterval * 1000 * 1000)); // 阻塞等待notify， 单位秒
+                m_cond.wait_for(lock, chrono::microseconds(flushInterval * 1000 * 1000)); // 阻塞等待notify， 单位秒, 最多在这等默认3秒
             }
             bufferVec.push_back(std::move(currentBuffer));  // 有数据进来后，转移给vec
             currentBuffer = std::move(newBuffer1);
@@ -91,7 +101,7 @@ void AsyncLogging::threadFunc() {
         assert(!buffersToWrite.empty());
 
         // 容量控制, 日志实在太多了没办法, 删一点.
-        // 如果超过25个就打印一下, 并删除vec中的部分buffer. 主要是控制vec的大小
+        // 数据太多了, 超过25个就删掉后面刚进来的两个.
         if (buffersToWrite.size() > 25) {
             char buf[256];
             snprintf(buf, sizeof buf, "timestamp is %ld second, %zd larger buffers\n",
@@ -108,13 +118,14 @@ void AsyncLogging::threadFunc() {
             output.append(buffer->data(), buffer->length());
         }
 
-        // 写完之后, 调整大小位2
+        // 写完之后, 释放内存
         if (buffersToWrite.size() > 2) {
             // drop non-bzero-ed buffers, avoid trashing
             buffersToWrite.resize(2);
         }
 
-        // 取出vec两个buffer, 以免新建浪费资源
+        // 将参与写入的那两个的内存资源给buffer1和buffer2
+
         if (!newBuffer1) {
             assert(!buffersToWrite.empty());
             newBuffer1 = std::move(buffersToWrite.back());

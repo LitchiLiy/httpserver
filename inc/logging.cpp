@@ -24,9 +24,9 @@ const char* strerror_tl(int savedErrno) {
 
 // 获取环境变量的值, 然后将其转换为LogLevel输出出去.
 Logger::LogLevel initLogLevel() {
-    if (::getenv("MUDUO_LOG_TRACE"))
+    if (::getenv("LOG_TRACE"))
         return Logger::TRACE;
-    else if (::getenv("MUDUO_LOG_DEBUG"))
+    else if (::getenv("LOG_DEBUG"))
         return Logger::DEBUG;
     else
         return Logger::INFO;
@@ -163,11 +163,14 @@ Logger::Logger(SourceFile file, int line, LogLevel level)
 Logger::Logger(SourceFile file, int line, bool toAbort)
     : m_impl(toAbort ? FATAL : ERROR, errno, file, line) {}
 
-
+/**
+ * @brief C++栈管理机制调用, 不是系统内核调用, 同步调用.
+ *
+ */
 Logger::~Logger() {
     m_impl.finish();
-    const LogStream::Buffer& buf(stream().buffer());
-    g_output(buf.data(), buf.length());  // 如果不特地设置， gout地方就是stdout
+    const LogStream::Buffer& buf(stream().buffer()); // 把构造Logg的stream的buffer数据取出来. 可以看到, 最大存储内容为1Mbit.
+    g_output(buf.data(), buf.length());  // 直接调用同步的Async的append? 如果不刻意设置就是终端输出.
     if (isshowTerminal) {
         defaultOutput(buf.data(), buf.length()); // 这个就是终端输出， 默认是stdout， 如果没有设置g_output， 则把这行注销掉
     }

@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>利洋的个人简历</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利洋的简历</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +12,15 @@
         .container {
             width: 80%;
             margin: auto;
+            overflow: hidden;
+        }
+        .resume-header {
+            text-align: center;
+            padding: 20px;
+            background: #f2f2f2;
+        }
+        .resume-body {
+            margin-top: 20px;
         }
         .section {
             margin-bottom: 20px;
@@ -19,86 +29,137 @@
             font-size: 24px;
             color: #333;
         }
-        .contact-info {
-            font-style: italic;
-            margin-bottom: 20px;
+        .section-content {
+            font-size: 16px;
         }
-        .skill-list, .project-description, .education-background, .honor-certificates, .self-evaluation {
-            list-style-type: none;
-            padding: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .skill-list li, .project-description li, .education-background li, .honor-certificates li, .self-evaluation li {
-            margin-bottom: 10px;
+        table, th, td {
+            border: 1px solid #ddd;
         }
-        .button-container {
-            display: flex;
-            gap: 200px; /* 按钮之间的间距 */
+        th, td {
+            padding: 10px;
+            text-align: left;
         }
-        button {
-            font-size: 20px; /* 按钮文字大小 */
-            padding: 10px 20px; /* 按钮内边距 */
-            cursor: pointer;
+        th {
+            background-color: #f2f2f2;
+        }
+        ul {
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>利洋的个人简历</h1>
-        <div class="contact-info">
-            <p>电话：17722238669（微信同号）</p>
-            <p>邮箱：2952410791@qq.com</p>
-            <p>GitHub：<a href="https://github.com/LitchiLiy" target="_blank">https://github.com/LitchiLiy</a></p>
-            <p>期望实习岗位：研发工程师</p>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">IT技能</h2>
-            <ul class="skill-list">
-                <li>熟悉C++语言开发，熟悉C++11新特性(智能指针，Lambda表达式等)，熟悉常用STL容器。</li>
-                <li>熟悉Windows C++开发，掌握Linux操作系统开发环境与Socket网络编程。</li>
-                <li>熟悉计算机网络OSI七层模型、TCP/IP网络模型，熟悉TCP协议面向连接管理。</li>
-                <li>熟练掌握数据结构和算法，力扣刷题100+。</li>
-                <li>熟悉Python语言开发，熟悉使用numpy、matplotlib、cvxpy等。</li>
-                <li>熟悉Git、Vscode、SSH、Cmake、Xshell，Wireshark等开发工具。</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">项目经历</h2>
-            <ul class="project-description">
-                <li>基于Lyapunov优化算法的无人机MEC资源分配方法（正在撰写的硕士论文）2022年至今</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">教育背景</h2>
-            <ul class="education-background">
-                <li>深圳大学 信息与通信工程专业 硕士 2022.09至今</li>
-                <li>深圳大学 电子科学与技术专业 学士 2018.09-2022.06</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">荣誉/证书</h2>
-            <ul class="honor-certificates">
-                <li>2023-2024学年获得深圳大学2022级硕士一等奖。</li>
-                <li>2022-2023学年获得深圳大学2022级硕士特等奖。</li>
-                <li>英语CET6。</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">自我评价</h2>
-            <ul class="self-evaluation">
-                <li>热爱编写代码，具有信息检索和收集能力，善于运用GPT大模型处理项目中的编程问题。</li>
-                <li>自学与动手能力强，工作积极认真，为人友善，责任心强。</li>
-                <li>热爱运动：游泳、爬山、骑自行车等户外活动。</li>
-            </ul>
+        <header class="resume-header">
+            <h1>利洋的简历</h1>
+        </header>
+        <div class="resume-body">
+            <div class="section">
+                <h2 class="section-title">基本信息</h2>
+                <div class="section-content">
+                    <table>
+                        <tr>
+                            <td>姓名：利洋</td>
+                            <td>毕业院校：深圳大学</td>
+                        </tr>
+                        <tr>
+                            <td>毕业时间：2025年7月</td>
+                            <td>籍贯：广东紫金</td>
+                        </tr>
+                        <tr>
+                            <td>电话：17722238669</td>
+                            <td>微信/QQ：17722238669 / 2952410791</td>
+                        </tr>
+                        <tr>
+                            <td>邮箱：liyang20182@email.szu.edu.cn</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- 教育经历 -->
+            <div class="section">
+                <h2 class="section-title">教育经历</h2>
+                <div class="section-content">
+                    <table>
+                        <!-- 硕士教育经历 -->
+                        <tr>
+                            <th>深圳大学</th>
+                            <td>硕士 | 信息与通信工程 | 2022.09 – 至今</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <ul>
+                                    <li>必修课平均分89.9，全专业排名第3（共97人）</li>
+                                    <li>荣誉奖项：2022年特等学业奖学金、2023年一等学业奖学金（均为该学年最高学业奖学金）</li>
+                                    <li>英语水平：已通过CET4、CET6考试</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <!-- 本科教育经历 -->
+                        <tr>
+                            <th>深圳大学</th>
+                            <td>本科 | 电子科学与技术 | 2018.09 – 2022.07</td>
+                        </tr>
+                        <!-- 可以在这里添加本科期间的详细信息 -->
+                    </table>
+                </div>
+            </div>
+            <!-- 专业技能 -->
+            <!-- 专业技能 -->
+            <div class="section">
+                <h2 class="section-title">专业技能</h2>
+                <div class="section-content">
+                    <ol>
+                        <li>熟悉C/C++语言，深入理解面向对象编程的核心概念，包括多态、封装和继承。熟悉C++11及其新特性，如智能指针和lambda表达式。熟练掌握STL容器，如vector、string、unordered_map和list，具有良好的编程实践。</li>
+                        <li>熟悉多种数据结构，包括链表、栈、堆、二叉树和哈希表。掌握八大排序算法、KMP字符串搜索算法、动态规划和回溯算法。</li>
+                        <li>熟练Linux环境下的socket编程，能够开发客户端和服务器应用程序。精通IO多路复用技术select和epoll，了解Linux系统网络包的收发过程。</li>
+                        <li>了解TCP/IP四层网络模型，熟悉TCP/IP协议的数据包封装和分组。掌握TCP协议的连接管理（三次握手和四次挥手）、重传机制、滑动窗口、流量控制和拥塞控制。</li>
+                        <li>熟悉HTTP协议的细节，包括状态码、常见字段和缓存技术。了解HTTPS协议，包括TLS握手过程、RSA密钥交换和ECDHE算法。对浏览器从输入网址到显示网页的整个过程有清晰的认识。</li>
+                        <li>熟练使用开发工具，包括vscode、vim、WSL、cmake和Git。</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- 项目经历 -->
+            <!-- 项目经历 -->
+            <div class="section">
+                <h2 class="section-title">项目经历</h2>
+                <div class="section-content">
+                    <h3>基于Linux的轻量级Web服务器（独立开发）</h3>
+                    <p><strong>时间：</strong>2024.05 - 2024.07</p>
+                    <p>本项目旨在深入学习Linux网络编程，通过实践掌握C++在Linux环境下的多线程Web服务器开发技术。该项目是一个基于B/S架构的Web服务器，能够及时响应浏览器客户端发起的HTTP请求。在本地环境中，使用Webbench工具对服务器进行了压力测试，短连接QPS为[具体数值]，长连接QPS为[具体数值]。该项目的部署在阿里云的地址<a href="http://8.147.235.188:14789" target="_blank">http://8.147.235.188:14789</a></p>
+                    <h4>主要工作：</h4>
+                    <ol>
+                        <li>实现了基于有限状态机的HTTP请求解析器，兼容长连接与短连接。开发了基于最小堆原理的高效定时器，用于管理HTTP长连接，实现了60秒内自动回收无活动连接的功能。</li>
+                        <li>实现了一个基于多生产者/单消费者模型的日志系统，采用同步生产异步消费机制，通过双缓冲区轮换策略，有效地将日志数据记录到本地存储。</li>
+                        <li>实现了基于epoll或select的高性能IO复用框架，采用非阻塞ET模式读取IO端口数据，降低了系统调用频率。</li>
+                        <li>开发了基于Reactor模式的网络服务框架，结合线程池技术，实现了对大量并发连接的高效管理。</li>
+                        <li>二次开发Webbench测压工具，实现了支持HTTP协议长连接模式的定制测压方案。</li>
+                    </ol>
+                    <h4>个人收获：</h4>
+                    <ol>
+                        <li>深刻学习了HTTP协议的细节，包括请求响应报文结构、高效缓存策略、长连接与短连接实现细节，以及客户端与服务器间的HTTP报文传输流程，并掌握了使用有限状态机解析HTTP报文的技术。</li>
+                        <li>学习了设计模式，实现了单例模式下的懒汉式异步日志系统以及懒汉式线程池。通过工厂模式，灵活设计了基于参数的IO复用技术选择逻辑，使系统能够根据动态绑定选择epoll或select进行高效IO监控。</li>
+                        <li>学习了开源网络库muduo的线程事件循环机制，有效结合线程池实现了高效的Reactor事件处理模式，提升了网络应用的并发处理能力。</li>
+                        <li>熟悉了Socket网络编程知识，熟练开发客户端和服务器应用程序，并清晰理解了网络数据包在Linux系统中从网卡到应用层的传输过程。</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- 个人评价 -->
+            <div class="section">
+                <h2 class="section-title">个人评价</h2>
+                <div class="section-content">
+                    <!-- 在这里添加个人评价描述 -->
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
-<div align="center"><font size="5"> <strong>测试两个页面</strong></font></div>
+
+<div align="center"><font size="5"> <strong>压力测试结果</strong></font></div>
 <br/>
     <br/>
 
@@ -107,16 +168,13 @@
 
 
 
-    <form action="testPage1.html" method="post">
-         <div align="center"><button type="submit">测试页面1</button></div>
+    <form action="testPage1.html" method="get">
+         <div align="center"><button type="submit">图片</button></div>
             </form>
     <br/><!-- 这个action只是URL而已, 会在前面自动加/testPage2.html 到服务器那边还是要修改一下路径 -->
-            <form action="testPage2.html" method="post">
-                    <div align="center"><button type="submit" >测试页面2</button></div>
-            </form>
     <br/>
 
-    
-    </div>
+
+
 
 </html>

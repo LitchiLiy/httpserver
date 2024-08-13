@@ -25,7 +25,7 @@ private:
     size_t write(const char* logline, size_t len);
     FILE* fp_;
     char buffer_[64 * 1024];
-    off_t writtenBytes_;
+    off_t writtenBytes_; // 表示的是, 已经往文件中写入的字节数
 };
 
 
@@ -33,6 +33,10 @@ private:
 作用: 调动appendFile已经继承的功能, 然后实现日志的滚动更替(换名字等)
 */
 
+/**
+ * @brief 关注写入逻辑, 包括周期刷新, 写入滚动, 计数到达就roll等逻辑. 使用这个类示例直接调用append写入数据即可, 这个类实例可以帮你完成各种刷新数据, 换文件等操作.
+ *
+ */
 class LogFile
 {
 public:
