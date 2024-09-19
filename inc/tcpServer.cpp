@@ -112,7 +112,7 @@ void TcpServer::newConnection(int clientFd, const InetAddress& peerAddr) {
     string tmpS = localAddr.ipToString();
     m_CSIpMap[tmpS] = peerAddr.ipToString();
 
-    LOG_INFO << "TcpServer bind in [" << tmpS << "] - new connection Client IP is [" << peerAddr.ipToString() << "]";
+    LOG_INFO << "新连接建立，服务器ip地址为：" << localAddr.ipToString() << " 对端IP地址为： " << peerAddr.ipToString();
 
 
     // LOG_INFO << conn.use_count();

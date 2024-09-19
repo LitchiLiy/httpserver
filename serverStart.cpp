@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
     char arr[] = { "../log/Logfile" };   // 直接本地文件名
     strncpy(name, arr, sizeof name - 1);
     // g_asyncLog = std::make_shared<AsyncLogging>(name, 50 * 1024 * 1024);
-    g_asyncLog = std::shared_ptr<AsyncLogging>(AsyncLogging::getAsyncLog(name, 50 * 1024 * 1024 / 8)); // 50Mbit就一个文件
+    g_asyncLog = std::shared_ptr<AsyncLogging>(AsyncLogging::getAsyncLog(name, 500 * 1024 * 1024)); // 这里文件大小大约50Mbit
     g_asyncLog->start();  // 构建一个新线程, 不管主线程的事情
     Logger::setOutput(asyncOutput);
 
@@ -101,9 +101,9 @@ int main(int argc, char* argv[]) {
 
     EventLoop loop(pollmode);
     loop.setMainEventLoop();
-    closealive = false; // 是否断开
+    closealive = true; // 是否断开
     isshowTerminal = true; // 是否在终端展示
-    longConnectionTime = 10;  // 长连接定时器
+    longConnectionTime = 60;  // 长连接定时器
 
     // LOG_INFO << "服务器地址为" << "http://172.19.46.27:14789";
     // HttpServer server(&loop, InetAddress("172.24.42.9", 8888, false), "litchi");

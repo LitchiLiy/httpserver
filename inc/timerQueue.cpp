@@ -148,7 +148,7 @@ void TimerQueue::timerHandleRead() {
     Timestamp now = Timestamp::now();
     uint64_t timeNum = 0;
     ssize_t ret = read(m_queueTimerfd, &timeNum, sizeof(timeNum)); // 不读出来就一直触发LT模式
-    cout << "timer out read ：" << timeNum << endl;
+    LOG_INFO << "id为: " << m_queueTimerfd << " 的定时器触发了。";
 
     // 处理堆积的定时器, 取出来, 全部执行
 
@@ -217,7 +217,21 @@ void TimerQueue::cancelInLoop(TimerId id) {
         m_cancelingTimerSet.insert(timer);
     }
     // 此时已经没有那个了
-    Timer* nowTimer = m_activeTimerSet.begin()->first;
-    resetTimerfd(m_queueTimerfd, nowTimer->showExpired());
+    if (m_activeTimerSet.size() == 0) {
+        struct itimerspec new_spec;
+        memset(&new_spec, 0, sizeof(new_spec));
+        // 设置定时器的过期时间为0，这样定时器就不会再次触发
+        new_spec.it_value.tv_sec = 0;
+        new_spec.it_value.tv_nsec = 0;
+        new_spec.it_interval.tv_sec = 0;
+        new_spec.it_interval.tv_nsec = 0;
+        // 使用TIMER_ABSTIME标志来确保定时器立即被禁用
+        int flags = TIMER_ABSTIME;
+        int ret = timerfd_settime(m_queueTimerfd, flags, &new_spec, NULL);
+    }
+    else {
+        Timer* nowTimer = m_activeTimerSet.begin()->first;
+        resetTimerfd(m_queueTimerfd, nowTimer->showExpired());
+    }
     assert(timers_.size() == m_activeTimerSet.size());
 }

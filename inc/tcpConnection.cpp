@@ -243,15 +243,17 @@ void TcpConnection::connectEstablished() {
 void TcpConnection::connectDestroyed() {
     m_loop->assertInLoopThread();
     timerid_ = TimerId(nullptr, -1); // 连接断开, 重置timerid
+    LOG_INFO << "TCP链接断开" << "链接信息为local: " << m_localAddr.ipToString() << " peer: " << m_peerAddr.ipToString();
     if (m_state == kConnected) {
         setState(kDisconnected);
-        m_channel->disableAll();
+        m_channel->disableAll();  // 改变该channel在epoll中的地位，比如取消监控
         m_connectionCallback(shared_from_this());
-        close(m_channel->showfd());
+        close(m_channel->showfd());  // 调用close彻底关闭tcp链接
     }
     if (m_channel->showidx() != kNew) { // 这里必须要这样不然重复关闭
         m_channel->remove();
     }
+
 }
 
 // 读句柄, 当需要读的时候调用这个, 会读数据到本buffer中, 当触发可读时, 会调用这个句柄.

@@ -1,0 +1,3 @@
+/home/litchily/litchily/httpserver/CMakeFiles/httpServer.dir
+/home/litchily/litchily/httpserver/CMakeFiles/edit_cache.dir
+/home/litchily/litchily/httpserver/CMakeFiles/rebuild_cache.dir

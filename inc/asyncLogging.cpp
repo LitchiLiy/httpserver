@@ -15,7 +15,7 @@ std::mutex AsyncLogging::Mtx_;
 
 AsyncLogging::AsyncLogging(const string& basename_, off_t rollSize, int flushInterval) :
     basename(basename_),
-    rollSize(rollSize),
+    rollSize(rollSize),  // long 用sizeof测试为4个字节
     flushInterval(flushInterval),
     currentBuffer(new tBuffer),
     nextBuffer(new tBuffer),
@@ -66,12 +66,13 @@ void AsyncLogging::threadFunc() {
     {
         lock_guard<mutex> lock(m_cond_mutex);
         cond_state = 1;
-        m_cond.notify_all(); // 这里把start的wait函数唤醒
+        m_cond.notify_all(); // 这里把start的wait函数唤醒, 表示线程已经构建好了
     }
+
     LogFile output(basename, rollSize, false); // 打开一个输出文件的fd
 
     // 两个缓冲区
-    BufferPtr newBuffer1(new tBuffer);
+    BufferPtr newBuffer1(new tBuffer);  // 
     BufferPtr newBuffer2(new tBuffer);
 
     newBuffer1->bzero();
@@ -90,7 +91,7 @@ void AsyncLogging::threadFunc() {
             if (bufferVec.empty()) {  // 不经常用
                 m_cond.wait_for(lock, chrono::microseconds(flushInterval * 1000 * 1000)); // 阻塞等待notify， 单位秒, 最多在这等默认3秒
             }
-            bufferVec.push_back(std::move(currentBuffer));  // 有数据进来后，转移给vec
+            bufferVec.push_back(std::move(currentBuffer));  // 剩余的数据也压紧来
             currentBuffer = std::move(newBuffer1);
             buffersToWrite.swap(bufferVec);
             if (!nextBuffer) {
@@ -109,7 +110,7 @@ void AsyncLogging::threadFunc() {
                      buffersToWrite.size() - 2);
             fputs(buf, stderr);
             output.append(buf, static_cast<int>(strlen(buf))); // 将信息写入文件
-            buffersToWrite.erase(buffersToWrite.begin() + 2, buffersToWrite.end()); // 删掉前两个
+            buffersToWrite.erase(buffersToWrite.begin() + 23, buffersToWrite.end()); // 删掉前两个
         }
 
         // 逐个写入到fd当中, 

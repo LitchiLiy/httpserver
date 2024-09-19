@@ -8,7 +8,7 @@
 #include <eventLoop.h>
 
 int longConnectionTime = 0;
-
+extern bool closealive;
 /**
  * @brief 提供一个默认的httpserver的respoones模板， 就是404
  *
@@ -88,19 +88,32 @@ void HttpServer::onMessage(const TcpConnectionPtr& conn,
  */
 void HttpServer::onRequest(const TcpConnectionPtr& conn, const HttpRequest& req) {
     const string& connection = req.getHeader("Connection");
-    bool close = (connection == "close" || (req.showVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive")); // http1.0是默认close的, 而http1.1是默认keep的
+    closealive = (connection == "close" || (req.showVersion() == HttpRequest::kHttp10 && connection != "Keep-Alive")); // http1.0是默认close的, 而http1.1是默认keep的
 
-    HttpResponse Response(close); // 这个close会被下面的回调所修正,不用担心他的影响
+    HttpResponse Response(closealive); // 这个close会被下面的回调所修正,不用担心他的影响
     httpCallback_(req, &Response);// 调用response回调
     // 设置长连接定时器
-    if (!Response.isCloseLive() && !conn->isTimeCloseing()) {
+    if (!Response.isCloseLive()) {
         // if (!Response.isCloseLive()) {
         auto lp = conn->getLoop();
         // conn->TimeCloseing = true;
         // 每次得到的seq都不同
         auto tmp = conn->timerid_;
-        conn->timerid_ = lp->runAfter(longConnectionTime, std::bind(&TcpConnection::connectDestroyed, conn)); // 设置60s的定时器长连接销毁, 用shutdown总会出毛病, 不知道为啥
-        if (tmp.showTimer() != nullptr) lp->cancelTimer(tmp); // 如果不为空, condest触发了会使得这里为空
+
+        // 二次链接
+        if (conn->TimeCloseing == true) {
+            if (tmp.showTimer() != nullptr) lp->cancelTimer(tmp); // 如果不为空, condest触发了会使得这里为空
+            conn->timerid_ = lp->runAfter(longConnectionTime, std::bind(&TcpConnection::connectDestroyed, conn)); // 设置60s的定时器长连接销毁, 用shutdown总会出毛病, 不知道为啥
+        }
+
+        // 初次链接
+        if (conn->TimeCloseing == false) {
+            conn->timerid_ = lp->runAfter(longConnectionTime, std::bind(&TcpConnection::connectDestroyed, conn));
+            conn->TimeCloseing = true;
+        }
+
+
+
     }
     Buffer buf;
     Response.appendToBuffer(&buf);

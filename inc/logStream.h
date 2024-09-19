@@ -20,10 +20,10 @@ FixedBuffer就是记录数据用的, 当作一个纯纯的buffer, 有添加, 重
 using namespace std;
 
 
-const long long kSmallBuffer = 1024 * 1024 / 8;
-const long long kLargeBuffer = 1024 * 1024 * 1024 / 8;
+const long  kSmallBuffer = 1024; // 4k个字节，也就是32kbit
+const long  kLargeBuffer = 4096 * 1024; // 4M个字节，也就是32Mbit
 
-template<long long SIZE>
+template<long  SIZE>
 class FixedBuffer {
 public:
     FixedBuffer() :m_cur(m_data) {
@@ -34,7 +34,7 @@ public:
     }
 
     void append(const char* buf, size_t len) {
-        if (avail() > len) {
+        if (avail() > len) { // 如果打开文件，则测压的时候这里可能会报错
             memcpy(m_cur, buf, len);
             m_cur += len;
         }
@@ -43,12 +43,15 @@ public:
     int length() const { return static_cast<int>(m_cur - m_data); }
     char* current() { return m_cur; }
     int avail() const {
-        auto ret = end() - m_cur; // 正常ret为4000
+        auto ret = end() - m_cur - 1; // 正常ret为4000
         return static_cast<int>(ret);
     } // 检查剩余空间是否还有剩下的
     void add(size_t len) { m_cur += len; }
 
-    void reset() { m_cur = m_data; }
+    void reset() {
+        m_cur = m_data;
+        // m_cur[0] = '\0';
+    }
     void bzero() { memset(m_data, 0, sizeof(m_data)); }
 
     string toString() const { return string(m_data, m_cur); }
@@ -70,7 +73,7 @@ private:
 class LogStream {
     typedef LogStream self;
 public:
-    typedef FixedBuffer<kSmallBuffer> Buffer; // 一个char为一个字节, 1Mbit大小
+    typedef FixedBuffer<kSmallBuffer> Buffer; // 一个char为一个字节, 32kbit大小，4k个字节
     LogStream() = default;
     ~LogStream() = default;
 
@@ -108,7 +111,7 @@ private:
     template<typename T>
     void formatInteger(T); // <<符号就会调用这个函数, 将数据写入buffer中, 但是超出范围不会执行写入, 而是跳过
 
-    Buffer m_buffer; // 1Mbit大小
+    Buffer m_buffer; // // 一个char为一个字节, 32kbit大小，4k个字节
     static const int kMaxNumericSize = 48;
 };
 

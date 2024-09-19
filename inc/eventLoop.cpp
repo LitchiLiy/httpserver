@@ -85,7 +85,7 @@ void EventLoop::loop() {
         isEventHandling = true;
         for (Channel* ch : v_actChannels) {
             currentActiveChannel_ = ch;
-            ch->handleEvent(recTime);
+            currentActiveChannel_->handleEvent(recTime);
         }
         currentActiveChannel_ = nullptr;
         isEventHandling = false;
@@ -193,7 +193,13 @@ TimerId EventLoop::runEvery(double interval, const callBack_f& cb) {
 void EventLoop::remove(Channel* ch) {
     assert(ch->ownerloop() == this);
     assertInLoopThread();
+    // isEvent表示当前EventLoop正在执行vactChannel中的handle事件， 首先看看ch是不是现在正在执行的， 然后看看ch有没有在vact中
+    // 如果正在执行，则ch一定在vactChannel中，或者是正在执行
     if (isEventHandling) {
+        auto tmp = std::find(v_actChannels.begin(), v_actChannels.end(), ch);
+        if (tmp != v_actChannels.end()) {
+            v_actChannels.erase(tmp);
+        }
         assert(currentActiveChannel_ == ch ||
                std::find(v_actChannels.begin(), v_actChannels.end(), ch) == v_actChannels.end());
     }

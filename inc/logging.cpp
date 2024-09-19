@@ -169,13 +169,11 @@ Logger::Logger(SourceFile file, int line, bool toAbort)
  */
 Logger::~Logger() {
     m_impl.finish();
-    const LogStream::Buffer& buf(stream().buffer()); // 把构造Logg的stream的buffer数据取出来. 可以看到, 最大存储内容为1Mbit.
+    const LogStream::Buffer& buf(stream().buffer()); // 把构造Logg的stream的buffer数据取出来. 
     g_output(buf.data(), buf.length());  // 直接调用同步的Async的append? 如果不刻意设置就是终端输出.
     if (isshowTerminal) {
         defaultOutput(buf.data(), buf.length()); // 这个就是终端输出， 默认是stdout， 如果没有设置g_output， 则把这行注销掉
     }
-
-
     if (m_impl.m_level == FATAL) {
         g_flush();
         // abort();
